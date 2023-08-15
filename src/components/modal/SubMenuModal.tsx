@@ -31,9 +31,7 @@ export default function SubMenuModal({ subMenu }: SubMenuModalProps) {
           <li key={`${title}${idx}`}>
             {title !== "br" ? (
               <MenuItem
-                onClick={() => {
-                  setCurMenu(null);
-                }}
+                onClick={() => setCurMenu(null)}
                 valid={valid}
                 backgroundColor={valid ? "var(--color-blue)" : ""}
                 style={styles.menuItem}

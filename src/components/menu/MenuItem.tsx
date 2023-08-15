@@ -46,8 +46,8 @@ export default function MenuItem({
         setHover(false);
       }}
       onClick={(e) => {
-        e.stopPropagation();
         if (!valid) return;
+        e.stopPropagation();
         onClick?.();
       }}
     >
