@@ -13,7 +13,7 @@ module.exports = {
       keyframes: {
         fullWidth: {
           "0%": { width: 0 },
-          "100%": { width: "50%" },
+          "15%": { width: 0 },
           "100%": { width: "100%" },
         },
       },

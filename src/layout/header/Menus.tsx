@@ -26,8 +26,6 @@ export default function Menus() {
     };
   }, []);
 
-  console.log(curMenu);
-
   return (
     <div className="flex" ref={ref}>
       <MenuItem

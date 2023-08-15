@@ -30,7 +30,7 @@ export default function MenuItem({
 
   return (
     <div
-      className="py-1.5 px-2 rounded text-white"
+      className="py-1.5 px-3 rounded text-white"
       style={{
         color: valid ? color : "#ffffff80",
         ...((active || hover) && { backgroundColor }),
@@ -46,8 +46,8 @@ export default function MenuItem({
         setHover(false);
       }}
       onClick={(e) => {
-        if (!valid) return;
         e.stopPropagation();
+        if (!valid) return;
         onClick?.();
       }}
     >

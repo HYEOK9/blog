@@ -1,8 +1,20 @@
+import { CSSProperties } from "react";
 // store
 import { homeStore } from "@src/store/homeStore";
 // components
 import MenuItem from "../menu/MenuItem";
+import Container from "../common/Container";
 import Divider from "../common/Divider";
+
+const styles: { [key: string]: CSSProperties } = {
+  container: {
+    position: "absolute",
+    minWidth: "14rem",
+    margin: "0.5rem 0 0 -0.8rem",
+  },
+  menuItem: { padding: "0.2rem 0.6rem" },
+  divider: { margin: "4px 0" },
+};
 
 interface SubMenuModalProps {
   subMenu: ReadonlyArray<{ title: string; valid?: boolean }>;
@@ -12,28 +24,27 @@ export default function SubMenuModal({ subMenu }: SubMenuModalProps) {
   const { setCurMenu } = homeStore();
 
   return (
-    <ul
-      className="flex flex-col p-2 -ml-2 mt-1.5 border border-slate-600 rounded-md absolute text-sm font-normal"
-      style={{ minWidth: "14rem", backgroundColor: "rgba(27,27,29,0.3)" }}
-    >
-      {subMenu.map(({ title, valid }) =>
-        title !== "br" ? (
-          <li key={title}>
-            <MenuItem
-              onClick={() => {
-                setCurMenu(null);
-              }}
-              valid={valid}
-              backgroundColor={valid ? "#0A85FF" : ""}
-              style={{ padding: "0.2rem 0.6rem" }}
-            >
-              {title}
-            </MenuItem>
+    <Container style={styles.container}>
+      <ul>
+        {subMenu.map(({ title, valid }, idx) => (
+          <li key={`${title}${idx}`}>
+            {title !== "br" ? (
+              <MenuItem
+                onClick={() => {
+                  setCurMenu(null);
+                }}
+                valid={valid}
+                backgroundColor={valid ? "var(--color-blue)" : ""}
+                style={styles.menuItem}
+              >
+                {title}
+              </MenuItem>
+            ) : (
+              <Divider style={styles.divider} />
+            )}
           </li>
-        ) : (
-          <Divider style={{ margin: "4px 0" }} />
-        )
-      )}
-    </ul>
+        ))}
+      </ul>
+    </Container>
   );
 }
