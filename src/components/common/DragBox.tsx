@@ -1,5 +1,5 @@
 import { cursorStore, position } from "@src/store/cursorStore";
-import { useState, useEffect, useCallback, CSSProperties } from "react";
+import { useState, useEffect, CSSProperties } from "react";
 
 const styles: { [key: string]: CSSProperties } = {
   dragBox: {
@@ -16,7 +16,10 @@ interface DragBoxProps {
 
 export default function DragBox({ draggable }: DragBoxProps) {
   const [isDragging, setIsDragging] = useState(false);
-  const [size, setSize] = useState({ width: 0, height: 0 });
+  const [size, setSize] = useState<{ width: number; height: number } | null>({
+    width: 0,
+    height: 0,
+  });
   const [startPosition, setStartPosition] = useState<position>(null);
 
   const { curPosition } = cursorStore();
@@ -30,6 +33,7 @@ export default function DragBox({ draggable }: DragBoxProps) {
 
   const endDragging = () => {
     setStartPosition(null);
+    setSize(null);
     setIsDragging(false);
   };
 
@@ -59,15 +63,14 @@ export default function DragBox({ draggable }: DragBoxProps) {
   }, [startPosition, curPosition]);
 
   return (
-    draggable &&
     isDragging && (
       <div
         style={{
           ...styles.dragBox,
           left: startPosition?.x,
           top: startPosition?.y,
-          width: size.width + "px",
-          height: size.height + "px",
+          width: size?.width + "px",
+          height: size?.height + "px",
         }}
       />
     )

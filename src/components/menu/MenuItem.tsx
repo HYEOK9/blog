@@ -30,7 +30,7 @@ export default function MenuItem({
 
   return (
     <div
-      className="py-1.5 px-3 rounded text-white"
+      className="relative py-1.5 px-3 rounded text-white"
       style={{
         color: valid ? color : "#ffffff80",
         ...((active || hover) && { backgroundColor }),

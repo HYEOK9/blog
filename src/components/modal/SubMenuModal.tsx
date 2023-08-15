@@ -9,8 +9,9 @@ import Divider from "../common/Divider";
 const styles: { [key: string]: CSSProperties } = {
   container: {
     position: "absolute",
+    top: "calc(2rem + 1px)",
+    left: 0,
     minWidth: "14rem",
-    margin: "0.5rem 0 0 -0.8rem",
   },
   menuItem: { padding: "0.2rem 0.6rem" },
   divider: { margin: "4px 0" },
