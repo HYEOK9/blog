@@ -2,14 +2,13 @@ import { CSSProperties } from "react";
 
 interface DividerProps {
   color?: string;
-  spacing?: number;
   style?: CSSProperties;
 }
 
-export default function Divider({ color, spacing = 1, style }: DividerProps) {
+export default function Divider({ color, style }: DividerProps) {
   return (
     <div
-      className={`bg-slate-500 my-${spacing}`}
+      className="bg-slate-500"
       style={{ height: "0.5px", ...(color && { color }), ...style }}
     />
   );

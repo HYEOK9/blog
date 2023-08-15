@@ -1,8 +1,8 @@
 // store
-import { homeStore } from "@src/app.store/homeStore";
+import { homeStore } from "@src/store/homeStore";
 // components
 import MenuItem from "../menu/MenuItem";
-import Divider from "../util/Divider";
+import Divider from "../common/Divider";
 
 interface SubMenuModalProps {
   subMenu: ReadonlyArray<{ title: string; valid?: boolean }>;
@@ -25,13 +25,13 @@ export default function SubMenuModal({ subMenu }: SubMenuModalProps) {
               }}
               valid={valid}
               backgroundColor={valid ? "#0A85FF" : ""}
-              style={{ padding: "0.2rem 0.4rem" }}
+              style={{ padding: "0.2rem 0.6rem" }}
             >
               {title}
             </MenuItem>
           </li>
         ) : (
-          <Divider />
+          <Divider style={{ margin: "4px 0" }} />
         )
       )}
     </ul>

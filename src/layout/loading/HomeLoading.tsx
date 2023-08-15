@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 // components
 import AppleLogo from "public/logo/logo-apple.svg";
-import LineProgress from "@src/app.components/progress/LineProgress";
+import LineProgress from "@src/components/progress/LineProgress";
 
 interface HeaderProps {
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import HomeLoading from "@src/app.layout/loading/HomeLoading";
-import Home from "@src/app.layout/Home";
+import HomeLoading from "@src/layout/loading/HomeLoading";
+import Home from "@src/layout/Home";
 
 export default function App() {
   const [loading, setLoading] = useState(true);

@@ -1,6 +1,6 @@
 import { useState, ReactNode, CSSProperties } from "react";
 // store
-import { homeStore } from "@src/app.store/homeStore";
+import { homeStore } from "@src/store/homeStore";
 
 interface MenuItemProps {
   children: ReactNode;

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Header from "@src/app.layout/header/Header";
+import Header from "@src/layout/header/Header";
 import WallPaper from "public/wall-paper.jpg";
 
 const styles = {

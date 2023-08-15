@@ -1,12 +1,12 @@
 import { useEffect, useRef, useCallback } from "react";
 // constants
-import { Menu } from "@src/app.constants/Menu";
+import { Menu } from "@src/constants/Menu";
 // store
-import { homeStore } from "@src/app.store/homeStore";
+import { homeStore } from "@src/store/homeStore";
 // components
 import AppleLogo from "/public/logo/logo-apple.svg";
-import MenuItem from "@src/app.components/menu/MenuItem";
-import SubMenuModal from "@src/app.components/modal/SubMenuModal";
+import MenuItem from "@src/components/menu/MenuItem";
+import SubMenuModal from "@src/components/modal/SubMenuModal";
 
 export default function Menus() {
   const ref = useRef<HTMLDivElement>(null);
