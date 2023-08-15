@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node dev-server",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "preinstall": "npx only-allow pnpm"
   },
   "dependencies": {
     "@types/node": "20.4.9",
@@ -18,5 +19,14 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.0.1",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
+    "env-cmd": "^10.1.0",
+    "postcss": "^8.4.27",
+    "tailwindcss": "^3.3.3",
+    "zustand": "^4.4.1"
   }
 }
