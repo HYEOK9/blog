@@ -1,4 +1,4 @@
-import { useState, ReactNode, CSSProperties } from "react";
+import { ReactNode, CSSProperties } from "react";
 // store
 import { homeStore } from "@src/store/homeStore";
 
@@ -25,7 +25,6 @@ export default function MenuItem({
   backgroundColor = "rgba(255,255,255,0.1)",
   style,
 }: MenuItemProps) {
-  const [hover, setHover] = useState(false);
   const { isMenuOpened } = homeStore();
 
   return (
@@ -33,18 +32,14 @@ export default function MenuItem({
       className="relative py-1.5 px-3 rounded text-white"
       style={{
         color: valid ? color : "#ffffff80",
-        ...((active || hover) && { backgroundColor }),
+        ...(active && { backgroundColor }),
         ...style,
       }}
       onMouseEnter={() => {
         if (!isMenuOpened || !valid) return;
         onMouseEnter?.();
-        setHover(true);
       }}
-      onMouseLeave={() => {
-        onMouseLeave?.();
-        setHover(false);
-      }}
+      onMouseLeave={onMouseLeave}
       onClick={(e) => {
         if (!valid) return;
         e.stopPropagation();

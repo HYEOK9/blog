@@ -1,4 +1,4 @@
-import { CSSProperties } from "react";
+import { useState, CSSProperties } from "react";
 // store
 import { homeStore } from "@src/store/homeStore";
 // components
@@ -22,6 +22,7 @@ interface SubMenuModalProps {
 }
 
 export default function SubMenuModal({ subMenu }: SubMenuModalProps) {
+  const [hover, setHover] = useState<string | null>(null);
   const { setCurMenu } = homeStore();
 
   return (
@@ -32,7 +33,10 @@ export default function SubMenuModal({ subMenu }: SubMenuModalProps) {
             {title !== "br" ? (
               <MenuItem
                 onClick={() => setCurMenu(null)}
+                active={hover === title}
                 valid={valid}
+                onMouseEnter={() => setHover(title)}
+                onMouseLeave={() => setHover(null)}
                 backgroundColor={valid ? "var(--color-blue)" : ""}
                 style={styles.menuItem}
               >
