@@ -58,7 +58,7 @@ function DragBox({ draggable }: DragBoxProps) {
       return;
     }
     const width = curPosition.x - startPosition.x;
-    const height = curPosition.x - startPosition.x;
+    const height = curPosition.y - startPosition.y;
 
     setSize({ width, height });
   }, [startPosition, curPosition]);
