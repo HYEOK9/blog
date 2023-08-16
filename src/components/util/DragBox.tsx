@@ -23,7 +23,7 @@ function DragBox({ draggable }: DragBoxProps) {
   });
   const [startPosition, setStartPosition] = useState<position>(null);
 
-  const { curPosition } = cursorStore();
+  const { cursorPosition } = cursorStore();
 
   const startDragging = useCallback((e: any) => {
     if (!draggable) return;
@@ -54,14 +54,14 @@ function DragBox({ draggable }: DragBoxProps) {
   }, [draggable]);
 
   useEffect(() => {
-    if (!draggable || !curPosition || !startPosition) {
+    if (!draggable || !cursorPosition || !startPosition) {
       return;
     }
-    const width = curPosition.x - startPosition.x;
-    const height = curPosition.y - startPosition.y;
+    const width = cursorPosition.x - startPosition.x;
+    const height = cursorPosition.y - startPosition.y;
 
     setSize({ width, height });
-  }, [startPosition, curPosition]);
+  }, [startPosition, cursorPosition]);
 
   return (
     isDragging && (

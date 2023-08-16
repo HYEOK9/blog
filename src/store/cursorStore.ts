@@ -6,19 +6,19 @@ export type position = {
 } | null;
 
 interface cursorState {
-  curPosition: position;
+  cursorPosition: position;
 }
 
 interface setCursorState {
-  setCurPosition: (curPosition: position) => void;
+  setCursorPosition: (cursorPosition: position) => void;
 }
 
 const initialHomeState: cursorState = {
-  curPosition: null,
+  cursorPosition: null,
 };
 
 export const cursorStore = create<cursorState & setCursorState>((set) => ({
   ...initialHomeState,
-  setCurPosition: (curPosition: position) =>
-    set((prev) => ({ ...prev, curPosition })),
+  setCursorPosition: (cursorPosition: position) =>
+    set((prev) => ({ ...prev, cursorPosition })),
 }));
