@@ -4,20 +4,9 @@ import { homeStore } from "@src/store/homeStore";
 import { cursorStore } from "@src/store/cursorStore";
 // components
 import Header from "@src/layout/header/Header";
-import WallPaper from "public/wall-paper.jpg";
-import DraggableBox from "@src/components/common/DragBox";
-
-const styles = {
-  background: (imageLoaded: boolean) => ({
-    backgroundImage: `url(${WallPaper.src})`,
-    opacity: imageLoaded ? 1 : 0,
-    transition: "opacity 0.3s linear",
-    backgroundSize: "cover",
-  }),
-};
+import DraggableBox from "@src/components/util/DragBox";
 
 export default function Home() {
-  const [imageLoaded, setImageLoaded] = useState(false);
   const [draggable, setDraggable] = useState(true);
 
   const headerRef = useRef<HTMLDivElement>(null);
@@ -25,20 +14,6 @@ export default function Home() {
 
   const { curApp, curMenu } = homeStore();
   const { setCurPosition } = cursorStore();
-
-  useEffect(() => {
-    const img = new Image();
-    img.src = WallPaper.src;
-
-    img.onload = () => {
-      setImageLoaded(true);
-    };
-
-    img.onerror = () => {
-      setImageLoaded(false);
-      console.log("Image fetching failed");
-    };
-  }, []);
 
   useEffect(() => {
     const mouseMoving = (e: any) => {
@@ -56,7 +31,7 @@ export default function Home() {
   }, [curMenu, curApp]);
 
   return (
-    <div className="w-screen h-screen" style={styles.background(imageLoaded)}>
+    <>
       <section ref={headerRef}>
         <Header />
       </section>
@@ -64,6 +39,6 @@ export default function Home() {
       <section ref={dockRef} />
 
       <DraggableBox draggable={draggable} />
-    </div>
+    </>
   );
 }

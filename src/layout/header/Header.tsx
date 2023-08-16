@@ -1,4 +1,3 @@
-// components
 import Menus from "./Menus";
 
 export default function Header() {

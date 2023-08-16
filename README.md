@@ -1,1 +1,1 @@
-# [Blog](https://main.d233yfk8yyg1s9.amplifyapp.com)
+# [Blog](https://blog-sigma-ivory-52.vercel.app)

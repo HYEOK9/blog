@@ -1,5 +1,6 @@
+import { useState, useEffect, useCallback, memo, CSSProperties } from "react";
+// store
 import { cursorStore, position } from "@src/store/cursorStore";
-import { useState, useEffect, CSSProperties } from "react";
 
 const styles: { [key: string]: CSSProperties } = {
   dragBox: {
@@ -14,7 +15,7 @@ interface DragBoxProps {
   draggable: boolean;
 }
 
-export default function DragBox({ draggable }: DragBoxProps) {
+function DragBox({ draggable }: DragBoxProps) {
   const [isDragging, setIsDragging] = useState(false);
   const [size, setSize] = useState<{ width: number; height: number } | null>({
     width: 0,
@@ -24,18 +25,18 @@ export default function DragBox({ draggable }: DragBoxProps) {
 
   const { curPosition } = cursorStore();
 
-  const startDragging = (e: any) => {
+  const startDragging = useCallback((e: any) => {
     if (!draggable) return;
 
     setStartPosition({ x: e.clientX, y: e.clientY });
     setIsDragging(true);
-  };
+  }, []);
 
-  const endDragging = () => {
+  const endDragging = useCallback(() => {
     setStartPosition(null);
     setSize(null);
     setIsDragging(false);
-  };
+  }, []);
 
   useEffect(() => {
     if (draggable) {
@@ -56,10 +57,10 @@ export default function DragBox({ draggable }: DragBoxProps) {
     if (!draggable || !curPosition || !startPosition) {
       return;
     }
-    setSize({
-      width: curPosition.x - startPosition.x,
-      height: curPosition.y - startPosition.y,
-    });
+    const width = curPosition.x - startPosition.x;
+    const height = curPosition.x - startPosition.x;
+
+    setSize({ width, height });
   }, [startPosition, curPosition]);
 
   return (
@@ -76,3 +77,5 @@ export default function DragBox({ draggable }: DragBoxProps) {
     )
   );
 }
+
+export default memo(DragBox);
