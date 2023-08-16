@@ -8,7 +8,7 @@ import AppleLogo from "/public/logo/logo-apple.svg";
 import MenuItem from "@src/components/menu/MenuItem";
 import SubMenuModal from "@src/components/modal/SubMenuModal";
 
-export default function Menus() {
+export default function MenuLeft() {
   const ref = useRef<HTMLDivElement>(null);
   const { curMenu, setCurMenu } = homeStore();
 
