@@ -2,4 +2,6 @@ body {
   --color-red: #f44336;
   --color-green: #1bca1b;
   --color-blue: #0a85ff;
+  --color-navy: rgba(52, 52, 66, 0.8);
+  --color-navy-light: rgba(52, 52, 66, 0.4);
 }

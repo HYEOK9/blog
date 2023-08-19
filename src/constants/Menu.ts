@@ -1,4 +1,4 @@
-export const Menu = [
+export const MENU = [
   {
     title: "Mac",
     subMenu: [
@@ -170,3 +170,6 @@ export const Menu = [
     ],
   },
 ] as const;
+
+export const DATE_FORMAT = "M월 D일 (ddd) A h:mm" as const;
+export const DATE_LOCALE = "ko" as const;

@@ -1,58 +1,64 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 // style
 import WallPaper from "public/wall-paper.jpg";
 // store
-import { homeStore } from "@src/store/homeStore";
-import { cursorStore } from "@src/store/cursorStore";
-import { dateStore } from "@src/store/dateStore";
+import { homeStore } from "@store/homeStore";
+import { cursorStore } from "@store/cursorStore";
 // components
-import HomeLoading from "@src/components/layout/HomeLoading";
-import Background from "@src/components/layout/background/Background";
-import Header from "@src/components/layout/header/Header";
-import DraggableBox from "@src/components/util/DragBox";
+import HomeLoading from "@components/layout/HomeLoading";
+import Header from "@components/layout/header/Header";
+import Dock from "@components/dock/Dock";
+import Background from "@components/layout/background/Background";
+import DraggableBox from "@components/util/dragBox/DragBox";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
-  const [draggable, setDraggable] = useState(true);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const dockRef = useRef<HTMLDivElement>(null);
+  const appRef = useRef<HTMLDivElement>(null);
 
   const { curApp, curMenu } = homeStore();
-  const { setCursorPosition } = cursorStore();
-  const { getNow } = dateStore();
+  const { setCursorPosition, setDraggable } = cursorStore();
 
-  useEffect(() => {
-    setInterval(() => getNow(), 1000);
-  }, []);
+  const mouseMoving = useCallback(
+    (e: MouseEvent) => {
+      e.preventDefault();
 
-  useEffect(() => {
-    const mouseMoving = (e: any) => {
       setCursorPosition({ x: e.clientX, y: e.clientY });
-      setDraggable(
-        !curMenu && !curApp && !headerRef.current?.contains(e.target)
-      );
-    };
 
+      const doingWork = curApp || curMenu;
+      const cursorOnNotDraggable =
+        headerRef.current?.contains(e.target as Element) ||
+        dockRef.current?.contains(e.target as Element);
+
+      setDraggable(!doingWork && !cursorOnNotDraggable);
+    },
+    [curApp, curMenu, setCursorPosition, setDraggable]
+  );
+
+  useEffect(() => {
     window.addEventListener("mousemove", mouseMoving);
 
-    return () => {
-      window.removeEventListener("mousemove", mouseMoving);
-    };
-  }, [curMenu, curApp]);
+    return () => window.removeEventListener("mousemove", mouseMoving);
+  }, [mouseMoving]);
 
-  return loading ? (
-    <HomeLoading setLoading={setLoading} />
-  ) : (
-    <>
-      <section ref={headerRef}>
+  return (
+    <div className="flex justify-center">
+      {loading && <HomeLoading />}
+
+      <section className="fixed w-full" ref={headerRef}>
         <Header />
       </section>
 
-      <section ref={dockRef} />
+      <section ref={appRef} />
 
-      <DraggableBox draggable={draggable} />
-      <Background image={WallPaper} />
-    </>
+      <section className="h-18 absolute bottom-1" ref={dockRef}>
+        <Dock />
+      </section>
+
+      <DraggableBox />
+      <Background setLoading={setLoading} image={WallPaper} />
+    </div>
   );
 }

@@ -1,19 +1,21 @@
 import { create } from "zustand";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
+// constants
+import { DATE_FORMAT, DATE_LOCALE } from "@constants/Menu";
 
 interface dateState {
   now: string;
 }
 
 interface setDateState {
-  getNow: () => void;
+  setNow: () => void;
 }
 
 export const dateStore = create<dateState & setDateState>((set) => ({
   now: "",
-  getNow: () =>
+  setNow: () =>
     set(() => ({
-      now: dayjs().locale("ko").format("M월 D일 (ddd) A h:mm"),
+      now: dayjs().locale(DATE_LOCALE).format(DATE_FORMAT),
     })),
 }));

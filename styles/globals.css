@@ -12,6 +12,7 @@ body {
   font-size: 15.5px;
   max-height: 100vh;
   user-select: none;
+  min-width: max-content;
 }
 
 div {

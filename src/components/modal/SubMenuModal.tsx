@@ -1,15 +1,15 @@
 import { useState, CSSProperties } from "react";
 // store
-import { homeStore } from "@src/store/homeStore";
+import { homeStore } from "@store/homeStore";
 // components
-import MenuItem from "../menu/MenuItem";
-import Container from "../common/Container";
-import Divider from "../common/Divider";
+import MenuItem from "@components/menu/MenuItem";
+import Container from "@components/UI/Container";
+import Divider from "@components/UI/Divider";
 
 const styles: { [key: string]: CSSProperties } = {
   container: {
     position: "absolute",
-    top: "calc(2rem + 1px)",
+    top: "calc(2rem + 2px)",
     left: 0,
     minWidth: "14rem",
   },

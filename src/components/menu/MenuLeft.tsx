@@ -1,12 +1,12 @@
 import { useEffect, useRef, useCallback } from "react";
 // constants
-import { Menu } from "@src/constants/Menu";
+import { MENU } from "@constants/Menu";
 // store
-import { homeStore } from "@src/store/homeStore";
+import { homeStore } from "@store/homeStore";
 // components
 import AppleLogo from "/public/logo/logo-apple.svg";
-import MenuItem from "@src/components/menu/MenuItem";
-import SubMenuModal from "@src/components/modal/SubMenuModal";
+import MenuItem from "@components/menu/MenuItem";
+import SubMenuModal from "@components/modal/SubMenuModal";
 
 export default function MenuLeft() {
   const ref = useRef<HTMLDivElement>(null);
@@ -29,18 +29,17 @@ export default function MenuLeft() {
   return (
     <div className="flex" ref={ref}>
       <MenuItem
-        onClick={() => setCurMenu(Menu[0].title)}
-        onMouseEnter={() => setCurMenu(Menu[0].title)}
-        active={curMenu === Menu[0].title}
-        style={{ marginRight: "0.75rem" }}
+        onClick={() => setCurMenu(MENU[0].title)}
+        onMouseEnter={() => setCurMenu(MENU[0].title)}
+        active={curMenu === MENU[0].title}
       >
         <AppleLogo width="17px" height="17px" />
-        {curMenu === Menu[0].title && (
-          <SubMenuModal subMenu={Menu[0].subMenu} />
+        {curMenu === MENU[0].title && (
+          <SubMenuModal subMenu={MENU[0].subMenu} />
         )}
       </MenuItem>
 
-      {Menu.map(
+      {MENU.map(
         ({ title, subMenu }, idx) =>
           idx !== 0 && (
             <MenuItem

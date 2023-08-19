@@ -1,19 +1,16 @@
-import React, { useEffect } from "react";
+import React from "react";
+// style
+import { zIndex } from "@constants/zIndex";
 // components
 import AppleLogo from "public/logo/logo-apple.svg";
-import LineProgress from "@src/components/util/progress/LineProgress";
+import LineProgress from "@components/util/progress/LineProgress";
 
-interface HeaderProps {
-  setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export default function HomeLoading({ setLoading }: HeaderProps) {
-  useEffect(() => {
-    setTimeout(() => setLoading(false), 1200);
-  }, []);
-
+export default function HomeLoading() {
   return (
-    <div className="w-screen h-screen flex flex-col justify-center items-center bg-black">
+    <div
+      className="w-screen h-screen flex flex-col justify-center items-center bg-black"
+      style={{ zIndex: zIndex.loading }}
+    >
       <AppleLogo />
 
       <LineProgress />

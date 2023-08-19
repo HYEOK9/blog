@@ -1,18 +1,24 @@
-import { StaticImageData } from "next/image";
-
+import { Dispatch, SetStateAction } from "react";
+import Image, { StaticImageData } from "next/image";
+// style
+import { zIndex } from "@constants/zIndex";
 interface BackgroundProps {
   image: StaticImageData;
+  setLoading: Dispatch<SetStateAction<boolean>>;
 }
 
-export default function Background({ image }: BackgroundProps) {
+export default function Background({ image, setLoading }: BackgroundProps) {
   return (
-    <div
-      className="fixed w-screen h-screen animate-fade bg-cover -z-50"
+    <Image
+      className="fixed w-full h-screen bg-cover animate-fade"
+      src={image}
+      alt={image.src}
       style={{
-        backgroundImage: `url(${image.src})`,
         willChange: "background-image",
         transition: "background-image 0.15s ease-in 0s",
+        zIndex: zIndex.background,
       }}
+      onLoad={() => setTimeout(() => setLoading(false), 2500)}
     />
   );
 }

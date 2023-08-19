@@ -10,6 +10,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      width: {
+        18: "4.5rem",
+      },
+      height: {
+        18: "4.5rem",
+      },
       keyframes: {
         fullWidth: {
           "0%": { width: 0 },
@@ -17,12 +23,13 @@ module.exports = {
         },
         fade: {
           "0%": { opacity: 0 },
+          "20%": { opacity: 0 },
           "100%": { opacity: 1 },
         },
       },
       animation: {
-        homeProgress: "fullWidth 1.15s ease",
-        fade: "fade 1s ease-in",
+        homeProgress: "fullWidth 2.5s ease",
+        fade: "fade 3.5s linear",
       },
     },
   },

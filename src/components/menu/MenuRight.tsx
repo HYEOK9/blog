@@ -1,4 +1,4 @@
-import Date from "@src/components/menu/Date";
+import Date from "@components/UI/Date";
 
 export default function MenuRight() {
   return (
