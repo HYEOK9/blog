@@ -11,13 +11,13 @@ export default function LineProgress({
 }: LineProgressProps) {
   return (
     <div
-      className={`mb-6 h-1 w-48 bg-neutral-600 mt-10 ${
+      className={`h-1 w-48 mt-10 rounded bg-neutral-600 ${
         absolute ? "absolute" : ""
       }`}
       style={{ backgroundColor: `${backgroundColor} !important` }}
     >
       <div
-        className="h-1 bg-white animate-homeProgress"
+        className="h-1 rounded bg-white animate-homeProgress"
         style={{ backgroundColor: `${color} !important` }}
       />
     </div>

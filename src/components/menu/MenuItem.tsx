@@ -1,6 +1,4 @@
 import { ReactNode, CSSProperties } from "react";
-// store
-import { homeStore } from "@store/homeStore";
 
 interface MenuItemProps {
   children: ReactNode;
@@ -25,8 +23,6 @@ export default function MenuItem({
   backgroundColor = "rgba(255,255,255,0.1)",
   style,
 }: MenuItemProps) {
-  const { isMenuOpened } = homeStore();
-
   return (
     <div
       className="relative py-1.5 px-3 rounded text-white"
@@ -36,7 +32,7 @@ export default function MenuItem({
         ...style,
       }}
       onMouseEnter={() => {
-        if (!isMenuOpened || !valid) return;
+        if (!valid) return;
         onMouseEnter?.();
       }}
       onMouseLeave={onMouseLeave}

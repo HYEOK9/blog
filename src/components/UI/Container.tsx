@@ -13,7 +13,7 @@ export default function Container({
 }: ContainerProps) {
   return (
     <div
-      className="flex flex-col p-2 border border-slate-600 rounded-md text-sm font-normal backdrop-blur-xl"
+      className="flex flex-col p-1 border border-slate-600 rounded-md text-sm font-normal backdrop-blur-xl"
       style={{ backgroundColor: color, ...style }}
     >
       {children}

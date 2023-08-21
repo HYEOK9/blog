@@ -1,10 +1,12 @@
-import { useState, useEffect, useCallback, CSSProperties } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 // style
 import { zIndex } from "@constants/zIndex";
 // store
 import { cursorStore, position } from "@store/cursorStore";
-// util
-import { setVertex } from "./setVertex";
+// types
+import { IStyleObject } from "@@types/style";
+// lib
+import { setVertex } from "@lib/setDragBoxVertex";
 
 type Tquadrant = {
   top?: number;
@@ -13,7 +15,7 @@ type Tquadrant = {
   right?: number;
 } | null;
 
-const styles: { [key: string]: CSSProperties } = {
+const styles: IStyleObject = {
   dragBox: {
     position: "absolute",
     backgroundColor: "rgba(255,255,255,0.1)",
@@ -21,7 +23,7 @@ const styles: { [key: string]: CSSProperties } = {
   },
 };
 
-export default function DragBox() {
+function DragBox() {
   const [size, setSize] = useState<{ width: number; height: number } | null>({
     width: 0,
     height: 0,
@@ -29,17 +31,48 @@ export default function DragBox() {
   const [startPosition, setStartPosition] = useState<position>(null);
   const [quadrant, setQuadrant] = useState<Tquadrant>(null);
 
-  const { cursorPosition, draggable, isDragging, setIsDragging } =
-    cursorStore();
+  const {
+    cursorPosition,
+    draggable,
+    isDragging,
+    setIsDragging,
+    rightClicked,
+    setRightClicked,
+  } = cursorStore();
 
   const startDragging = useCallback(
     (e: MouseEvent) => {
-      if (!draggable) return;
+      if (!draggable || e.button === 2) {
+        if (rightClicked) setRightClicked(false);
+        return;
+      }
+
       setStartPosition({ x: e.clientX, y: e.clientY });
       setIsDragging(true);
     },
-    [draggable, setIsDragging]
+    [draggable, rightClicked, setIsDragging, setRightClicked]
   );
+
+  const drag = useCallback(() => {
+    if (!isDragging || !cursorPosition || !startPosition) {
+      return;
+    }
+    if (rightClicked) {
+      setRightClicked(false);
+      return;
+    }
+    const width = cursorPosition.x - startPosition.x;
+    const height = cursorPosition.y - startPosition.y;
+
+    setQuadrant(setVertex(width, height, startPosition.x, startPosition.y));
+    setSize({ width: Math.abs(width), height: Math.abs(height) });
+  }, [
+    isDragging,
+    cursorPosition,
+    startPosition,
+    rightClicked,
+    setRightClicked,
+  ]);
 
   const endDragging = useCallback(() => {
     setIsDragging(false);
@@ -48,16 +81,12 @@ export default function DragBox() {
   }, [setIsDragging]);
 
   useEffect(() => {
-    if (draggable) {
-      window.addEventListener("mousedown", startDragging);
-    } else {
-      window.removeEventListener("mousedown", startDragging);
-    }
+    window.addEventListener("mousedown", startDragging);
 
     return () => {
       window.removeEventListener("mousedown", startDragging);
     };
-  }, [draggable]);
+  }, [startDragging]);
 
   useEffect(() => {
     window.addEventListener("mouseup", endDragging);
@@ -65,19 +94,11 @@ export default function DragBox() {
     return () => {
       window.removeEventListener("mouseup", endDragging);
     };
-  }, []);
+  }, [endDragging]);
 
   useEffect(() => {
-    if (!isDragging || !cursorPosition || !startPosition) {
-      return;
-    }
-
-    const width = cursorPosition.x - startPosition.x;
-    const height = cursorPosition.y - startPosition.y;
-
-    setQuadrant(setVertex(width, height, startPosition.x, startPosition.y));
-    setSize({ width: Math.abs(width), height: Math.abs(height) });
-  }, [isDragging, cursorPosition, startPosition]);
+    drag();
+  }, [drag]);
 
   return (
     isDragging && (
@@ -89,7 +110,10 @@ export default function DragBox() {
           height: size?.height,
           zIndex: zIndex.dragBox,
         }}
+        hidden={!size?.width}
       />
     )
   );
 }
+
+export default memo(DragBox);

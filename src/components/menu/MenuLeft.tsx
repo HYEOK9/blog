@@ -1,16 +1,33 @@
 import { useEffect, useRef, useCallback } from "react";
-// constants
-import { MENU } from "@constants/Menu";
 // store
 import { homeStore } from "@store/homeStore";
+// types
+import { IStyleObject } from "@@types/style";
+// constants
+import { MENU } from "@constants/Menu";
 // components
 import AppleLogo from "/public/logo/logo-apple.svg";
 import MenuItem from "@components/menu/MenuItem";
 import SubMenuModal from "@components/modal/SubMenuModal";
 
+const styles: IStyleObject = {
+  subMenu: {
+    position: "absolute",
+    top: "calc(2rem + 2px)",
+    left: 0,
+    minWidth: "14rem",
+  },
+};
+
 export default function MenuLeft() {
   const ref = useRef<HTMLDivElement>(null);
-  const { curMenu, setCurMenu } = homeStore();
+
+  const { curMenu, setCurMenu, isMenuOpened } = homeStore();
+
+  const onMouseEnter = (menuTitle: string) => {
+    if (!isMenuOpened) return;
+    setCurMenu(menuTitle);
+  };
 
   const clickOutside = useCallback(({ target }: MouseEvent) => {
     if (!ref.current?.contains(target as Element)) {
@@ -28,32 +45,23 @@ export default function MenuLeft() {
 
   return (
     <div className="flex" ref={ref}>
-      <MenuItem
-        onClick={() => setCurMenu(MENU[0].title)}
-        onMouseEnter={() => setCurMenu(MENU[0].title)}
-        active={curMenu === MENU[0].title}
-      >
-        <AppleLogo width="17px" height="17px" />
-        {curMenu === MENU[0].title && (
-          <SubMenuModal subMenu={MENU[0].subMenu} />
-        )}
-      </MenuItem>
+      {MENU.map(({ title, subMenu }, idx) => (
+        <MenuItem
+          key={title}
+          onClick={() => setCurMenu(title)}
+          onMouseEnter={() => onMouseEnter(title)}
+          active={curMenu === title}
+          style={{ ...(idx === 1 && { fontWeight: "bold" }) }}
+        >
+          {idx === 0 ? <AppleLogo width="17px" height="17px" /> : title}
 
-      {MENU.map(
-        ({ title, subMenu }, idx) =>
-          idx !== 0 && (
-            <MenuItem
-              key={title}
-              onClick={() => setCurMenu(title)}
-              onMouseEnter={() => setCurMenu(title)}
-              active={curMenu === title}
-              style={{ ...(idx === 1 && { fontWeight: "bold" }) }}
-            >
-              {title}
-              {curMenu === title && <SubMenuModal subMenu={subMenu} />}
-            </MenuItem>
-          )
-      )}
+          {curMenu === title && (
+            <div style={styles.subMenu}>
+              <SubMenuModal subMenu={subMenu} />
+            </div>
+          )}
+        </MenuItem>
+      ))}
     </div>
   );
 }

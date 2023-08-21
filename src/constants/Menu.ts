@@ -171,5 +171,20 @@ export const MENU = [
   },
 ] as const;
 
+export const CONTEXT_MENU = [
+  { title: "새로운 폴더", valid: true },
+  { title: "br" },
+  { title: "정보 가져오기", valid: true },
+  { title: "배경화면 변경...", valid: true },
+  { title: "br" },
+  { title: "스택 사용", valid: true },
+  { title: "다음으로 정렬", valid: true },
+  { title: "아이콘 정리", valid: true },
+  { title: "아이콘 정리 방식", valid: true },
+  { title: "보기 옵션", valid: true },
+  { title: "br" },
+  { title: "iPhone에서 가져오기", valid: true },
+] as const;
+
 export const DATE_FORMAT = "M월 D일 (ddd) A h:mm" as const;
 export const DATE_LOCALE = "ko" as const;

@@ -9,7 +9,6 @@ import HomeLoading from "@components/layout/HomeLoading";
 import Header from "@components/layout/header/Header";
 import Dock from "@components/dock/Dock";
 import Background from "@components/layout/background/Background";
-import DraggableBox from "@components/util/dragBox/DragBox";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
@@ -57,7 +56,6 @@ export default function Home() {
         <Dock />
       </section>
 
-      <DraggableBox />
       <Background setLoading={setLoading} image={WallPaper} />
     </div>
   );

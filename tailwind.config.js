@@ -16,20 +16,27 @@ module.exports = {
       height: {
         18: "4.5rem",
       },
+      padding: {
+        0.8: "0.2rem",
+      },
       keyframes: {
         fullWidth: {
           "0%": { width: 0 },
           "100%": { width: "100%" },
         },
-        fade: {
+        "fade-in": {
           "0%": { opacity: 0 },
-          "20%": { opacity: 0 },
           "100%": { opacity: 1 },
+        },
+        "fade-out": {
+          "0%": { opacity: 1 },
+          "100%": { opacity: 0 },
         },
       },
       animation: {
+        fade: "fade-in 0.1s linear",
         homeProgress: "fullWidth 2.5s ease",
-        fade: "fade 3.5s linear",
+        homeFade: "fade-in 3.5s linear",
       },
     },
   },
