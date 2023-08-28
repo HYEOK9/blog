@@ -3,5 +3,6 @@ body {
   --color-green: #1bca1b;
   --color-blue: #0a85ff;
   --color-navy: rgba(52, 52, 66, 0.8);
+  --color-navy-deep: rgba(40, 40, 51, 0.99);
   --color-navy-light: rgba(52, 52, 66, 0.4);
 }

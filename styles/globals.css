@@ -27,7 +27,7 @@ a {
 * {
   box-sizing: border-box;
   user-select: none;
-  cursor: url("../public/cursor.png"), auto;
+  cursor: url("../public/cursor.png"), auto !important;
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
   ::-webkit-scrollbar {

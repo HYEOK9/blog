@@ -1,6 +1,6 @@
 import { useEffect, useRef, useCallback } from "react";
 // store
-import { homeStore } from "@store/homeStore";
+import { menuStore } from "@store/menuStore";
 // types
 import { IStyleObject } from "@@types/style";
 // constants
@@ -22,7 +22,7 @@ const styles: IStyleObject = {
 export default function MenuLeft() {
   const ref = useRef<HTMLDivElement>(null);
 
-  const { curMenu, setCurMenu, isMenuOpened } = homeStore();
+  const { curMenu, setCurMenu, isMenuOpened } = menuStore();
 
   const onMouseEnter = (menuTitle: string) => {
     if (!isMenuOpened) return;

@@ -2,7 +2,7 @@ import { useState } from "react";
 // types
 import { IStyleObject } from "@@types/style";
 // store
-import { homeStore } from "@store/homeStore";
+import { menuStore } from "@store/menuStore";
 // components
 import MenuItem from "@components/menu/MenuItem";
 import Container from "@components/UI/Container";
@@ -19,7 +19,7 @@ interface SubMenuModalProps {
 
 export default function SubMenuModal({ subMenu }: SubMenuModalProps) {
   const [hover, setHover] = useState<string | null>(null);
-  const { setCurMenu } = homeStore();
+  const { setCurMenu } = menuStore();
 
   return (
     <Container>

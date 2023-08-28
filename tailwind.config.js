@@ -12,9 +12,11 @@ module.exports = {
     extend: {
       width: {
         18: "4.5rem",
+        window: 800,
       },
       height: {
         18: "4.5rem",
+        window: 560,
       },
       padding: {
         0.8: "0.2rem",

@@ -2,7 +2,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 // style
 import { zIndex } from "@constants/zIndex";
 // store
-import { homeStore } from "@store/homeStore";
+import { menuStore } from "@store/menuStore";
 import { cursorStore, position } from "@store/cursorStore";
 // constants
 import { CONTEXT_MENU } from "@constants/Menu";
@@ -13,7 +13,7 @@ export default function ContextMenu() {
   const [startPosition, setStartPosition] = useState<position>(null);
   const ref = useRef<HTMLDivElement>(null);
 
-  const { curMenu, setCurMenu } = homeStore();
+  const { curMenu, setCurMenu } = menuStore();
   const { rightClicked, setRightClicked, draggable } = cursorStore();
 
   const handleContextMenu = useCallback(

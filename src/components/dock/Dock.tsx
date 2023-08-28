@@ -2,7 +2,7 @@ import { useEffect, useRef, memo, Fragment } from "react";
 // style
 import { zIndex } from "@constants/zIndex";
 // lib
-import { dockIconFocus } from "@lib/docIconFocus";
+import { dockIconFocus } from "@lib/dockIconFocus";
 // components
 import { Icons } from "@components/dock/Icons";
 import Divider from "@components/UI/Divider";
@@ -15,7 +15,7 @@ function Dock() {
 
   const mouseLeave = () => {
     iconRef.current.forEach((item) => {
-      item.style.transform = "scale(1)  translateY(0px)";
+      item.style.transform = "scale(1) translateY(0px)";
     });
   };
 
@@ -35,9 +35,8 @@ function Dock() {
 
   return (
     <div
-      className="flex h-full relative items-center justify-between px-2 py-1 rounded-2xl border border-slate-600 backdrop-blur-sm transition-all"
+      className="flex h-full relative items-center justify-between px-1 pt-1 pb-2 rounded-2xl border border-slate-600 backdrop-blur-sm transition-all"
       style={{
-        minWidth: "max-content",
         backgroundColor: "var(--color-navy-light)",
         zIndex: zIndex.dock,
       }}

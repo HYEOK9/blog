@@ -1,4 +1,6 @@
 import { forwardRef, ForwardedRef } from "react";
+// store
+import { appStore } from "@store/appStore";
 // image
 import FinderIcon from "/public/application/finder.png";
 import ITermIcon from "/public/application/iTerm.png";
@@ -14,72 +16,25 @@ import { GITHUB_URL, VELOG_URL, OPEN_WINDOW_CONFIG } from "@constants/Link";
 import Icon from "@components/UI/Icon";
 
 const Finder = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
-  return (
-    <Icon
-      src={FinderIcon}
-      title="Finder"
-      width={56}
-      height={56}
-      {...props}
-      ref={ref}
-    />
-  );
+  return <Icon src={FinderIcon} title="Finder" {...props} ref={ref} />;
 };
 const ITerm = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
-  return (
-    <Icon
-      src={ITermIcon}
-      title="ITerm"
-      width={64}
-      height={64}
-      {...props}
-      ref={ref}
-    />
-  );
+  return <Icon src={ITermIcon} title="ITerm" {...props} ref={ref} />;
 };
 const Vscode = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
-  return (
-    <Icon
-      src={VscodeIcon}
-      title="VSCode"
-      width={64}
-      height={64}
-      {...props}
-      ref={ref}
-    />
-  );
+  return <Icon src={VscodeIcon} title="VSCode" {...props} ref={ref} />;
 };
 const PostMan = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
-  return (
-    <Icon
-      src={PostManIcon}
-      title="Postman"
-      width={64}
-      height={64}
-      {...props}
-      ref={ref}
-    />
-  );
+  return <Icon src={PostManIcon} title="Postman" {...props} ref={ref} />;
 };
 const Memo = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
-  return (
-    <Icon
-      src={MemoIcon}
-      title="Memo"
-      width={64}
-      height={64}
-      {...props}
-      ref={ref}
-    />
-  );
+  return <Icon src={MemoIcon} title="Memo" {...props} ref={ref} />;
 };
 const Github = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
   return (
     <Icon
       src={GithubIcon}
       title="Github"
-      width={64}
-      height={64}
       onClick={() => window.open(GITHUB_URL, "_blank", `${OPEN_WINDOW_CONFIG}`)}
       {...props}
       ref={ref}
@@ -91,26 +46,15 @@ const Velog = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
     <Icon
       src={VelogIcon}
       title="Velog"
-      width={50}
-      height={50}
       onClick={() => window.open(VELOG_URL, "_blank", `${OPEN_WINDOW_CONFIG}`)}
-      style={{ margin: "0 5px", borderRadius: 10 }}
+      style={{ margin: "0 5px", width: 55, height: 55 }}
       {...props}
       ref={ref}
     />
   );
 };
 const Folder = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
-  return (
-    <Icon
-      src={FolderIcon}
-      title="Folder"
-      width={56}
-      height={56}
-      {...props}
-      ref={ref}
-    />
-  );
+  return <Icon src={FolderIcon} title="Folder" {...props} ref={ref} />;
 };
 
 export const Icons = [
