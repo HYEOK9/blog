@@ -58,7 +58,7 @@ export default function ContextMenu() {
           top: startPosition?.y,
           left: startPosition?.x,
           minWidth: "12rem",
-          zIndex: zIndex.contextMenu,
+          zIndex: zIndex.subMenu,
         }}
         ref={ref}
       >

@@ -1,4 +1,6 @@
 import { useEffect, useRef, useCallback } from "react";
+// style
+import { zIndex } from "@constants/zIndex";
 // store
 import { menuStore } from "@store/menuStore";
 // types
@@ -16,6 +18,7 @@ const styles: IStyleObject = {
     top: "calc(2rem + 2px)",
     left: 0,
     minWidth: "14rem",
+    zIndex: zIndex.subMenu,
   },
 };
 

@@ -15,6 +15,7 @@ module.exports = {
         window: 800,
       },
       height: {
+        0.25: "0.0625rem",
         18: "4.5rem",
         window: 560,
       },
