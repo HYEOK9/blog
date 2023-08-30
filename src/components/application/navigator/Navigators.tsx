@@ -1,17 +1,17 @@
 import { useState } from "react";
 // store
-import { Iapp, appStore } from "@store/appStore";
+import { IApp, appStore } from "@store/appStore";
 // components
 import NavIcon from "./NavIcon";
 
 interface NavigatorsProps {
-  app: Iapp;
+  app: IApp;
 }
 
 export default function Navigators({ app }: NavigatorsProps) {
   const [showIcon, setShowIcon] = useState(false);
 
-  const { closeApp } = appStore();
+  const { closeApp, hideApp } = appStore();
   const onClick = () => {};
 
   return (
@@ -32,7 +32,7 @@ export default function Navigators({ app }: NavigatorsProps) {
       />
       <NavIcon
         type="yellow"
-        onClick={onClick}
+        onClick={() => hideApp(app.name)}
         style={{
           backgroundColor: "#ffbd2e",
           borderColor: "#dea123",

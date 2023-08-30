@@ -45,7 +45,7 @@ export default function ContextMenu() {
 
       return {
         x: prev.x,
-        y: Math.min(prev.y, window.innerHeight - ref.current.offsetHeight - 80),
+        y: Math.min(prev.y, window.innerHeight - ref.current.offsetHeight - 85),
       };
     });
   }, [rightClicked]);

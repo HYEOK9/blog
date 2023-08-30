@@ -16,16 +16,13 @@ export default function Divider({
   width = 0.5,
 }: DividerProps) {
   return (
-    <div
-      className={`flex justify-center items-center    
-        ${vertical ? "h" : "w"}-full`}
-    >
+    <div className={`flex ${vertical ? "h" : "w"}-full`}>
       <div
-        className={`bg-slate-500 ${className}`}
+        className={`bg-slate-500 ${className} self-center`}
         style={{
           width: !vertical ? "100%" : width,
           height: !vertical ? width : "100%",
-          ...(color && { color }),
+          ...(color && { backgroundColor: color }),
           ...style,
         }}
       />

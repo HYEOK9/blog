@@ -1,15 +1,16 @@
 import { Dispatch, SetStateAction } from "react";
 import Draggable from "react-draggable";
 // store
-import type { Iapp } from "@store/appStore";
+import type { IApp } from "@store/appStore";
 // component
 import Navigators from "../navigator/Navigators";
 
 interface AppHeaderProps {
-  app: Iapp;
+  app: IApp;
   headerColor?: string;
   position: { x: number; y: number };
   setPosition: Dispatch<SetStateAction<{ x: number; y: number }>>;
+  width?: string | number;
 }
 
 export default function AppHeader({
@@ -17,16 +18,17 @@ export default function AppHeader({
   headerColor = "var(--color-navy-deep)",
   position,
   setPosition,
+  width = "100%",
 }: AppHeaderProps) {
   return (
     <Draggable
       onDrag={(_, { x, y }) => setPosition({ x, y })}
-      bounds={{ top: 32 }}
+      bounds={{ top: 32, bottom: 560 }}
       defaultPosition={position}
     >
       <div
-        className="flex absolute w-full h-10 p-2 items-center overflow-hidden rounded-t-xl border border-slate-600 border-b-0"
-        style={{ backgroundColor: headerColor, zIndex: app.zIndex }}
+        className="flex absolute h-10 p-2 items-center rounded-t-xl border border-slate-600 border-b-0"
+        style={{ width, backgroundColor: headerColor, zIndex: app.zIndex }}
       >
         <Navigators app={app} />
       </div>

@@ -1,79 +1,79 @@
-import { useState, memo, ForwardedRef, forwardRef } from "react";
+import { memo, ForwardedRef, forwardRef } from "react";
 // store
-import { Iapp, appStore } from "@store/appStore";
-// lib
-import { getRandomNumber } from "@lib/getRandomNumber";
+import { IApp, appStore } from "@store/appStore";
+// constants
+import { IFRAME_POSTMAN_URL, IFRAME_VSCODE_URL } from "@constants/Link";
 // components
-import AppHeader from "./AppHeader";
+import AppContainer from "./AppContainer";
 import Finder from "../Finder";
-import Postman from "../Postman";
-import VScode from "../VScode";
 import ITerm from "../ITerm";
 import Memo from "../Memo";
+import Iframe from "../Iframe";
 
 interface AppHeaderProps {
-  app: Iapp;
-  headerColor?: string;
+  app: IApp;
 }
 
-function AppContainer(
-  { app, headerColor }: AppHeaderProps,
+function AppRenderer(
+  { app }: AppHeaderProps,
   ref: ForwardedRef<HTMLDivElement>
 ) {
-  const [position, setPosition] = useState({
-    x: getRandomNumber(-130, 130),
-    y: getRandomNumber(32, 80),
-  });
   const { setCurApp } = appStore();
-
-  const appName = app.name.toLowerCase();
 
   return (
     <div
-      className="relative w-window"
+      className={`relative w-window ${app.hide ? "invisible" : ""}`}
       ref={ref}
       onMouseDown={() => setCurApp(app.name)}
     >
-      <AppHeader
-        app={app}
-        headerColor={headerColor}
-        position={position}
-        setPosition={setPosition}
-      />
+      {(() => {
+        switch (app.name) {
+          case "Finder":
+            return (
+              <AppContainer app={app}>
+                <Finder />
+              </AppContainer>
+            );
 
-      <div
-        className="absolute top-8 w-full h-window overflow-hidden rounded-b-xl border border-slate-600 border-t-0"
-        style={{
-          top: `calc(${position.y}px + 2.5rem)`,
-          left: position.x,
-          zIndex: app.zIndex,
-          backgroundColor: "var(--color-navy-deep)",
-        }}
-      >
-        {(() => {
-          switch (appName) {
-            case "finder":
-              return <Finder />;
+          case "ITerm":
+            return (
+              <AppContainer
+                app={app}
+                width={670}
+                height={480}
+                backgroundColor="black"
+              >
+                <ITerm />
+              </AppContainer>
+            );
 
-            case "iterm":
-              return <ITerm />;
+          case "Vscode":
+            return (
+              <AppContainer app={app}>
+                <Iframe src={IFRAME_VSCODE_URL} />
+              </AppContainer>
+            );
 
-            case "vscode":
-              return <VScode />;
+          case "Postman":
+            return (
+              <AppContainer app={app}>
+                <Iframe src={IFRAME_POSTMAN_URL} />
+              </AppContainer>
+            );
 
-            case "postman":
-              return <Postman />;
+          case "Memo":
+            return (
+              <AppContainer app={app}>
+                <Memo />
+              </AppContainer>
+            );
 
-            case "memo":
-              return <Memo />;
-
-            default:
-              break;
-          }
-        })()}
-      </div>
+          default:
+            break;
+        }
+      })()}
     </div>
   );
 }
 
-export default memo(forwardRef(AppContainer));
+export default memo(forwardRef(AppRenderer));

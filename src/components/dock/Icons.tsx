@@ -22,7 +22,7 @@ const ITerm = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
   return <Icon src={ITermIcon} title="ITerm" {...props} ref={ref} />;
 };
 const Vscode = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
-  return <Icon src={VscodeIcon} title="VSCode" {...props} ref={ref} />;
+  return <Icon src={VscodeIcon} title="Vscode" {...props} ref={ref} />;
 };
 const PostMan = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
   return <Icon src={PostManIcon} title="Postman" {...props} ref={ref} />;
@@ -61,7 +61,7 @@ export const Icons = [
   { Component: Finder, key: "Finder" },
   { Component: ITerm, key: "ITerm" },
   { Component: Vscode, key: "Vscode" },
-  { Component: PostMan, key: "PostMan" },
+  // { Component: PostMan, key: "PostMan" },
   { Component: Memo, key: "Memo" },
   { Component: Github, key: "Github" },
   { Component: Velog, key: "Velog" },
