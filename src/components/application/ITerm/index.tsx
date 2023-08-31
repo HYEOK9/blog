@@ -31,7 +31,7 @@ function ITerm() {
     ref.current?.focus();
   };
 
-  const time = useMemo(() => dayjs().format("HH:mm:ss"), [commandList]);
+  const now = useMemo(() => dayjs().format("HH:mm:ss"), []);
 
   const onKeyDown: KeyboardEventHandler<HTMLSpanElement> = (e) => {
     if (e.key !== "Enter" || e.nativeEvent.isComposing || !ref.current) return;
@@ -53,7 +53,7 @@ function ITerm() {
         openApp("Vscode");
 
       default:
-        setCommandList((prev) => [...prev, { command, time }]);
+        setCommandList((prev) => [...prev, { command, time: now }]);
         break;
     }
     ref.current.innerText = "";
@@ -72,6 +72,7 @@ function ITerm() {
 
   return (
     <div
+      role="presentation"
       className="flex w-full h-full flex-col p-3 pt-0 bg-black overflow-scroll terminal"
       onClick={focus}
     >
@@ -89,18 +90,19 @@ function ITerm() {
       </div>
 
       {commandList.map(({ command, time }, i) => (
-        <CommandLine key={`${time}${i}`} time={time}>
+        <CommandLine key={`${time + i}`} time={time}>
           {command}
         </CommandLine>
       ))}
 
-      <CommandLine time={time}>
+      <CommandLine time={now}>
         <span
           className="outline-none caret-transparent inline"
           onKeyDown={onKeyDown}
           ref={ref}
           contentEditable
           suppressContentEditableWarning
+          role="presentation"
         />
         <Divider vertical className="!h-4/5" width={8} color="#c6c6c6" />
       </CommandLine>

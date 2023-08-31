@@ -28,6 +28,7 @@ export default function Iframe({ src }: IframeProps) {
         src={src}
         onLoad={() => setLoading(false)}
         onError={() => setError(true)}
+        title="iframe"
       />
     </div>
   );

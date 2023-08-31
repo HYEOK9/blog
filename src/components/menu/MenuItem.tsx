@@ -24,8 +24,8 @@ export default function MenuItem({
   style,
 }: MenuItemProps) {
   return (
-    <div
-      className="relative py-1.5 px-3 rounded text-white"
+    <button
+      className="relative w-full py-1.5 px-3 rounded text-white text-start whitespace-nowrap"
       style={{
         color: valid ? color : "#ffffff80",
         ...(active && { backgroundColor }),
@@ -41,8 +41,9 @@ export default function MenuItem({
         e.stopPropagation();
         onClick?.();
       }}
+      type="button"
     >
       {children}
-    </div>
+    </button>
   );
 }

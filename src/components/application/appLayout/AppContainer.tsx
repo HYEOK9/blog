@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 // store
 import { IApp } from "@store/appStore";
 // lib
@@ -7,7 +7,7 @@ import { getRandomNumber } from "@lib/getRandomNumber";
 import AppHeader from "./AppHeader";
 
 interface AppContainerProps {
-  children: React.ReactNode;
+  children: ReactNode;
   app: IApp;
   backgroundColor?: string;
   width?: string | number;

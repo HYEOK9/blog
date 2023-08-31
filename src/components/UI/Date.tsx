@@ -7,7 +7,7 @@ export default function Date() {
 
   useEffect(() => {
     setInterval(() => setNow(), 1000);
-  }, []);
+  }, [setNow]);
 
   return <div className="text-white">{now}</div>;
 }

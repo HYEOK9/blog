@@ -19,7 +19,7 @@ interface setAppState {
   hideApp: (appName: string) => void;
 }
 
-const initialAppState = {
+const initialAppState: appState = {
   curApp: null,
   allApps: [
     { name: "Finder", open: false, hide: false, zIndex: 21 },

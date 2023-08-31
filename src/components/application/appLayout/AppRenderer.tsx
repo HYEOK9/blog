@@ -25,7 +25,9 @@ function AppRenderer(
       className={`relative w-window ${app.hide ? "invisible" : ""}`}
       ref={ref}
       onMouseDown={() => setCurApp(app.name)}
+      role="presentation"
     >
+      {/* eslint-disable-next-line consistent-return */}
       {(() => {
         switch (app.name) {
           case "Finder":

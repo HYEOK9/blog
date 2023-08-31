@@ -1,9 +1,9 @@
-import { memo } from "react";
+import { memo, ReactNode } from "react";
 // constants
 import { HOST, MAC_NAME, TERMINAL_PATH } from "@constants/ITerm";
 
 interface CommandLineProps {
-  children: React.ReactNode;
+  children: ReactNode;
   time?: string;
 }
 

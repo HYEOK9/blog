@@ -5,13 +5,7 @@ module.exports = {
   },
   parser: "@typescript-eslint/parser",
   plugins: ["react", "@typescript-eslint"],
-  extends: [
-    "plugin:react/recommended",
-    "airbnb",
-    "next",
-    "prettier",
-    "plugin:storybook/recommended",
-  ],
+  extends: ["plugin:react/recommended", "airbnb", "next", "prettier"],
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -34,6 +28,10 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": ["error"],
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
+    "no-return-assign": "off",
+    "import/no-absolute-path": "off",
+    "no-nested-ternary": "off",
+    "no-fallthrough": "off",
     "no-param-reassign": [
       "error",
       {

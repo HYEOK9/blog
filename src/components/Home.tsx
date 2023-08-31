@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from "react";
+import debounce from "lodash/debounce";
 // style
 import WallPaper from "/public/wall-paper.jpg";
 // store
@@ -24,7 +25,7 @@ export default function Home() {
   const { setCursorPosition, setDraggable } = cursorStore();
 
   const mouseMoving = useCallback(
-    (e: MouseEvent) => {
+    debounce((e: MouseEvent) => {
       e.preventDefault();
 
       setCursorPosition({ x: e.clientX, y: e.clientY });
@@ -35,7 +36,7 @@ export default function Home() {
         appRef.current.some((el) => el?.contains(e.target as Element));
 
       setDraggable(!isMenuOpened && !cursorOnNotDraggable);
-    },
+    }, 10),
     [isMenuOpened, setCursorPosition, setDraggable]
   );
 

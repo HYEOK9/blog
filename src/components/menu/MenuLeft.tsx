@@ -29,11 +29,14 @@ export default function MenuLeft() {
     setCurMenu(menuTitle);
   };
 
-  const clickOutside = useCallback(({ target }: MouseEvent) => {
-    if (!ref.current?.contains(target as Element)) {
-      setCurMenu(null);
-    }
-  }, []);
+  const clickOutside = useCallback(
+    ({ target }: MouseEvent) => {
+      if (!ref.current?.contains(target as Element)) {
+        setCurMenu(null);
+      }
+    },
+    [setCurMenu]
+  );
 
   useEffect(() => {
     window.addEventListener("click", clickOutside);
@@ -41,7 +44,7 @@ export default function MenuLeft() {
     return () => {
       window.removeEventListener("click", clickOutside);
     };
-  }, []);
+  }, [clickOutside]);
 
   return (
     <div className="flex" ref={ref}>

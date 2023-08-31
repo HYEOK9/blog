@@ -13,18 +13,21 @@ function Dock() {
 
   const mouseLeave = () => {
     iconRef.current.forEach((item) => {
+      // eslint-disable-next-line no-param-reassign
       item.style.transform = "scale(1) translateY(0px)";
     });
   };
 
   useEffect(() => {
-    iconRef.current.forEach((item, index) => {
+    const currentRef = iconRef.current;
+
+    currentRef.forEach((item, index) => {
       item.addEventListener("mouseover", (e) => mouseOver(e, index));
       item.addEventListener("mouseleave", mouseLeave);
     });
 
     return () => {
-      iconRef.current.forEach((item, index) => {
+      currentRef.forEach((item, index) => {
         item.removeEventListener("mouseover", (e) => mouseOver(e, index));
         item.removeEventListener("mouseleave", mouseLeave);
       });

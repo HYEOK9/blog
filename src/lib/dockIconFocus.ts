@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 import { MutableRefObject } from "react";
 
 export const dockIconFocus = (

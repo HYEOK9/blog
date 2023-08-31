@@ -20,6 +20,7 @@ export default function Navigators({ app }: NavigatorsProps) {
       onMouseDown={(e) => e.stopPropagation()}
       onMouseEnter={() => setShowIcon(true)}
       onMouseLeave={() => setShowIcon(false)}
+      role="presentation"
     >
       <NavIcon
         type="red"

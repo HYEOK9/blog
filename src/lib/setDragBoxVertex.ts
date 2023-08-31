@@ -7,13 +7,17 @@ export const setVertex = (
   let X = {};
   let Y = {};
 
-  0 <= width
-    ? (X = { left: vertexX })
-    : (X = { right: window.innerWidth - vertexX });
+  if (width >= 0) {
+    X = { left: vertexX };
+  } else {
+    X = { right: window.innerWidth - vertexX };
+  }
 
-  0 <= height
-    ? (Y = { top: vertexY })
-    : (Y = { bottom: window.innerHeight - vertexY });
+  if (height >= 0) {
+    Y = { top: vertexY };
+  } else {
+    Y = { bottom: window.innerHeight - vertexY };
+  }
 
   return { ...X, ...Y };
 };

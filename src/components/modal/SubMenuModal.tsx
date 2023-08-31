@@ -25,7 +25,7 @@ export default function SubMenuModal({ subMenu }: SubMenuModalProps) {
     <Container>
       <ul>
         {subMenu.map(({ title, valid }, idx) => (
-          <li key={`${title}${idx}`}>
+          <li key={`${title + idx}`}>
             {title !== "br" ? (
               <MenuItem
                 onClick={() => setCurMenu(null)}

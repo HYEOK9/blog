@@ -19,6 +19,7 @@ export default function NavIcon({
     <button
       className={`flex w-4 h-4 mx-1 justify-center items-center rounded-full ${className}`}
       onClick={onClick}
+      type="button"
     >
       {showIcon &&
         (type === "red" ? <Red /> : type === "yellow" ? <Yellow /> : <Green />)}
