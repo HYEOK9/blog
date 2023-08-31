@@ -20,7 +20,7 @@ export default function MenuItem({
   onMouseEnter,
   onMouseLeave,
   color = "#fff",
-  backgroundColor = "rgba(255,255,255,0.1)",
+  backgroundColor = "var(--color-white-transparent)",
   style,
 }: MenuItemProps) {
   return (

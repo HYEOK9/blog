@@ -15,15 +15,15 @@ interface AppHeaderProps {
 
 export default function AppHeader({
   app,
-  headerColor = "var(--color-navy-deep)",
+  headerColor,
   position,
   setPosition,
-  width = "100%",
+  width,
 }: AppHeaderProps) {
   return (
     <Draggable
       onDrag={(_, { x, y }) => setPosition({ x, y })}
-      bounds={{ top: 32, bottom: 560 }}
+      bounds={{ top: 32, right: 900, bottom: 560, left: -800 }}
       defaultPosition={position}
     >
       <div

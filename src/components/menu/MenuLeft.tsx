@@ -1,6 +1,4 @@
 import { useEffect, useRef, useCallback } from "react";
-// style
-import { zIndex } from "@constants/zIndex";
 // store
 import { menuStore } from "@store/menuStore";
 // types
@@ -18,7 +16,6 @@ const styles: IStyleObject = {
     top: "calc(2rem + 2px)",
     left: 0,
     minWidth: "14rem",
-    zIndex: zIndex.subMenu,
   },
 };
 
@@ -59,7 +56,7 @@ export default function MenuLeft() {
           {idx === 0 ? <AppleLogo width="17px" height="17px" /> : title}
 
           {curMenu === title && (
-            <div style={styles.subMenu}>
+            <div className="z-subMenu" style={styles.subMenu}>
               <SubMenuModal subMenu={subMenu} />
             </div>
           )}

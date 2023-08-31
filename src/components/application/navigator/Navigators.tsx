@@ -24,28 +24,19 @@ export default function Navigators({ app }: NavigatorsProps) {
       <NavIcon
         type="red"
         onClick={() => closeApp(app.name)}
-        style={{
-          backgroundColor: "#ff5f56",
-          borderColor: "#e0443e",
-        }}
+        className="bg-button-red border-button-red"
         showIcon={showIcon}
       />
       <NavIcon
         type="yellow"
         onClick={() => hideApp(app.name)}
-        style={{
-          backgroundColor: "#ffbd2e",
-          borderColor: "#dea123",
-        }}
+        className="bg-button-yellow border-button-yellow"
         showIcon={showIcon}
       />
       <NavIcon
         type="green"
         onClick={onClick}
-        style={{
-          backgroundColor: "#27c93f",
-          borderColor: "#1aab29",
-        }}
+        className="bg-button-green border-button-green"
         showIcon={showIcon}
       />
     </div>

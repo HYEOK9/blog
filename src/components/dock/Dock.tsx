@@ -1,6 +1,4 @@
 import { useEffect, useRef, memo, Fragment } from "react";
-// style
-import { zIndex } from "@constants/zIndex";
 // lib
 import { dockIconFocus } from "@lib/dockIconFocus";
 // components
@@ -34,13 +32,7 @@ function Dock() {
   }, []);
 
   return (
-    <div
-      className="flex h-full relative items-center justify-between px-1 pt-1 pb-2 rounded-2xl border border-slate-600 backdrop-blur-sm transition-all"
-      style={{
-        backgroundColor: "var(--color-navy-light)",
-        zIndex: zIndex.dock,
-      }}
-    >
+    <div className="flex h-full relative items-center justify-between px-1 pt-1 pb-2 rounded-2xl bg-navy-400 border border-slate-600 z-dock backdrop-blur-sm transition-all">
       {Icons.map((Icon, idx) => (
         <Fragment key={Icon.key}>
           <Icon.Component

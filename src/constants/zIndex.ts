@@ -1,7 +1,6 @@
 export const zIndex = {
   header: 1001,
   dock: 1001,
-  app: 20,
   dragBox: 10,
   subMenu: 1000,
   background: -10,

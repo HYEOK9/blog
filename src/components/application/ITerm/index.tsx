@@ -22,6 +22,7 @@ function ITerm() {
     { command: string; time: string }[]
   >([]);
   const [cpuUsage, setCpuUsage] = useState(12);
+
   const ref = useRef<HTMLSpanElement>(null);
 
   const { openApp, closeApp } = appStore();
@@ -33,31 +34,30 @@ function ITerm() {
   const time = useMemo(() => dayjs().format("HH:mm:ss"), [commandList]);
 
   const onKeyDown: KeyboardEventHandler<HTMLSpanElement> = (e) => {
-    if (e.nativeEvent.isComposing) return;
+    if (e.key !== "Enter" || e.nativeEvent.isComposing || !ref.current) return;
 
-    if (e.key === "Enter") {
-      e.preventDefault();
+    e.preventDefault();
+    const command = ref.current.innerText;
 
-      const command = ref.current!.innerText;
+    switch (command) {
+      case "exit":
+        closeApp("ITerm");
+        break;
 
-      switch (command) {
-        case "clear":
-          setCommandList([]);
-          break;
-        case "exit":
-          closeApp("ITerm");
-          break;
-        case "code":
-        case "code .":
-          openApp("Vscode");
-          break;
-        default:
-          setCommandList((prev) => [...prev, { command, time }]);
-          break;
-      }
-      ref.current!.innerText = "";
-      focus();
+      case "clear":
+        setCommandList([]);
+        break;
+
+      case "code":
+      case "code .":
+        openApp("Vscode");
+
+      default:
+        setCommandList((prev) => [...prev, { command, time }]);
+        break;
     }
+    ref.current.innerText = "";
+    focus();
   };
 
   useEffect(() => {
@@ -67,23 +67,23 @@ function ITerm() {
   useEffect(() => {
     setInterval(() => {
       setCpuUsage(12 + Math.round(getRandomNumber(0, 1)));
-    }, 1500);
+    }, 1000);
   }, []);
 
   return (
     <div
-      className="flex w-full h-full flex-col p-3 pt-0 bg-black overflow-scroll"
+      className="flex w-full h-full flex-col p-3 pt-0 bg-black overflow-scroll terminal"
       onClick={focus}
     >
-      <div className="flex sticky top-0 pt-2 pb-3 bg-black">
+      <div className="flex sticky top-0 pt-2 pb-3 bg-black usage">
         <div className="flex items-center w-1/2">
           <CPUIcon />
-          <span className="text-sm text-emerald-200 mx-1">{cpuUsage}%</span>
-          <div className="bg-emerald-200 w-9/12 h-0.25 mx-auto" />
+          <span className="text-sm text-emerald-200 mx-2.5">{cpuUsage}%</span>
+          <div className="bg-emerald-200 w-9/12 h-0.25" />
         </div>
         <div className="flex items-center w-1/2">
           <MemoryIcon />
-          <span className="text-sm text-rose-200 mx-2">8GB</span>
+          <span className="text-sm text-rose-200 mx-2.5">8GB</span>
           <div className="bg-rose-200 w-9/12 h-0.25" />
         </div>
       </div>

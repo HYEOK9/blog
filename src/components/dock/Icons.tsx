@@ -47,7 +47,7 @@ const Velog = ({ ...props }, ref: ForwardedRef<HTMLImageElement>) => {
       src={VelogIcon}
       title="Velog"
       onClick={() => window.open(VELOG_URL, "_blank", `${OPEN_WINDOW_CONFIG}`)}
-      style={{ margin: "0 5px", width: 55, height: 55 }}
+      style={{ margin: "0 5px", width: 48, height: 48 }}
       {...props}
       ref={ref}
     />

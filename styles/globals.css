@@ -33,4 +33,10 @@ a {
   ::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera*/
   }
+  .terminal {
+    cursor: text !important;
+    *:not(.usage *) {
+      cursor: text !important;
+    }
+  }
 }

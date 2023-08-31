@@ -1,6 +1,4 @@
 import { useState, useEffect, useCallback, memo } from "react";
-// style
-import { zIndex } from "@constants/zIndex";
 // store
 import { cursorStore, position } from "@store/cursorStore";
 // types
@@ -18,7 +16,7 @@ type Tquadrant = {
 const styles: IStyleObject = {
   dragBox: {
     position: "absolute",
-    backgroundColor: "rgba(255,255,255,0.1)",
+    backgroundColor: "var(--color-white-transparent)",
     border: "0.5px solid white",
   },
 };
@@ -103,12 +101,12 @@ function DragBox() {
   return (
     isDragging && (
       <div
+        className=" z-dragBox"
         style={{
           ...styles.dragBox,
           ...quadrant,
           width: size?.width,
           height: size?.height,
-          zIndex: zIndex.dragBox,
         }}
         hidden={!size?.width}
       />

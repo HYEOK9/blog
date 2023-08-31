@@ -20,14 +20,11 @@ function Icon(
 
   return (
     <div
-      className="relative w-18 h-18 group hover:mx-3 transition-all"
+      className="relative w-16 h-16 group hover:!mx-3 transition-all origin-bottom"
       style={style}
     >
       {title && !isDragging && (
-        <span
-          className="absolute -top-20 left-1/2 -translate-x-1/2 py-1 px-2 text-sm text-white rounded border border-gray-700 invisible group-hover:visible"
-          style={{ backgroundColor: "var(--color-navy)" }}
-        >
+        <span className="absolute -top-20 left-1/2 -translate-x-1/2 py-1 px-2 bg-navy-500 text-sm text-white rounded border border-gray-700 invisible group-hover:visible">
           {title}
         </span>
       )}
@@ -47,7 +44,7 @@ function Icon(
         priority
       />
       {allApps.some((app) => app.open && app.name === title) && (
-        <div className="absolute bottom-0 -mb-0.5 bg-white w-1 h-1 rounded-full left-1/2" />
+        <div className="absolute bottom-0 left-1/2 w-1 h-1 rounded-full -mb-0.5 bg-gray-400" />
       )}
     </div>
   );

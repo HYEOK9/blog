@@ -1,6 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-// style
-import { zIndex } from "@constants/zIndex";
 // store
 import { menuStore } from "@store/menuStore";
 import { cursorStore, position } from "@store/cursorStore";
@@ -45,7 +43,7 @@ export default function ContextMenu() {
 
       return {
         x: prev.x,
-        y: Math.min(prev.y, window.innerHeight - ref.current.offsetHeight - 85),
+        y: Math.min(prev.y, window.innerHeight - ref.current.offsetHeight - 77),
       };
     });
   }, [rightClicked]);
@@ -53,12 +51,11 @@ export default function ContextMenu() {
   return (
     rightClicked && (
       <div
-        className="absolute animate-fade"
+        className="absolute animate-fade z-subMenu"
         style={{
           top: startPosition?.y,
           left: startPosition?.x,
           minWidth: "12rem",
-          zIndex: zIndex.subMenu,
         }}
         ref={ref}
       >

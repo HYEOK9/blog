@@ -22,6 +22,28 @@ module.exports = {
       padding: {
         0.8: "0.2rem",
       },
+      zIndex: {
+        header: 1001,
+        dock: 1001,
+        dragBox: 10,
+        subMenu: 1000,
+        background: -10,
+        loading: 9999,
+      },
+      backgroundColor: {
+        header: "rgba(27,27,29,0.3)",
+        "navy-400": "var(--color-navy-light)",
+        "navy-500": "var(--color-navy)",
+        "navy-600": "var(--color-navy-deep)",
+        "button-red": "#ff5f56",
+        "button-yellow": "#ffbd2e",
+        "button-green": "#27c93f",
+      },
+      borderColor: {
+        "button-red": "#e0443e",
+        "button-yellow": "#dea123",
+        "button-green": "#1aab29",
+      },
       keyframes: {
         fullWidth: {
           "0%": { width: 0 },

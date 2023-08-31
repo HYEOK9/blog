@@ -46,12 +46,12 @@ export default function Home() {
   }, [mouseMoving]);
 
   return (
-    <div className="flex w-screen h-screen justify-center relative">
+    <div className="flex relative w-screen h-screen justify-center">
       {loading && <HomeLoading />}
 
       <Background setLoading={setLoading} image={WallPaper} />
 
-      <section className="fixed w-full" ref={headerRef}>
+      <section className="fixed w-full z-header" ref={headerRef}>
         <Header />
       </section>
 
@@ -68,7 +68,7 @@ export default function Home() {
         )}
       </section>
 
-      <section className="h-20 absolute bottom-1" ref={dockRef}>
+      <section className="absolute h-18 bottom-1" ref={dockRef}>
         <Dock />
       </section>
     </div>
