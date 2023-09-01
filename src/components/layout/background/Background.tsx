@@ -21,6 +21,7 @@ function Background({ image, setLoading }: BackgroundProps) {
           transition: "background-image 0.15s ease-in 0s",
         }}
         onLoad={() => setTimeout(() => setLoading(false), 2500)}
+        onError={() => setLoading(false)}
         draggable={false}
       />
       <DraggableBox />

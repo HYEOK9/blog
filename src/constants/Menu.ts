@@ -186,5 +186,5 @@ export const CONTEXT_MENU = [
   { title: "iPhone에서 가져오기", valid: true },
 ] as const;
 
-export const DATE_FORMAT = "M월 D일 (ddd) A h:mm" as const;
+export const MENU_DATE_FORMAT = "M월 D일 (ddd) A h:mm" as const;
 export const DATE_LOCALE = "ko" as const;
