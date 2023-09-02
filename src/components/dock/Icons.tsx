@@ -6,7 +6,6 @@ import VscodeIcon from "/public/application/vscode.png";
 import MemoIcon from "/public/application/memo.png";
 import GithubIcon from "/public/application/github.png";
 import VelogIcon from "/public/application/velog.png";
-
 // constants
 import { GITHUB_URL, VELOG_URL, OPEN_WINDOW_CONFIG } from "@constants/Link";
 // components

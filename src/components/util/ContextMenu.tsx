@@ -42,7 +42,7 @@ export default function ContextMenu() {
       if (!prev || !ref.current) return null;
 
       return {
-        x: prev.x,
+        x: Math.min(prev.x, window.innerWidth - ref.current.offsetWidth - 3),
         y: Math.min(prev.y, window.innerHeight - ref.current.offsetHeight - 77),
       };
     });
@@ -51,12 +51,8 @@ export default function ContextMenu() {
   return (
     rightClicked && (
       <div
-        className="absolute animate-fade z-subMenu"
-        style={{
-          top: startPosition?.y,
-          left: startPosition?.x,
-          minWidth: "12rem",
-        }}
+        className="absolute w-48 animate-fade z-subMenu"
+        style={{ top: startPosition?.y, left: startPosition?.x }}
         ref={ref}
       >
         <SubMenuModal subMenu={CONTEXT_MENU} />

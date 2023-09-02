@@ -9,7 +9,7 @@ interface CommandLineProps {
 
 function CommandLine({ children, time }: CommandLineProps) {
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col pt-5">
       <div className="flex justify-between">
         <div>
           <span className="text-sm font-semibold text-white">{HOST}</span>
@@ -26,7 +26,6 @@ function CommandLine({ children, time }: CommandLineProps) {
         <span className="text-green-500">$&nbsp;&nbsp;</span>
         {children}
       </div>
-      <br />
     </div>
   );
 }

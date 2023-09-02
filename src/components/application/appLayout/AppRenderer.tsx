@@ -22,7 +22,7 @@ function AppRenderer(
 
   return (
     <div
-      className={`relative w-window ${app.hide ? "invisible" : ""}`}
+      className={`relative w-fit h-fit ${app.hide ? "invisible" : "visible"}`}
       ref={ref}
       onMouseDown={() => setCurApp(app.name)}
       role="presentation"

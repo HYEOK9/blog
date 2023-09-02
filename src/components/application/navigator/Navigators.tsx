@@ -2,17 +2,19 @@ import { useState } from "react";
 // store
 import { IApp, appStore } from "@store/appStore";
 // components
-import NavIcon from "./NavIcon";
+import Red from "./Red";
+import Yellow from "./Yellow";
+import Green from "./Green";
 
 interface NavigatorsProps {
   app: IApp;
+  toggleWindowSize: () => void;
 }
 
-export default function Navigators({ app }: NavigatorsProps) {
+export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
   const [showIcon, setShowIcon] = useState(false);
 
   const { closeApp, hideApp } = appStore();
-  const onClick = () => {};
 
   return (
     <div
@@ -22,24 +24,9 @@ export default function Navigators({ app }: NavigatorsProps) {
       onMouseLeave={() => setShowIcon(false)}
       role="presentation"
     >
-      <NavIcon
-        type="red"
-        onClick={() => closeApp(app.name)}
-        className="bg-button-red border-button-red"
-        showIcon={showIcon}
-      />
-      <NavIcon
-        type="yellow"
-        onClick={() => hideApp(app.name)}
-        className="bg-button-yellow border-button-yellow"
-        showIcon={showIcon}
-      />
-      <NavIcon
-        type="green"
-        onClick={onClick}
-        className="bg-button-green border-button-green"
-        showIcon={showIcon}
-      />
+      <Red showIcon={showIcon} onClick={() => closeApp(app.name)} />
+      <Yellow showIcon={showIcon} onClick={() => hideApp(app.name)} />
+      <Green showIcon={showIcon} onClick={toggleWindowSize} />
     </div>
   );
 }
