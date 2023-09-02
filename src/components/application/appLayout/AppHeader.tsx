@@ -62,6 +62,7 @@ export default function AppHeader({
           backgroundColor: headerColor,
           zIndex: app.zIndex,
         }}
+        onDoubleClick={toggleWindowSize}
       >
         <Navigators app={app} toggleWindowSize={toggleWindowSize} />
       </div>

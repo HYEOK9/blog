@@ -18,7 +18,7 @@ export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
 
   return (
     <div
-      className="flex mr-2 w-fit"
+      className="flex"
       onMouseDown={(e) => e.stopPropagation()}
       onMouseEnter={() => setShowIcon(true)}
       onMouseLeave={() => setShowIcon(false)}
