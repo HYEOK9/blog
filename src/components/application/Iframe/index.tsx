@@ -23,7 +23,7 @@ export default function Iframe({ src }: IframeProps) {
 
       <iframe
         className={`w-full h-full rounded-b-xl pointer-events-none ${
-          loading || error ? "invisible" : "visible"
+          loading || error ? "invisible" : ""
         }`}
         src={src}
         onLoad={() => setLoading(false)}
