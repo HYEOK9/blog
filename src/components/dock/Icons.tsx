@@ -6,6 +6,7 @@ import VscodeIcon from "/public/application/vscode.png";
 import MemoIcon from "/public/application/memo.png";
 import GithubIcon from "/public/application/github.png";
 import VelogIcon from "/public/application/velog.png";
+import Cat from "/public/application/cute.png";
 // constants
 import { GITHUB_URL, VELOG_URL, OPEN_WINDOW_CONFIG } from "@constants/Link";
 // components
@@ -22,6 +23,9 @@ function Vscode({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
 }
 function Memo({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
   return <Icon src={MemoIcon} title="Memo" {...props} ref={ref} />;
+}
+function AboutMe({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
+  return <Icon src={Cat} title="AboutMe" {...props} ref={ref} />;
 }
 function Github({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
   return (
@@ -40,7 +44,6 @@ function Velog({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
       src={VelogIcon}
       title="Velog"
       onClick={() => window.open(VELOG_URL, "_blank", `${OPEN_WINDOW_CONFIG}`)}
-      style={{ margin: "0 5px", width: 48, height: 48 }}
       {...props}
       ref={ref}
     />
@@ -53,6 +56,7 @@ export const Icons = [
   { Component: Vscode, key: "Vscode" },
   // { Component: PostMan, key: "PostMan" },
   { Component: Memo, key: "Memo" },
+  { Component: AboutMe, key: "AboutMe" },
   { Component: Github, key: "Github" },
   { Component: Velog, key: "Velog" },
 ].map(({ Component, key }) => ({ Component: forwardRef(Component), key }));

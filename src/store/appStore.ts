@@ -27,6 +27,7 @@ const initialAppState: appState = {
     { name: "Vscode", open: false, hide: false, zIndex: 21 },
     { name: "Postman", open: false, hide: false, zIndex: 21 },
     { name: "Memo", open: false, hide: false, zIndex: 21 },
+    { name: "AboutMe", open: false, hide: false, zIndex: 21 },
   ],
 };
 

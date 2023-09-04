@@ -2,9 +2,7 @@ import { useState } from "react";
 // store
 import { IApp, appStore } from "@store/appStore";
 // components
-import Red from "./Red";
-import Yellow from "./Yellow";
-import Green from "./Green";
+import { Red, Yellow, Green } from "./TrafficButton";
 
 interface NavigatorsProps {
   app: IApp;

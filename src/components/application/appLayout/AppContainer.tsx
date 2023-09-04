@@ -43,22 +43,21 @@ export default function AppContainer({
       />
       <div
         className={`absolute top-8 overflow-hidden rounded-b-xl border border-slate-600 border-t-0 ${
-          !dragging ? "transition-all" : "transition-none"
+          !dragging ? "transition-all duration-200" : "transition-none"
         }`}
         style={{
           ...(!fullScreen
             ? {
-                top: `calc(${position.y}px + 2.5rem)`,
-                left: position.x,
                 width,
                 height,
+                top: `calc(${position.y}px + 2.5rem)`,
               }
             : {
                 width: "100vw",
-                height: "calc(100vh - 2.5rem - 2rem - 4.5rem - 4px)",
+                height: "calc(100vh - 2.5rem - 2rem - 4.5rem - 5px)",
                 top: `calc(${position.y}px + 2.5rem)`,
-                left: position.x,
               }),
+          left: position.x,
           zIndex: app.zIndex,
           backgroundColor,
         }}

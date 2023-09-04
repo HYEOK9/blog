@@ -55,7 +55,7 @@ export default function AppHeader({
     >
       <div
         className={`flex absolute h-10 p-2 items-center rounded-t-xl border border-slate-600 border-b-0 ${
-          !dragging ? "transition-all" : "transition-none"
+          !dragging ? "transition-all duration-200" : "transition-none"
         }`}
         style={{
           ...(!fullScreen ? { width } : { width: "100vw" }),

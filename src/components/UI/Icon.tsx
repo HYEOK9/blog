@@ -1,4 +1,4 @@
-import { forwardRef, CSSProperties, ForwardedRef } from "react";
+import { forwardRef, ForwardedRef } from "react";
 import Image, { StaticImageData } from "next/image";
 // store
 import { appStore } from "@store/appStore";
@@ -7,22 +7,18 @@ import { cursorStore } from "@store/cursorStore";
 interface IconProps {
   src: StaticImageData;
   title: string;
-  style?: CSSProperties;
   onClick?: () => void;
 }
 
 function Icon(
-  { src, title, style, onClick }: IconProps,
+  { src, title, onClick }: IconProps,
   ref: ForwardedRef<HTMLImageElement>
 ) {
   const { openApp, setCurApp, allApps } = appStore();
   const { isDragging } = cursorStore();
 
   return (
-    <div
-      className="relative w-16 h-16 group hover:!mx-3 transition-all origin-bottom"
-      style={style}
-    >
+    <div className="relative w-16 h-16 group hover:!mx-3 transition-all origin-bottom">
       {title && !isDragging && (
         <span className="absolute -top-20 left-1/2 -translate-x-1/2 py-1 px-2 bg-navy-500 text-sm text-white rounded border border-gray-700 invisible group-hover:visible">
           {title}

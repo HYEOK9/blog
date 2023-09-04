@@ -7,8 +7,9 @@ import { IFRAME_POSTMAN_URL, IFRAME_VSCODE_URL } from "@constants/Link";
 import AppContainer from "./AppContainer";
 import Finder from "../Finder";
 import ITerm from "../ITerm";
-import Memo from "../Memo";
 import Iframe from "../Iframe";
+import Memo from "../Memo";
+import AboutMe from "../AboutMe";
 
 interface AppHeaderProps {
   app: IApp;
@@ -70,6 +71,12 @@ function AppRenderer(
               </AppContainer>
             );
 
+          case "AboutMe":
+            return (
+              <AppContainer app={app}>
+                <AboutMe />
+              </AppContainer>
+            );
           default:
             break;
         }
