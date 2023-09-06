@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       width: {
         18: "4.5rem",
+        22: "5.5rem",
         window: 800,
       },
       height: {
@@ -57,11 +58,30 @@ module.exports = {
           "0%": { opacity: 1 },
           "100%": { opacity: 0 },
         },
+        "bounce-twice": {
+          "0%": {
+            transform: "translateY(-10%)",
+            "animation-timing-function": "cubic-bezier(0.8,0,1,1)",
+          },
+          "33%": {
+            transform: "translateY(-5%)",
+            "animation-timing-function": "cubic-bezier(0.8,0,1,1)",
+          },
+          "66%": {
+            transform: "translateY(-1%)",
+            "animation-timing-function": "cubic-bezier(0.8,0,1,1)",
+          },
+          "17%, 50%, 80%, 100%": {
+            transform: "none",
+            "animation-timing-function": "cubic-bezier(0,0,0.2,1)",
+          },
+        },
       },
       animation: {
         fade: "fade-in 0.1s linear",
         homeProgress: "fullWidth 2.5s ease",
         homeFade: "fade-in 3.5s linear",
+        "bounce-twice": "bounce-twice 1.2s ease-out",
       },
     },
   },
