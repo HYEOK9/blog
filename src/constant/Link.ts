@@ -24,7 +24,7 @@ export const STACK_LINK = {
   REACT_URL: "https://react.dev",
   RECOIL_URL: "https://recoiljs.org",
   REDUX_URL: "https://redux.js.org",
-  STYLED_COMPONENT_URL: "https://styled-components.com",
+  STYLED_COMPONENTS_URL: "https://styled-components.com",
   SVELTEKIT_URL: "https://kit.svelte.dev",
   TAILWIND_URL: "https://tailwindcss.com",
   ZUSTAND_URL: "https://github.com/pmndrs/zustand",

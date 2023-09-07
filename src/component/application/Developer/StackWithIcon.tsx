@@ -4,7 +4,7 @@ import StackIcon from "@component/UI/StackIcon";
 interface StackWithIconProps {
   data: ReadonlyArray<{
     name: string;
-    icon: StaticImageData;
+    src: StaticImageData;
     link?: string;
     props?: { [key: string]: any };
   }>;
@@ -13,8 +13,8 @@ interface StackWithIconProps {
 export default function StackWithIcon({ data }: StackWithIconProps) {
   return (
     <div className="flex items-center mb-5">
-      {data.map(({ name, icon, link, props }) => (
-        <StackIcon key={name} src={icon} alt={name} link={link} {...props} />
+      {data.map(({ name, src, link, props }) => (
+        <StackIcon key={name} src={src} alt={name} link={link} {...props} />
       ))}
     </div>
   );

@@ -14,17 +14,19 @@ import { EMAIL } from "@constant/info";
 // components
 import IntroduceWithTitle from "./IntroduceWithTitle";
 import Stack from "./Stack";
+import ArrowRightDouble from "/public/icon/ArrowRightDouble.svg";
+import ArrowLeftDouble from "/public/icon/ArrowLeftDouble.svg";
 
 export default function Developer() {
   return (
     <div className="w-full h-full p-10 pt-5 text-white overflow-scroll">
-      <h1 className="text-5xl mb-20">👋 Hi,&nbsp; I{`'`}m Jaehyeok</h1>
+      <h1 className="text-5xl mb-20">👋 Hi,&nbsp; there !</h1>
 
       <div className="flex flex-col items-center animate-bounce-twice">
         <IntroduceWithTitle title="PROFILE">
           <div className="flex flex-col">
             <h1 className="text-center">이재혁</h1>
-            <h1 className="text-center py-1">1999 / 04 / 09</h1>
+            <h1 className="text-center py-1">1999 . 04 . 09</h1>
             <h1 className="text-center">Frontend Developer</h1>
           </div>
         </IntroduceWithTitle>
@@ -52,7 +54,7 @@ export default function Developer() {
             <div className="flex items-center">
               <Link className="mx-8" href={HOSPITAL_EVENT_URL} target="_blank">
                 <Image
-                  className="w-20 ml-10 cursor-pointer transition-all hover:scale-110"
+                  className="w-20 ml-10 cursor-pointer transition-all hover:scale-105 active:translate-y-1"
                   src={HospitalEventIcon}
                   alt="hospital_event"
                 />
@@ -63,18 +65,20 @@ export default function Developer() {
                 target="_blank"
               >
                 <Image
-                  className="w-40 cursor-pointer rounded-xl transition-all hover:scale-110"
+                  className="w-40 cursor-pointer rounded-xl transition-all hover:scale-105 active:translate-y-1"
                   src={CashdocCommunity}
                   alt="cashdoc_community"
                 />
               </Link>
             </div>
             <Link
-              className="mt-10 text-xs cursor-pointer transition-all hover:scale-95"
+              className="flex items-center mt-10 text-xs"
               href={PROJECT_NOTION_URL}
               target="_blank"
             >
-              MORE DETAIL
+              <ArrowRightDouble className="transition-all animate-right-left" />
+              <span className="px-1 cursor-pointer">CHECK DETAIL</span>
+              <ArrowLeftDouble className="transition-all animate-left-right" />
             </Link>
           </div>
         </IntroduceWithTitle>
@@ -90,7 +94,7 @@ export default function Developer() {
             </Link>
             <br /> */}
             <Link
-              className="cursor-pointer transition-all hover:scale-105"
+              className="cursor-pointer transition-all active:translate-y-1"
               href={`mailto:${EMAIL}`}
             >
               📨&nbsp;&nbsp;{EMAIL}

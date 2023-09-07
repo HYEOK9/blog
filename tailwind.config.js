@@ -76,12 +76,22 @@ module.exports = {
             "animation-timing-function": "cubic-bezier(0,0,0.2,1)",
           },
         },
+        "right-left": {
+          "0%, 100%": { transform: "translateX(-20%)" },
+          "80%": { transform: "translateX(0)" },
+        },
+        "left-right": {
+          "0%, 100%": { transform: "translateX(20%)" },
+          "80%": { transform: "translateX(0)" },
+        },
       },
       animation: {
         fade: "fade-in 0.1s linear",
         homeProgress: "fullWidth 2.5s ease",
         homeFade: "fade-in 3.5s linear",
         "bounce-twice": "bounce-twice 1.2s ease-out",
+        "right-left": "right-left 0.8s linear infinite",
+        "left-right": "left-right 0.8s linear infinite",
       },
     },
   },
