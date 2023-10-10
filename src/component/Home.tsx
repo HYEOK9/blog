@@ -47,7 +47,7 @@ export default function Home() {
   }, [mouseMoving]);
 
   return (
-    <div className="flex relative w-screen h-screen justify-center">
+    <div className="flex relative w-screen h-screen justify-center overflow-hidden">
       {loading && <HomeLoading />}
 
       <Background setLoading={setLoading} image={WallPaper} />
