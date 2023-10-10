@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import debounce from "lodash/debounce";
 // style
 import WallPaper from "/public/wall-paper.jpg";
@@ -24,19 +24,20 @@ export default function Home() {
   const { isMenuOpened } = menuStore();
   const { setCursorPosition, setDraggable } = cursorStore();
 
-  const mouseMoving = useCallback(
-    debounce((e: MouseEvent) => {
-      e.preventDefault();
+  const mouseMoving = useMemo(
+    () =>
+      debounce((e: MouseEvent) => {
+        e.preventDefault();
 
-      setCursorPosition({ x: e.clientX, y: e.clientY });
+        setCursorPosition({ x: e.clientX, y: e.clientY });
 
-      const cursorOnNotDraggable =
-        headerRef.current?.contains(e.target as Element) ||
-        dockRef.current?.contains(e.target as Element) ||
-        appRef.current.some((el) => el?.contains(e.target as Element));
+        const cursorOnNotDraggable =
+          headerRef.current?.contains(e.target as Element) ||
+          dockRef.current?.contains(e.target as Element) ||
+          appRef.current.some((el) => el?.contains(e.target as Element));
 
-      setDraggable(!isMenuOpened && !cursorOnNotDraggable);
-    }, 5),
+        setDraggable(!isMenuOpened && !cursorOnNotDraggable);
+      }, 5),
     [isMenuOpened, setCursorPosition, setDraggable]
   );
 
