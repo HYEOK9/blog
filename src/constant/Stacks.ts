@@ -5,6 +5,7 @@ import RecoilIcon from "/public/logo/stack/recoil.png";
 import ReduxIcon from "/public/logo/stack/redux.png";
 import ZustandIcon from "/public/logo/stack/zustand.png";
 import ReactQueryIcon from "/public/logo/stack/react-query.png";
+import SWRIcon from "/public/logo/stack/swr.png";
 import TailwindIcon from "/public/logo/stack/tailwind.png";
 import StyledComponentsIcon from "/public/logo/stack/styled.jpeg";
 import MuiIcon from "/public/logo/stack/mui.png";
@@ -113,6 +114,11 @@ const etc = [
     name: "GraphQL",
     src: GQLIcon,
     link: STACK_LINK.GQL_URL,
+  },
+  {
+    name: "SWR",
+    src: SWRIcon,
+    link: STACK_LINK.SWR_URL,
   },
   {
     name: "React-Query",

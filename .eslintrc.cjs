@@ -32,6 +32,7 @@ module.exports = {
     "import/no-absolute-path": "off",
     "no-nested-ternary": "off",
     "no-fallthrough": "off",
+    "consistent-return": "off",
     "no-param-reassign": [
       "error",
       {

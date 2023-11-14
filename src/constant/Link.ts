@@ -38,4 +38,5 @@ export const STACK_LINK = {
   CPP_URL: "https://learn.microsoft.com/en-us/cpp",
   PYTHON_URL: "https://www.python.org",
   REACT_QUERY_URL: "https://tanstack.com/query/v3/docs/react/overview",
+  SWR_URL: "https://swr.vercel.app/ko",
 } as const;
