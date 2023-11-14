@@ -79,7 +79,15 @@ export default function Developer() {
               target="_blank"
             >
               <ArrowRightDouble className="transition-all animate-right-left" />
-              <span className="px-1 cursor-pointer">CHECK DETAIL</span>
+              <Link
+                className="px-1 cursor-pointer"
+                href="/public/detail.pdf"
+                download="detail.pdf"
+                target="_blank"
+                rel="noreferrer"
+              >
+                CHECK DETAIL
+              </Link>
               <ArrowLeftDouble className="transition-all animate-left-right" />
             </Link>
           </div>
