@@ -37,4 +37,5 @@ export const STACK_LINK = {
   GQL_URL: "https://graphql.org",
   CPP_URL: "https://learn.microsoft.com/en-us/cpp",
   PYTHON_URL: "https://www.python.org",
+  REACT_QUERY_URL: "https://tanstack.com/query/v3/docs/react/overview",
 } as const;

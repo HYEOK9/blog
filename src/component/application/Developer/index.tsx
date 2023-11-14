@@ -4,13 +4,15 @@ import Link from "next/link";
 import CashDocIcon from "/public/logo/cashdoc.png";
 import HospitalEventIcon from "/public/logo/hospitalEvent.png";
 import CashdocCommunity from "/public/logo/cashdocCommunity.png";
+import GitHub from "/public/logo/github.png";
 // constants
 import {
   CASHDOC_COMMUNITY_URL,
+  GITHUB_URL,
   HOSPITAL_EVENT_URL,
   PROJECT_NOTION_URL,
 } from "@constant/Link";
-import { EMAIL } from "@constant/info";
+import { EMAIL, PHONE_NO } from "@constant/info";
 // components
 import IntroduceWithTitle from "./IntroduceWithTitle";
 import Stack from "./Stack";
@@ -89,15 +91,27 @@ export default function Developer() {
 
         <IntroduceWithTitle title="CONTACT">
           <div className="flex flex-col items-center">
-            {/* <Link className="cursor-pointer" href={`tel:${PHONE_NO}`}>
+            <Link className="cursor-pointer mb-5" href={`tel:${PHONE_NO}`}>
               📞&nbsp;&nbsp;{PHONE_NO}
             </Link>
-            <br /> */}
             <Link
-              className="cursor-pointer transition-all active:translate-y-1"
+              className="cursor-pointer transition-all active:translate-y-1 mb-5"
               href={`mailto:${EMAIL}`}
             >
               📨&nbsp;&nbsp;{EMAIL}
+            </Link>
+
+            <Link
+              className="flex cursor-pointer transition-all active:translate-y-1"
+              href={GITHUB_URL}
+            >
+              <Image
+                className="cursor-pointer rounded"
+                src={GitHub}
+                width={80}
+                height={40}
+                alt="github"
+              />
             </Link>
           </div>
         </IntroduceWithTitle>
