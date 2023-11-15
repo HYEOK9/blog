@@ -10,7 +10,6 @@ import {
   CASHDOC_COMMUNITY_URL,
   GITHUB_URL,
   HOSPITAL_EVENT_URL,
-  PROJECT_NOTION_URL,
 } from "@constant/Link";
 import { EMAIL, PHONE_NO } from "@constant/info";
 // components
@@ -20,6 +19,20 @@ import ArrowRightDouble from "/public/icon/ArrowRightDouble.svg";
 import ArrowLeftDouble from "/public/icon/ArrowLeftDouble.svg";
 
 export default function Developer() {
+  const handleDownload = async () => {
+    const res = await fetch(
+      `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}/detail.pdf`
+    );
+
+    const blob = await res.blob();
+    const downloadURL = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = downloadURL;
+    link.download = "detail.pdf";
+    link.click();
+    URL.revokeObjectURL(downloadURL);
+  };
+
   return (
     <div className="w-full h-full p-10 pt-5 text-white overflow-scroll">
       <h1 className="text-5xl mb-20">👋 Hi,&nbsp; there !</h1>
@@ -73,23 +86,15 @@ export default function Developer() {
                 />
               </Link>
             </div>
-            <Link
+            <button
               className="flex items-center mt-10 text-xs"
-              href={PROJECT_NOTION_URL}
-              target="_blank"
+              onClick={handleDownload}
+              type="button"
             >
               <ArrowRightDouble className="transition-all animate-right-left" />
-              <Link
-                className="px-1 cursor-pointer"
-                href="/public/detail.pdf"
-                download="detail.pdf"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CHECK DETAIL
-              </Link>
+              CHECK DETAIL
               <ArrowLeftDouble className="transition-all animate-left-right" />
-            </Link>
+            </button>
           </div>
         </IntroduceWithTitle>
 

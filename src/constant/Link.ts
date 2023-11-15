@@ -8,8 +8,6 @@ export const IFRAME_POSTMAN_URL =
 
 export const HOSPITAL_EVENT_URL = "https://cashdoc.yeogiya.io" as const;
 export const CASHDOC_COMMUNITY_URL = "https://community.cashdoc.me" as const;
-export const PROJECT_NOTION_URL =
-  "https://www.notion.so/Projects-c4b55bf7c1884a8488bddc35a66fe21f" as const;
 
 export const OPEN_WINDOW_CONFIG =
   typeof window !== "undefined"
