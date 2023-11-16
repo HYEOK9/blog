@@ -32,7 +32,7 @@ export default function MenuRight() {
         <DisplayIcon className="w-5 h-5 dark:fill-white mr-3" />
         <Date />
       </div>
-      {show && <SetDisplay setShow={setShow} />}
+      <SetDisplay show={show} setShow={setShow} />
     </div>
   );
 }

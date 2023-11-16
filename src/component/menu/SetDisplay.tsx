@@ -17,17 +17,14 @@ import Divider from "@component/UI/Divider";
 import MenuItem from "./MenuItem";
 
 interface SetDisplayProps {
+  show: boolean;
   setShow: React.Dispatch<React.SetStateAction<boolean>>;
 }
-function SetDisplay({ setShow }: SetDisplayProps) {
+function SetDisplay({ show, setShow }: SetDisplayProps) {
   const [isDark, setIsDark] = useState(true);
   const [opacity, setOpacity] = useState(100);
-  const [nightShift, setNightShift] = useState(
-    !!document.getElementById("nightShift")
-  );
-  const [trueTone, setTrueTone] = useState(
-    !!document.getElementById("trueTone")
-  );
+  const [nightShift, setNightShift] = useState(false);
+  const [trueTone, setTrueTone] = useState(false);
 
   const [hover, setHover] = useState(false);
 
@@ -66,7 +63,7 @@ function SetDisplay({ setShow }: SetDisplayProps) {
   );
 
   return (
-    <div className="absolute top-7 right-0 w-72">
+    <div className={`absolute top-7 right-0 w-72 ${show ? "" : "hidden"}`}>
       <Container>
         <div className="flex flex-col p-3 pb-0">
           <span className="font-semibold">디스플레이</span>
