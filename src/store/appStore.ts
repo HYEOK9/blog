@@ -25,7 +25,6 @@ const initialAppState: appState = {
     { name: "Finder", open: false, hide: false, zIndex: 21 },
     { name: "ITerm", open: false, hide: false, zIndex: 21 },
     { name: "Vscode", open: false, hide: false, zIndex: 21 },
-    { name: "Postman", open: false, hide: false, zIndex: 21 },
     { name: "Memo", open: false, hide: false, zIndex: 21 },
     { name: "About Developer", open: true, hide: false, zIndex: 21 },
   ],

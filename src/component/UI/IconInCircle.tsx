@@ -27,8 +27,8 @@ function IconInCircle({
       >
         <Icon className="w-5 h-5" />
       </div>
-      <span className="text-[11px] mt-1">{text}</span>
-      <span className="text-[11px]">
+      <span className="text-[11px] my-1 leading-none">{text}</span>
+      <span className="text-[11px] leading-none">
         {isOn ? `${text === "Night Shift" ? "내일까지 " : ""}켬` : "끔"}
       </span>
     </div>

@@ -56,7 +56,6 @@ export const DockIcons = [
   { Component: Finder, key: "Finder" },
   { Component: ITerm, key: "ITerm" },
   { Component: Vscode, key: "Vscode" },
-  // { Component: PostMan, key: "PostMan" },
   { Component: Memo, key: "Memo" },
   { Component: AboutDeveloper, key: "About Developer" },
   { Component: Github, key: "Github" },

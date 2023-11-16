@@ -2,7 +2,7 @@ import { memo, ForwardedRef, forwardRef } from "react";
 // store
 import { IApp, appStore } from "@store/appStore";
 // constants
-import { IFRAME_POSTMAN_URL, IFRAME_VSCODE_URL } from "@constant/Link";
+import { IFRAME_VSCODE_URL } from "@constant/Link";
 // components
 import AppContainer from "./AppContainer";
 import Finder from "../Finder";
@@ -54,13 +54,6 @@ function AppRenderer(
             return (
               <AppContainer app={app} backgroundColor="var(--color-navy-deep)">
                 <Iframe src={IFRAME_VSCODE_URL} />
-              </AppContainer>
-            );
-
-          case "Postman":
-            return (
-              <AppContainer app={app}>
-                <Iframe src={IFRAME_POSTMAN_URL} />
               </AppContainer>
             );
 

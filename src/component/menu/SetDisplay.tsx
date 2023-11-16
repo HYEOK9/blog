@@ -56,14 +56,13 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
     () =>
       setTrueTone((prev) => {
         !prev ? addTrueTone() : removeTrueTone();
-
         return !prev;
       }),
     []
   );
 
   return (
-    <div className={`absolute top-7 right-0 w-72 ${show ? "" : "hidden"}`}>
+    <div className={`absolute top-7 right-0 w-80 ${show ? "" : "hidden"}`}>
       <Container>
         <div className="flex flex-col p-3 pb-0">
           <span className="font-semibold">디스플레이</span>
