@@ -57,7 +57,15 @@ export default function MenuLeft() {
           active={curMenu === title}
           style={{ ...(idx === 1 && { fontWeight: "bold" }) }}
         >
-          {idx === 0 ? <AppleLogo width="17px" height="17px" /> : title}
+          {idx === 0 ? (
+            <AppleLogo
+              className="fill-black dark:fill-white"
+              width="17px"
+              height="17px"
+            />
+          ) : (
+            title
+          )}
 
           {curMenu === title && (
             <div className="z-subMenu" style={styles.subMenu}>

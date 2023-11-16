@@ -52,7 +52,7 @@ function AppRenderer(
 
           case "Vscode":
             return (
-              <AppContainer app={app}>
+              <AppContainer app={app} backgroundColor="var(--color-navy-deep)">
                 <Iframe src={IFRAME_VSCODE_URL} />
               </AppContainer>
             );

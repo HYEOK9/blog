@@ -6,7 +6,7 @@ import LineProgress from "@component/util/progress/LineProgress";
 export default function HomeLoading() {
   return (
     <div className="w-screen h-screen flex flex-col justify-center items-center bg-black z-loading">
-      <AppleLogo />
+      <AppleLogo className="fill-white" />
 
       <LineProgress />
     </div>

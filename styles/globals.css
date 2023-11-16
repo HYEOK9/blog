@@ -25,6 +25,7 @@ a {
 }
 .range {
   --range-shdw: #fff;
+  cursor: unset;
 }
 
 * {

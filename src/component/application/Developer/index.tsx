@@ -34,7 +34,7 @@ export default function Developer() {
   };
 
   return (
-    <div className="w-full h-full p-10 pt-5 text-white overflow-scroll">
+    <div className="w-full h-full p-10 pt-5 text-gray-900 dark:text-white overflow-scroll">
       <h1 className="text-5xl mb-20">👋 Hi,&nbsp; there !</h1>
 
       <div className="flex flex-col items-center animate-bounce-twice">

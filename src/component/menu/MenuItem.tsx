@@ -7,7 +7,6 @@ interface MenuItemProps {
   onClick?: () => void;
   onMouseEnter?: () => void;
   onMouseLeave?: () => void;
-  color?: string;
   backgroundColor?: string;
   style?: CSSProperties;
 }
@@ -19,15 +18,17 @@ export default function MenuItem({
   onClick,
   onMouseEnter,
   onMouseLeave,
-  color = "#fff",
   backgroundColor = "var(--color-white-transparent)",
   style,
 }: MenuItemProps) {
   return (
     <div
-      className="relative py-1.5 px-3 rounded text-white text-start whitespace-nowrap"
+      className={`relative py-1.5 px-3 rounded ${
+        valid
+          ? "text-gray-900 dark:text-white"
+          : "text-gray-500 dark:text-gray-500"
+      } text-start whitespace-nowrap`}
       style={{
-        color: valid ? color : "#ffffff80",
         ...(active && { backgroundColor }),
         ...style,
       }}

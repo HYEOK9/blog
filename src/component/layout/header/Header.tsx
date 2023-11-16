@@ -5,7 +5,7 @@ import MenuRight from "@component/menu/MenuRight";
 
 function Header() {
   return (
-    <div className="flex fixed w-full justify-between items-center h-8 pl-1.5 pr-3 text-sm bg-header">
+    <div className="flex fixed w-full justify-between items-center h-8 pl-1.5 pr-3 text-sm bg-header dark:bg-header-dark duration-500">
       <MenuLeft />
       <MenuRight />
     </div>

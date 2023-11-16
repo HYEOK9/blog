@@ -33,6 +33,7 @@ module.exports = {
     "no-nested-ternary": "off",
     "no-fallthrough": "off",
     "consistent-return": "off",
+    "no-unused-expressions": "off",
     "no-param-reassign": [
       "error",
       {

@@ -9,5 +9,5 @@ export default function Date() {
     setInterval(() => setNow(), 1000);
   }, [setNow]);
 
-  return <div className="text-white">{now}</div>;
+  return <div className="text-gray-900 dark:text-white">{now}</div>;
 }
