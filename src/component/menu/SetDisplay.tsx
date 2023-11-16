@@ -22,8 +22,12 @@ interface SetDisplayProps {
 function SetDisplay({ setShow }: SetDisplayProps) {
   const [isDark, setIsDark] = useState(true);
   const [opacity, setOpacity] = useState(100);
-  const [nightShift, setNightShift] = useState(false);
-  const [trueTone, setTrueTone] = useState(false);
+  const [nightShift, setNightShift] = useState(
+    !!document.getElementById("nightShift")
+  );
+  const [trueTone, setTrueTone] = useState(
+    !!document.getElementById("trueTone")
+  );
 
   const [hover, setHover] = useState(false);
 
