@@ -1,7 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
 import debounce from "lodash/debounce";
-// style
-import WallPaper from "/public/wall-paper.jpg";
 // store
 import { appStore } from "@store/appStore";
 import { menuStore } from "@store/menuStore";
@@ -37,7 +35,7 @@ export default function Home() {
           appRef.current.some((el) => el?.contains(target));
 
         setDraggable(!isMenuOpened && !cursorOnNotDraggable);
-      }, 5),
+      }, 10),
     [isMenuOpened, setCursorPosition, setDraggable]
   );
 
@@ -54,7 +52,7 @@ export default function Home() {
     >
       {loading && <HomeLoading />}
 
-      <Background setLoading={setLoading} image={WallPaper} />
+      <Background setLoading={setLoading} />
 
       <section className="fixed w-full z-header" ref={headerRef}>
         <Header />

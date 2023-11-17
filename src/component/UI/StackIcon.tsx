@@ -1,6 +1,6 @@
 import Image, { StaticImageData } from "next/image";
 // constants
-import { OPEN_WINDOW_CONFIG } from "@constant/Link";
+import { OPEN_WINDOW_CONFIG } from "@constant/link";
 
 interface StackIconProps {
   src: StaticImageData | string;

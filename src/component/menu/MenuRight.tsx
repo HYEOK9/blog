@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 // components
 import DisplayIcon from "/public/icon/mac-display.svg";
 import Date from "@component/UI/Date";
-import SetDisplay from "./SetDisplay";
+import SetDisplay from "./SetDisplayModal";
 
 export default function MenuRight() {
   const [show, setShow] = useState(false);

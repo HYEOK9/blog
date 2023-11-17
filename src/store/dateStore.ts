@@ -2,7 +2,7 @@ import { create } from "zustand";
 import dayjs from "dayjs";
 import "dayjs/locale/ko";
 // constants
-import { MENU_DATE_FORMAT, DATE_LOCALE } from "@constant/Menu";
+import { MENU_DATE_FORMAT, DATE_LOCALE } from "@constant/menu";
 
 interface dateState {
   now: string;

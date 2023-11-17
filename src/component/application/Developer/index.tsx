@@ -10,7 +10,7 @@ import {
   CASHDOC_COMMUNITY_URL,
   GITHUB_URL,
   HOSPITAL_EVENT_URL,
-} from "@constant/Link";
+} from "@constant/link";
 import { EMAIL, PHONE_NO } from "@constant/info";
 // components
 import IntroduceWithTitle from "./IntroduceWithTitle";

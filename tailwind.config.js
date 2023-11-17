@@ -49,6 +49,7 @@ module.exports = {
         "button-red": "#e0443e",
         "button-yellow": "#dea123",
         "button-green": "#1aab29",
+        "blue-main": "var(--color-blue)",
       },
       keyframes: {
         fullWidth: {

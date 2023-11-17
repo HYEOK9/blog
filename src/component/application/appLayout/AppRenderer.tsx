@@ -2,7 +2,7 @@ import { memo, ForwardedRef, forwardRef } from "react";
 // store
 import { IApp, appStore } from "@store/appStore";
 // constants
-import { IFRAME_VSCODE_URL } from "@constant/Link";
+import { IFRAME_VSCODE_URL } from "@constant/link";
 // components
 import AppContainer from "./AppContainer";
 import Finder from "../Finder";
@@ -10,6 +10,7 @@ import ITerm from "../ITerm";
 import Iframe from "../Iframe";
 import Memo from "../Memo";
 import Developer from "../Developer";
+import DisplaySetting from "../displaySetting";
 
 interface AppHeaderProps {
   app: IApp;
@@ -68,6 +69,20 @@ function AppRenderer(
             return (
               <AppContainer app={app}>
                 <Developer />
+              </AppContainer>
+            );
+
+          case "DisplaySetting":
+            return (
+              <AppContainer
+                app={app}
+                width={500}
+                initialPosition={{
+                  x: -window.innerWidth / 6,
+                  y: window.innerHeight / 12,
+                }}
+              >
+                <DisplaySetting />
               </AppContainer>
             );
           default:

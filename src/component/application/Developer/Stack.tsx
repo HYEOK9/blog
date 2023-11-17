@@ -1,6 +1,6 @@
 import { memo } from "react";
 // constants
-import STACKS from "@constant/Stacks";
+import STACKS from "@constant/stacks";
 // components
 import StackWithIcon from "./StackWithIcon";
 

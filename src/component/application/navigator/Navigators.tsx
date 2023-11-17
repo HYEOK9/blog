@@ -23,7 +23,9 @@ export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
       role="presentation"
     >
       <Red showIcon={showIcon} onClick={() => closeApp(app.name)} />
-      <Yellow showIcon={showIcon} onClick={() => hideApp(app.name)} />
+      {app.name !== "DisplaySetting" && (
+        <Yellow showIcon={showIcon} onClick={() => hideApp(app.name)} />
+      )}
       <Green showIcon={showIcon} onClick={toggleWindowSize} />
     </div>
   );

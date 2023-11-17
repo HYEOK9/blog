@@ -5,7 +5,7 @@ interface TrafficButtonProps {
 
 function Red({ showIcon, onClick }: TrafficButtonProps) {
   return (
-    <button className="ml-1.5 group" onClick={onClick} type="button">
+    <button className="ml-1.5 mr-2 group" onClick={onClick} type="button">
       <svg
         width="14"
         height="14"
@@ -54,7 +54,7 @@ function Red({ showIcon, onClick }: TrafficButtonProps) {
 
 function Yellow({ showIcon = false, onClick }: TrafficButtonProps) {
   return (
-    <button className="ml-2 mr-[7px] group" onClick={onClick} type="button">
+    <button className="mr-[7px] group" onClick={onClick} type="button">
       <svg
         width="15"
         height="14"

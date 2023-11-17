@@ -20,7 +20,7 @@ import GQLIcon from "/public/logo/stack/gql.png";
 import CPPIcon from "/public/logo/stack/C++.png";
 import PythonIcon from "/public/logo/stack/python.png";
 // constants
-import { STACK_LINK } from "@constant/Link";
+import { STACK_LINK } from "@constant/link";
 
 const lang = [
   { name: "Javascript", src: JSIcon },

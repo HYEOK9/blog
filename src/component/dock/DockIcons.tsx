@@ -14,7 +14,7 @@ import {
   VELOG_URL,
   OPEN_WINDOW_CONFIG,
   GOOGLE_URL,
-} from "@constant/Link";
+} from "@constant/link";
 // components
 import DockIcon from "@component/UI/DockIcon";
 

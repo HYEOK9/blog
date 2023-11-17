@@ -13,6 +13,7 @@ interface AppContainerProps {
   backgroundColor?: string;
   width?: string | number;
   height?: string | number;
+  initialPosition?: { x: number; y: number };
 }
 
 export default function AppContainer({
@@ -21,17 +22,22 @@ export default function AppContainer({
   backgroundColor,
   width = 800,
   height = 560,
+  initialPosition,
 }: AppContainerProps) {
-  const [position, setPosition] = useState<ControlPosition | null>(null);
+  const [position, setPosition] = useState<ControlPosition | null>(
+    initialPosition ?? null
+  );
   const [dragging, setDragging] = useState(false);
   const [fullScreen, setFullScreen] = useState(false);
 
   useEffect(() => {
+    if (initialPosition) return;
+
     setPosition({
       x: getRandomNumber(-600, -300),
       y: getRandomNumber(32, 80),
     });
-  }, []);
+  }, [initialPosition]);
 
   if (!position) return null;
 

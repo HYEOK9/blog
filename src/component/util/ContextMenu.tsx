@@ -3,7 +3,7 @@ import { useState, useEffect, useRef, useCallback } from "react";
 import { menuStore } from "@store/menuStore";
 import { cursorStore, position } from "@store/cursorStore";
 // constants
-import { CONTEXT_MENU } from "@constant/Menu";
+import { CONTEXT_MENU } from "@constant/menu";
 // components
 import SubMenuModal from "@component/modal/SubMenuModal";
 

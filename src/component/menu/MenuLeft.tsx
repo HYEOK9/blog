@@ -4,7 +4,7 @@ import { menuStore } from "@store/menuStore";
 // types
 import { IStyleObject } from "@@types/style";
 // constants
-import { MENU } from "@constant/Menu";
+import { MENU } from "@constant/menu";
 // components
 import AppleLogo from "/public/logo/logo-apple.svg";
 import MenuItem from "@component/menu/MenuItem";

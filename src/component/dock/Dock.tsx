@@ -35,7 +35,7 @@ function Dock() {
   }, []);
 
   return (
-    <div className="flex h-full relative items-center justify-between px-1 pt-1 pb-2 rounded-2xl bg-light-bg dark:bg-navy-400 border border-slate-600 z-dock backdrop-blur-sm transition-all">
+    <div className="flex h-full relative items-center justify-between px-1 pt-1 pb-2 rounded-2xl bg-light-bg dark:bg-navy-400 border border-slate-600 z-dock backdrop-blur-sm transition-all duration-500">
       {DockIcons.map((Icon, idx) => (
         <Fragment key={Icon.key}>
           <Icon.Component

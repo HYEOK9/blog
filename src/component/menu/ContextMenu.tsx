@@ -1,5 +1,5 @@
 import Container from "@component/UI/Container";
-import { CONTEXT_MENU } from "@constant/Menu";
+import { CONTEXT_MENU } from "@constant/menu";
 
 export default function ContextMenu() {
   return (
