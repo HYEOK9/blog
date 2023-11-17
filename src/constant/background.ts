@@ -1,15 +1,15 @@
-import BigSur from "/public/background/BigSur.jpg";
-import Ventura from "/public/background/Ventura.jpg";
-import Jaguar from "/public/background/Jaguar.jpg";
-import Leopard from "/public/background/Leopard.jpg";
-import Lion from "/public/background/Lion.jpg";
-import Yosemite from "/public/background/Yosemite.jpg";
+import BigSur from "/public/background/BigSur.avif";
+import Ventura from "/public/background/Ventura.avif";
+import Jaguar from "/public/background/Jaguar.avif";
+import Leopard from "/public/background/Leopard.avif";
+import Lion from "/public/background/Lion.avif";
+import Yosemite from "/public/background/Yosemite.avif";
 import Lake from "/public/background/Lake.avif";
 import Aurora from "/public/background/Aurora.avif";
-import LeopardServer from "/public/background/Leopard-Server.jpg";
-import Sierra from "/public/background/Sierra.jpg";
-import Mojave from "/public/background/Mojave.jpg";
-import Catalina from "/public/background/Catalina.jpg";
+import LeopardServer from "/public/background/Leopard-Server.avif";
+import Sierra from "/public/background/Sierra.avif";
+import Mojave from "/public/background/Mojave.avif";
+import Catalina from "/public/background/Catalina.avif";
 
 export const backgroundList = [
   {
