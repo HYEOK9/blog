@@ -23,7 +23,7 @@ function IconInCircle({
         onClick={onClick}
         role="presentation"
       >
-        <Icon className="w-5 h-5 fill-white" />
+        <Icon className="w-5 h-5 dark:fill-white" />
       </div>
       <span className="text-[11px] my-1 leading-none">{text}</span>
       <span className="text-[11px] leading-none">

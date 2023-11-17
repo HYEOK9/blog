@@ -113,7 +113,9 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
             active={hover}
             onMouseEnter={() => setHover(true)}
             onMouseLeave={() => setHover(false)}
-            backgroundColor="var(--color-white-transparent)"
+            backgroundColor={
+              isDark ? "var(--color-white-transparent)" : "var(--color-blue)"
+            }
             onClick={() => setShow(false)}
           >
             디스플레이 설정...
