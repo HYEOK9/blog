@@ -54,7 +54,7 @@ export default function AppHeader({
       position={position}
     >
       <div
-        className={`flex absolute h-10 p-2 items-center bg-gray-200 dark:bg-navy-600 rounded-t-xl border border-slate-600 border-b-0 ${
+        className={`flex absolute h-10 p-2 items-center bg-gray-300 dark:bg-navy-600 rounded-t-xl border border-slate-600 border-b-0 ${
           !dragging ? "transition-all duration-200" : "transition-none"
         }`}
         style={{

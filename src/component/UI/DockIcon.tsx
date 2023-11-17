@@ -20,7 +20,7 @@ function DockIcon(
   return (
     <div className="relative w-16 h-16 group hover:!mx-3 transition-all origin-bottom">
       {title && !isDragging && (
-        <span className="absolute -top-20 left-1/2 -translate-x-1/2 py-1 px-2 bg-gray-300 dark:bg-navy-500 text-sm text-center dark:text-white rounded border border-gray-700 whitespace-nowrap invisible group-hover:visible">
+        <span className="absolute -top-20 left-1/2 -translate-x-1/2 py-1 px-2 bg-light-bg dark:bg-navy-500 text-sm text-center dark:text-white rounded border border-gray-700 whitespace-nowrap invisible group-hover:visible">
           {title}
         </span>
       )}

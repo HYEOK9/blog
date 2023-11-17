@@ -49,7 +49,7 @@ export default function AppContainer({
         setDragging={setDragging}
       />
       <div
-        className={`absolute top-8 overflow-hidden rounded-b-xl bg-gray-200 dark:bg-navy-600 border border-slate-600 border-t-0 ${
+        className={`absolute top-8 overflow-hidden rounded-b-xl bg-gray-300 dark:bg-navy-600 border border-slate-600 border-t-0 ${
           !dragging ? "transition-all duration-200" : "transition-none"
         }`}
         style={{

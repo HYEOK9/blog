@@ -66,7 +66,7 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
       <Container>
         <div className="flex flex-col p-3 pb-0">
           <span className="font-semibold">디스플레이</span>
-          <span className="text-xs text-gray-400 pb-3">
+          <span className="text-xs text-gray-700 dark:text-gray-400 pb-3">
             Apple XDR Display (P3-1600 nits)
           </span>
 
