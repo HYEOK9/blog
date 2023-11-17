@@ -16,7 +16,7 @@ import {
   GOOGLE_URL,
 } from "@constant/link";
 // components
-import DockIcon from "@component/UI/DockIcon";
+import DockIcon from "@component/dock/DockIcon";
 
 function Finder({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
   return <DockIcon src={FinderIcon} title="Finder" {...props} ref={ref} />;

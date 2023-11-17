@@ -1,6 +1,6 @@
 import { useState } from "react";
 // components
-import CircularProgress from "@component/util/progress/CircularProgress";
+import CircularProgress from "@component/UI/progress/CircularProgress";
 import ErrorIcon from "/public/icon/ErrorIcon.svg";
 
 interface IframeProps {

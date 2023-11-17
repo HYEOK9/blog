@@ -16,7 +16,7 @@ import TrueToneIcon from "/public/icon/true-tone-icon.svg";
 import Container from "@component/UI/Container";
 import IconInCircle from "@component/UI/IconInCircle";
 import Divider from "@component/UI/Divider";
-import MenuItem from "./MenuItem";
+import MenuItem from "@component/menu/MenuItem";
 
 interface SetDisplayModalProps {
   show: boolean;

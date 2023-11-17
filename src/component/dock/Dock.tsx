@@ -2,7 +2,7 @@ import { useEffect, useRef, memo, Fragment } from "react";
 // lib
 import { dockIconFocus } from "@lib/dockIconFocus";
 // components
-import { DockIcons } from "@component/dock/DockIcons";
+import { DockIcons } from "@component/dock/DockIconMap";
 import Divider from "@component/UI/Divider";
 
 function Dock() {

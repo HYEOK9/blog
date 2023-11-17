@@ -1,8 +1,8 @@
 import { memo, Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 // components
-import DraggableBox from "@component/util/dragBox/DragBox";
-import ContextMenu from "@component/util/ContextMenu";
+import DraggableBox from "@component/UI/DragBox";
+import ContextMenu from "@component/menu/ContextMenu";
 import { backgroundStore } from "@store/backgroundStore";
 
 interface BackgroundProps {

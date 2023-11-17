@@ -3,7 +3,7 @@ import Draggable, { ControlPosition } from "react-draggable";
 // store
 import type { IApp } from "@store/appStore";
 // component
-import Navigators from "../navigator/Navigators";
+import Navigators from "./navigator/Navigators";
 
 interface AppHeaderProps {
   app: IApp;

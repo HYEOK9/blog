@@ -1,7 +1,7 @@
 import React from "react";
 // components
 import AppleLogo from "public/logo/logo-apple.svg";
-import LineProgress from "@component/util/progress/LineProgress";
+import LineProgress from "@component/UI/progress/LineProgress";
 
 export default function HomeLoading() {
   return (
