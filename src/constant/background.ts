@@ -49,7 +49,7 @@ export const backgroundList = [
     src: Lion,
   },
   {
-    name: "LeopardServer",
+    name: "Leopard Server",
     src: LeopardServer,
   },
   {
