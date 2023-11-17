@@ -89,6 +89,14 @@ module.exports = {
           "0%, 100%": { transform: "translateX(20%)" },
           "80%": { transform: "translateX(0)" },
         },
+        "night-shift": {
+          "0%": { backgroundColor: "rgba(255, 163, 57, 0.001)" },
+          "100%": { backgroundColor: "rgba(255, 163, 57, 0.2)" },
+        },
+        "true-tone": {
+          "0%": { backgroundColor: "rgba(255, 163, 57, 0.001)" },
+          "100%": { backgroundColor: "rgba(255, 163, 57, 0.05)" },
+        },
       },
       animation: {
         fade: "fade-in 0.1s linear",
@@ -97,6 +105,8 @@ module.exports = {
         "bounce-twice": "bounce-twice 1.2s ease-out",
         "right-left": "right-left 0.8s linear infinite",
         "left-right": "left-right 0.8s linear infinite",
+        "night-shift": "night-shift 3s linear",
+        "true-tone": "true-tone 2s linear",
       },
     },
   },
