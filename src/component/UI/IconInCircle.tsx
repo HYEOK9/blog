@@ -19,13 +19,11 @@ function IconInCircle({
     <div className="flex flex-col justify-center items-center">
       <div
         id={id}
-        className={`flex items-center justify-center w-9 h-9 rounded-full duration-500 bg-slate-400 ${
-          className ?? "dark:bg-white"
-        }`}
+        className={`flex items-center justify-center w-9 h-9 rounded-full duration-500 bg-slate-400 dark:bg-white-transparent ${className}`}
         onClick={onClick}
         role="presentation"
       >
-        <Icon className="w-5 h-5" />
+        <Icon className="w-5 h-5 fill-white" />
       </div>
       <span className="text-[11px] my-1 leading-none">{text}</span>
       <span className="text-[11px] leading-none">

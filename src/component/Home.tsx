@@ -28,13 +28,13 @@ export default function Home() {
     () =>
       debounce((e: MouseEvent) => {
         e.preventDefault();
-
         setCursorPosition({ x: e.clientX, y: e.clientY });
 
+        const target = e.target as Element;
         const cursorOnNotDraggable =
-          headerRef.current?.contains(e.target as Element) ||
-          dockRef.current?.contains(e.target as Element) ||
-          appRef.current.some((el) => el?.contains(e.target as Element));
+          headerRef.current?.contains(target) ||
+          dockRef.current?.contains(target) ||
+          appRef.current.some((el) => el?.contains(target));
 
         setDraggable(!isMenuOpened && !cursorOnNotDraggable);
       }, 5),

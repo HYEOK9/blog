@@ -62,7 +62,7 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
   );
 
   return (
-    <div className={`absolute top-7 right-0 w-80 ${show ? "" : "hidden"}`}>
+    <div className={`absolute top-7 right-0.5 w-80 ${show ? "" : "hidden"}`}>
       <Container>
         <div className="flex flex-col p-3 pb-0">
           <span className="font-semibold">디스플레이</span>
@@ -75,7 +75,7 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
             <input
               type="range"
               value={opacity}
-              className="w-full range border border-gray-300"
+              className="w-full range border border-gray-300 dark:border-0"
               onChange={({ target: { value } }) => setOpacity(Number(value))}
             />
           </div>
@@ -83,6 +83,7 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
           <div className="flex justify-around self-center w-11/12 py-3">
             <IconInCircle
               Icon={DarkModeToggleIcon}
+              className={isDark ? "!bg-white" : ""}
               id="darkModeToggle"
               text="다크 모드"
               isOn={isDark}
@@ -90,7 +91,7 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
 
             <IconInCircle
               Icon={NightShiftIcon}
-              className={nightShift ? "!bg-amber-500" : ""}
+              className={nightShift ? "!bg-night-shift" : ""}
               onClick={toggleNightShift}
               text="Night Shift"
               isOn={nightShift}
@@ -98,7 +99,7 @@ function SetDisplay({ show, setShow }: SetDisplayProps) {
 
             <IconInCircle
               Icon={TrueToneIcon}
-              className={trueTone ? "!bg-blue-500" : ""}
+              className={trueTone ? "!bg-blue-main" : ""}
               onClick={toggleTrueTone}
               text="True Tone"
               isOn={trueTone}

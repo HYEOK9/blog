@@ -9,21 +9,19 @@ export default function MenuRight() {
   const rightMenuRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const mouseDown = (e: MouseEvent) => {
-      const target = e.target as Element;
-
-      if (target.contains(rightMenuRef.current)) {
+    const clickOutside = (e: MouseEvent) => {
+      if (!rightMenuRef.current?.contains(e.target as Element)) {
         setShow(false);
       }
     };
 
-    window.addEventListener("mousedown", mouseDown);
+    window.addEventListener("mousedown", clickOutside);
 
-    return () => window.removeEventListener("mousedown", mouseDown);
+    return () => window.removeEventListener("mousedown", clickOutside);
   }, []);
 
   return (
-    <div className="relative" ref={rightMenuRef}>
+    <div className="relative pr-3" ref={rightMenuRef}>
       <div
         className="flex items-center"
         onClick={() => setShow((prev) => !prev)}

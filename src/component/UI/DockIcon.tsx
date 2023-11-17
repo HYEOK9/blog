@@ -30,6 +30,7 @@ function DockIcon(
         src={src}
         alt={src.src}
         fill
+        sizes="100%"
         onClick={() => {
           if (onClick) onClick();
           else {

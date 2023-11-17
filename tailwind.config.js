@@ -33,7 +33,6 @@ module.exports = {
         loading: 9999,
       },
       backgroundColor: {
-        header: "rgba(255,255,255,0.5)",
         "header-dark": "rgba(27,27,29,0.3)",
         "navy-400": "var(--color-navy-light)",
         "navy-500": "var(--color-navy)",
@@ -41,6 +40,9 @@ module.exports = {
         "button-red": "#ff5f56",
         "button-yellow": "#ffbd2e",
         "button-green": "#27c93f",
+        "blue-main": "var(--color-blue)",
+        "night-shift": "rgb(255, 163, 57)",
+        "white-transparent": "var(--color-white-transparent)",
       },
       borderColor: {
         "button-red": "#e0443e",

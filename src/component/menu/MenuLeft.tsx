@@ -25,10 +25,13 @@ export default function MenuLeft() {
 
   const { curMenu, setCurMenu, isMenuOpened } = menuStore();
 
-  const onMouseEnter = (menuTitle: string) => {
-    if (!isMenuOpened) return;
-    setCurMenu(menuTitle);
-  };
+  const onMouseEnter = useCallback(
+    (menuTitle: string) => {
+      if (!isMenuOpened) return;
+      setCurMenu(menuTitle);
+    },
+    [setCurMenu, isMenuOpened]
+  );
 
   const clickOutside = useCallback(
     ({ target }: MouseEvent) => {
@@ -48,7 +51,7 @@ export default function MenuLeft() {
   }, [clickOutside]);
 
   return (
-    <div className="flex" ref={ref}>
+    <div className="flex pl-1.5" ref={ref}>
       {MENU.map(({ title, subMenu }, idx) => (
         <MenuItem
           key={title}
