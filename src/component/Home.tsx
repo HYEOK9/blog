@@ -9,7 +9,7 @@ import HomeLoading from "@component/layout/HomeLoading";
 import Header from "@component/layout/header/Header";
 import Dock from "@component/dock/Dock";
 import Background from "@component/layout/Background";
-import AppRenderer from "@component/application/appLayout/AppRenderer";
+import AppRenderer from "@component/application/AppRenderer";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);

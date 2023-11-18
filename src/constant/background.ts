@@ -21,20 +21,16 @@ export const backgroundList = [
     src: Ventura,
   },
   {
-    name: "Lake",
-    src: Lake,
-  },
-  {
-    name: "Aurora",
-    src: Aurora,
-  },
-  {
     name: "Catalina",
     src: Catalina,
   },
   {
     name: "Yosemite",
     src: Yosemite,
+  },
+  {
+    name: "Lake",
+    src: Lake,
   },
   {
     name: "Jaguar",
@@ -60,4 +56,8 @@ export const backgroundList = [
     name: "Mojave",
     src: Mojave,
   },
-];
+  {
+    name: "Aurora",
+    src: Aurora,
+  },
+] as const;

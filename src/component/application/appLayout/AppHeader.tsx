@@ -50,7 +50,12 @@ export default function AppHeader({
       onDrag={(_, { x, y }) => setPosition({ x, y })}
       onStart={() => setDragging(true)}
       onStop={() => setDragging(false)}
-      bounds={{ top: 32, right: 500, bottom: 560, left: -1300 }}
+      bounds={{
+        top: 32,
+        right: window.innerWidth / 2 - 200,
+        bottom: window.innerHeight - 200,
+        left: -window.innerWidth + 250,
+      }}
       position={position}
     >
       <div

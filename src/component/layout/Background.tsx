@@ -21,6 +21,7 @@ function Background({ setLoading }: BackgroundProps) {
         onLoad={() => setTimeout(() => setLoading(false), 2500)}
         onError={() => setLoading(false)}
         draggable={false}
+        priority
       />
       <DraggableBox />
       <ContextMenu />

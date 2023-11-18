@@ -14,6 +14,8 @@ export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
 
   const { closeApp, hideApp } = appStore();
 
+  const showHideButton = app.name !== "DisplaySetting";
+
   return (
     <div
       className="flex"
@@ -23,7 +25,7 @@ export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
       role="presentation"
     >
       <Red showIcon={showIcon} onClick={() => closeApp(app.name)} />
-      {app.name !== "DisplaySetting" && (
+      {showHideButton && (
         <Yellow showIcon={showIcon} onClick={() => hideApp(app.name)} />
       )}
       <Green showIcon={showIcon} onClick={toggleWindowSize} />
