@@ -32,6 +32,7 @@ function Memo() {
       },
       ...prev,
     ]);
+    setCurMemo(memos[0]);
     closeModal();
   }, [memos, setMemos, newMemoTitle]);
 
@@ -81,7 +82,13 @@ function Memo() {
         <input
           className="w-3/4 h-10 p-1 bg-transparent outline-none border-b-[1px] border-slate-600 dark:caret-white"
           ref={inputRef}
-          onChange={({ target: { value } }) => setNewMemoTitle(value)}
+          onChange={({ target: { value } }) => {
+            setNewMemoTitle(value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key !== "Enter") return;
+            addMemo();
+          }}
           placeholder={`새로운 메모 ${memos.length + 1}`}
         />
       </SingleBtnModal>
