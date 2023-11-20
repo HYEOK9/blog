@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, memo } from "react";
 // components
 import CircularProgress from "@component/UI/progress/CircularProgress";
 import ErrorIcon from "/public/icon/ErrorIcon.svg";
@@ -7,7 +7,7 @@ interface IframeProps {
   src: string;
 }
 
-export default function Iframe({ src }: IframeProps) {
+function Iframe({ src }: IframeProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
@@ -33,3 +33,5 @@ export default function Iframe({ src }: IframeProps) {
     </div>
   );
 }
+
+export default memo(Iframe);

@@ -19,7 +19,7 @@ function IconInCircle({
     <div className="flex flex-col justify-center items-center">
       <div
         id={id}
-        className={`flex items-center justify-center w-9 h-9 rounded-full duration-500 bg-slate-400 dark:bg-white-transparent ${className}`}
+        className={`flex items-center justify-center w-9 h-9 rounded-full duration-500 bg-zinc-400 dark:bg-white-transparent ${className}`}
         onClick={onClick}
         role="presentation"
       >

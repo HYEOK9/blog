@@ -30,6 +30,7 @@ module.exports = {
         dragBox: 10,
         subMenu: 1000,
         background: -10,
+        modal: 8888,
         loading: 9999,
       },
       backgroundColor: {

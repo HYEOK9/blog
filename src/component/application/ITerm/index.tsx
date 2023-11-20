@@ -3,6 +3,7 @@ import {
   useEffect,
   useRef,
   useMemo,
+  memo,
   KeyboardEventHandler,
 } from "react";
 import dayjs from "dayjs";
@@ -15,7 +16,7 @@ import Divider from "@component/UI/Divider";
 import CommandLine from "./CommandLine";
 import StatusBar from "./StatusBar";
 
-export default function ITerm() {
+function ITerm() {
   const [commandList, setCommandList] = useState<
     { command: string; time: string }[]
   >([]);
@@ -92,3 +93,5 @@ export default function ITerm() {
     </div>
   );
 }
+
+export default memo(ITerm);

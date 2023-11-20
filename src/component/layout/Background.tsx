@@ -1,4 +1,4 @@
-import { memo, Dispatch, SetStateAction } from "react";
+import { useEffect, memo, Dispatch, SetStateAction } from "react";
 import Image from "next/image";
 // components
 import DraggableBox from "@component/UI/DragBox";
@@ -10,7 +10,15 @@ interface BackgroundProps {
 }
 
 function Background({ setLoading }: BackgroundProps) {
-  const { name, src } = backgroundStore();
+  const { name, src, setImage } = backgroundStore();
+
+  useEffect(() => {
+    const storedValue = window.localStorage.getItem("background");
+
+    if (storedValue) {
+      setImage(JSON.parse(storedValue));
+    }
+  }, [setImage]);
 
   return (
     <>

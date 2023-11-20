@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 // image
@@ -18,7 +19,7 @@ import Stack from "./Stack";
 import ArrowRightDouble from "/public/icon/ArrowRightDouble.svg";
 import ArrowLeftDouble from "/public/icon/ArrowLeftDouble.svg";
 
-export default function Developer() {
+function Developer() {
   const handleDownload = async () => {
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}/detail.pdf`
@@ -132,3 +133,5 @@ export default function Developer() {
     </div>
   );
 }
+
+export default React.memo(Developer);

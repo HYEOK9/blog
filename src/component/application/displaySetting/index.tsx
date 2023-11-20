@@ -1,3 +1,4 @@
+import React from "react";
 import Image from "next/image";
 // store
 import { backgroundStore } from "@store/backgroundStore";
@@ -6,7 +7,7 @@ import { backgroundList } from "@constant/background";
 // components
 import BackgroundItem from "./BackgroundItem";
 
-export default function DisplaySetting() {
+function DisplaySetting() {
   const { name, src } = backgroundStore();
 
   return (
@@ -25,3 +26,5 @@ export default function DisplaySetting() {
     </div>
   );
 }
+
+export default React.memo(DisplaySetting);
