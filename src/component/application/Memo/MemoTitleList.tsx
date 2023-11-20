@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import dayjs from "dayjs";
 // hooks
 import { useLocalStorage } from "usehooks-ts";
@@ -11,17 +11,20 @@ import Trash from "/public/icon/trash.svg";
 
 interface MemoTitleListProps {
   openModal: () => void;
-  setCurMemo: React.Dispatch<React.SetStateAction<TMemo>>;
+  showingMemoDate: string;
+  setShowingMemoDate: React.Dispatch<React.SetStateAction<string>>;
 }
 
-function MemoTitleList({ openModal, setCurMemo }: MemoTitleListProps) {
+function MemoTitleList({
+  openModal,
+  showingMemoDate,
+  setShowingMemoDate,
+}: MemoTitleListProps) {
   const [memos, setMemos] = useLocalStorage<TMemo[]>("memo", []);
 
-  const removeMemo = useCallback(
-    (targetIdx: number) =>
-      setMemos((prev) => prev.filter((_, idx) => idx !== targetIdx)),
-    [setMemos]
-  );
+  const removeMemo = (targetDate: string) => {
+    setMemos((prev) => prev.filter(({ date }) => date !== targetDate));
+  };
 
   return (
     <div className="flex flex-col items-center w-52 shrink-0 py-5 px-3 overflow-scroll">
@@ -29,22 +32,24 @@ function MemoTitleList({ openModal, setCurMemo }: MemoTitleListProps) {
         className="w-8 h-8 dark:fill-gray-500 mb-6 hover:scale-105 transition-all"
         onClick={openModal}
       />
-      {memos.map((memo, idx) => (
-        <React.Fragment key={`${memo.date}${memo.title}`}>
+      {memos.map(({ title, date }) => (
+        <React.Fragment key={date}>
           <div
-            className="group flex items-center justify-between w-full p-3 mt:10 hover:bg-yellow-500 dark:hover:bg-yellow-600 rounded-md"
-            onClick={() => setCurMemo(memo)}
+            className={`group flex items-center justify-between w-full p-3 mt:1 rounded-md ${
+              date === showingMemoDate ? "bg-yellow-500 dark:bg-yellow-600" : ""
+            }`}
+            onClick={() => setShowingMemoDate(date)}
             role="presentation"
           >
             <div className="flex flex-col">
-              {memo.title}
+              {title}
               <span className="text-xs pt-0.5">
-                {dayjs(memo.date).format("YYYY년 M월 D일")}
+                {dayjs(date).format("YYYY년 M월 D일")}
               </span>
             </div>
             <Trash
               className="invisible group-hover:visible dark:fill-white hover:scale-110 transition-all"
-              onClick={() => removeMemo(idx)}
+              onClick={() => removeMemo(date)}
             />
           </div>
           <Divider className="!w-11/12" />
