@@ -22,9 +22,8 @@ function MemoTitleList({
 }: MemoTitleListProps) {
   const [memos, setMemos] = useLocalStorage<TMemo[]>("memo", []);
 
-  const removeMemo = (targetDate: string) => {
+  const removeMemo = (targetDate: string) =>
     setMemos((prev) => prev.filter(({ date }) => date !== targetDate));
-  };
 
   return (
     <div className="flex flex-col items-center w-52 shrink-0 py-5 px-3 overflow-scroll">

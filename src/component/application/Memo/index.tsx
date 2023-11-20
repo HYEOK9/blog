@@ -44,11 +44,13 @@ function Memo() {
     else setNewMemoTitle("");
   }, [open]);
 
-  useEffect(() => {
-    setShowingMemoDate(memos[0]?.date);
-  }, [memos]);
-
   const showingMemo = memos.filter(({ date }) => date === showingMemoDate)[0];
+
+  useEffect(() => {
+    if (memos.some(({ date }) => date === showingMemoDate)) return;
+
+    setShowingMemoDate(memos[0]?.date);
+  }, [memos, showingMemoDate]);
 
   return (
     <div className="w-full h-full flex text-gray-900 dark:text-white">

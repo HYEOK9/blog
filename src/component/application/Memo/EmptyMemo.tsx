@@ -3,7 +3,7 @@ import React from "react";
 import Paper from "/public/icon/paper.svg";
 
 interface EmptyMemoProps {
-  openModal: ()=>void;
+  openModal: () => void;
 }
 
 function EmptyMemo({ openModal }: EmptyMemoProps) {
@@ -16,7 +16,7 @@ function EmptyMemo({ openModal }: EmptyMemoProps) {
         onClick={openModal}
       >
         <Paper className="w-20 dark:fill-gray-500 py-3 [&>path]:cursor-pointer" />
-        <span className="text-xs dark:text-gray-400">또는 추가</span>
+        <span className="text-xs dark:text-gray-400">눌러서 추가</span>
       </button>
     </div>
   );
