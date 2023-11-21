@@ -22,13 +22,6 @@ const styles: IStyleObject = {
 };
 
 function DragBox() {
-  const [size, setSize] = useState<{ width: number; height: number } | null>({
-    width: 0,
-    height: 0,
-  });
-  const [startPosition, setStartPosition] = useState<position>(null);
-  const [quadrant, setQuadrant] = useState<Tquadrant>(null);
-
   const {
     cursorPosition,
     draggable,
@@ -37,6 +30,12 @@ function DragBox() {
     rightClicked,
     setRightClicked,
   } = cursorStore();
+  const [size, setSize] = useState<{ width: number; height: number } | null>({
+    width: 0,
+    height: 0,
+  });
+  const [startPosition, setStartPosition] = useState<position>(null);
+  const [quadrant, setQuadrant] = useState<Tquadrant>(null);
 
   const startDragging = useCallback(
     (e: MouseEvent) => {

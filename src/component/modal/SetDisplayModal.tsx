@@ -27,14 +27,14 @@ export default function SetDisplayModal({
   show,
   setShow,
 }: SetDisplayModalProps) {
+  const { openApp } = appStore();
+
   const [isDark, setIsDark] = useState(true);
   const [opacity, setOpacity] = useState(100);
   const [nightShift, setNightShift] = useState(false);
   const [trueTone, setTrueTone] = useState(false);
 
   const [hover, setHover] = useState(false);
-
-  const { openApp } = appStore();
 
   useEffect(() => {
     setIsDark(document.getElementsByTagName("html")[0].className === "dark");

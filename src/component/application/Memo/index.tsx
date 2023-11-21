@@ -12,6 +12,7 @@ import EmptyMemo from "./EmptyMemo";
 
 function Memo() {
   const [memos, setMemos] = useLocalStorage<TMemo[]>("memo", []);
+
   const [showingMemoDate, setShowingMemoDate] = useState(memos[0]?.date);
   const [open, setOpen] = useState(false);
   const [newMemoTitle, setNewMemoTitle] = useState("");
@@ -44,13 +45,13 @@ function Memo() {
     else setNewMemoTitle("");
   }, [open]);
 
-  const showingMemo = memos.filter(({ date }) => date === showingMemoDate)[0];
-
   useEffect(() => {
     if (memos.some(({ date }) => date === showingMemoDate)) return;
 
     setShowingMemoDate(memos[0]?.date);
   }, [memos, showingMemoDate]);
+
+  const showingMemo = memos.filter(({ date }) => date === showingMemoDate)[0];
 
   return (
     <div className="w-full h-full flex text-gray-900 dark:text-white">
@@ -69,7 +70,7 @@ function Memo() {
 
           <div className="w-full p-5">
             <textarea
-              className="w-full h-full outline-none dark:caret-white inline bg-transparent resize-none"
+              className="w-full h-full outline-none bg-transparent cursor-text dark:caret-white inline resize-none"
               value={showingMemo?.content}
               onChange={({ target: { value } }) => {
                 setMemos((prev) =>

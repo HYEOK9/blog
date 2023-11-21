@@ -1,6 +1,8 @@
 import { useState, useEffect, ReactNode } from "react";
 import { ControlPosition } from "react-draggable";
 // store
+import { cursorStore } from "@store/cursorStore";
+// types
 import { IApp } from "@store/appStore";
 // lib
 import { getRandomNumber } from "@lib/getRandomNumber";
@@ -27,8 +29,7 @@ export default function AppContainer({
   const [position, setPosition] = useState<ControlPosition | null>(
     initialPosition ?? null
   );
-  const [dragging, setDragging] = useState(false);
-  const [fullScreen, setFullScreen] = useState(false);
+  const { isDragging } = cursorStore();
 
   useEffect(() => {
     if (initialPosition) return;
@@ -49,17 +50,13 @@ export default function AppContainer({
         position={position}
         setPosition={setPosition}
         width={width}
-        fullScreen={fullScreen}
-        setFullScreen={setFullScreen}
-        dragging={dragging}
-        setDragging={setDragging}
       />
       <div
         className={`absolute top-8 overflow-hidden rounded-b-xl bg-gray-300 dark:bg-navy-600 border border-slate-600 border-t-0 ${
-          !dragging ? "transition-all duration-200" : "transition-none"
+          !isDragging ? "transition-all duration-200" : "transition-none"
         }`}
         style={{
-          ...(!fullScreen
+          ...(!app.fullScreen
             ? {
                 width,
                 height,

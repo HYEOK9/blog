@@ -5,6 +5,7 @@ export interface IApp {
   open: boolean;
   hide: boolean;
   zIndex: number;
+  fullScreen: boolean;
 }
 
 interface appState {
@@ -17,17 +18,25 @@ interface setAppState {
   openApp: (appName: string) => void;
   closeApp: (appName: string) => void;
   hideApp: (appName: string) => void;
+  setFullScreen: (appName: string, value: boolean) => void;
 }
+
+const defaultState = {
+  open: false,
+  hide: false,
+  zIndex: 21,
+  fullScreen: false,
+};
 
 const initialAppState: appState = {
   curApp: null,
   allApps: [
-    { name: "Finder", open: false, hide: false, zIndex: 21 },
-    { name: "ITerm", open: false, hide: false, zIndex: 21 },
-    { name: "Vscode", open: false, hide: false, zIndex: 21 },
-    { name: "Memo", open: false, hide: false, zIndex: 21 },
-    { name: "About Developer", open: true, hide: false, zIndex: 21 },
-    { name: "DisplaySetting", open: false, hide: false, zIndex: 21 },
+    { ...defaultState, name: "Finder" },
+    { ...defaultState, name: "ITerm" },
+    { ...defaultState, name: "Vscode" },
+    { ...defaultState, name: "Memo" },
+    { ...defaultState, name: "About Developer", open: true },
+    { ...defaultState, name: "DisplaySetting" },
   ],
 };
 
@@ -88,6 +97,13 @@ export const appStore = create<appState & setAppState>((set) => ({
       curApp: appName,
       allApps: prev.allApps.map((app) =>
         app.name !== appName ? app : { ...app, hide: true }
+      ),
+    })),
+  setFullScreen: (appName: string, value: boolean) =>
+    set((prev) => ({
+      ...prev,
+      allApps: prev.allApps.map((app) =>
+        app.name !== appName ? app : { ...app, fullScreen: value }
       ),
     })),
 }));

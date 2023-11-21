@@ -10,9 +10,9 @@ interface NavigatorsProps {
 }
 
 export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
-  const [showIcon, setShowIcon] = useState(false);
-
   const { closeApp, hideApp } = appStore();
+
+  const [showIcon, setShowIcon] = useState(false);
 
   const showHideButton = app.name !== "DisplaySetting";
 

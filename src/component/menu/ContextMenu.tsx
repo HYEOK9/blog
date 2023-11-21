@@ -8,11 +8,11 @@ import { CONTEXT_MENU } from "@constant/menu";
 import SubMenuModal from "@component/modal/SubMenuModal";
 
 export default function ContextMenu() {
-  const [startPosition, setStartPosition] = useState<position>(null);
-  const ref = useRef<HTMLDivElement>(null);
-
   const { curMenu, setCurMenu } = menuStore();
   const { rightClicked, setRightClicked, draggable } = cursorStore();
+
+  const [startPosition, setStartPosition] = useState<position>(null);
+  const ref = useRef<HTMLDivElement>(null);
 
   const handleContextMenu = useCallback(
     (e: MouseEvent) => {

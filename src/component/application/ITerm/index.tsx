@@ -17,13 +17,13 @@ import CommandLine from "./CommandLine";
 import StatusBar from "./StatusBar";
 
 function ITerm() {
+  const { openApp, closeApp } = appStore();
+
   const [commandList, setCommandList] = useState<
     { command: string; time: string }[]
   >([]);
 
   const ref = useRef<HTMLSpanElement>(null);
-
-  const { openApp, closeApp } = appStore();
 
   const focus = () => {
     ref.current?.focus();
