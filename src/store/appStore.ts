@@ -29,7 +29,7 @@ const defaultState = {
 };
 
 const initialAppState: appState = {
-  curApp: null,
+  curApp: "About Developer",
   allApps: [
     { ...defaultState, name: "Finder" },
     { ...defaultState, name: "ITerm" },
@@ -83,7 +83,10 @@ export const appStore = create<appState & setAppState>((set) => ({
   closeApp: (appName: string) =>
     set((prev) => ({
       ...prev,
-      curApp: appName,
+      curApp:
+        prev.allApps
+          .filter((app) => app.open && app.name !== appName)
+          .sort((a, b) => b.zIndex - a.zIndex)[0]?.name ?? null,
       allApps: prev.allApps.map((app) =>
         app.name !== appName ? app : { ...app, ...defaultState }
       ),

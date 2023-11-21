@@ -35,7 +35,7 @@ export default function Home() {
           appRef.current.some((el) => el?.contains(target));
 
         setDraggable(!isMenuOpened && !cursorOnNotDraggable);
-      }, 10),
+      }, 5),
     [isMenuOpened, setCursorPosition, setDraggable]
   );
 

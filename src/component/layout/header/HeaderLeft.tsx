@@ -1,6 +1,7 @@
 import { useEffect, useRef, useCallback } from "react";
 // store
 import { menuStore } from "@store/menuStore";
+import { appStore } from "@store/appStore";
 // types
 import { IStyleObject } from "@@types/style";
 // constants
@@ -24,6 +25,7 @@ export default function MenuLeft() {
   const ref = useRef<HTMLDivElement>(null);
 
   const { curMenu, setCurMenu, isMenuOpened } = menuStore();
+  const { curApp } = appStore();
 
   const onMouseEnter = useCallback(
     (menuTitle: string) => {
@@ -52,7 +54,7 @@ export default function MenuLeft() {
 
   return (
     <div className="flex pl-1.5" ref={ref}>
-      {MENU.map(({ title, subMenu }, idx) => (
+      {MENU(curApp).map(({ title, subMenu }, idx) => (
         <MenuItem
           key={title}
           onClick={() => setCurMenu(title)}

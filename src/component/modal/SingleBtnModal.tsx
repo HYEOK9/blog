@@ -52,7 +52,7 @@ function SingleBtnModal({
             {children}
           </div>
           <button
-            className="w-full flex justify-center py-2 text-black dark:text-white"
+            className="w-full flex justify-center py-2 text-blue-main dark:text-white"
             onClick={btnHandler}
             type="button"
           >
