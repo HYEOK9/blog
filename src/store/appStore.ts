@@ -60,7 +60,6 @@ export const appStore = create<appState & setAppState>((set) => ({
         ),
       };
     }),
-
   openApp: (appName: string) =>
     set((prev) => {
       const zIndex =
@@ -81,16 +80,14 @@ export const appStore = create<appState & setAppState>((set) => ({
         ),
       };
     }),
-
   closeApp: (appName: string) =>
     set((prev) => ({
       ...prev,
       curApp: appName,
       allApps: prev.allApps.map((app) =>
-        app.name !== appName ? app : { ...app, open: false, zIndex: 21 }
+        app.name !== appName ? app : { ...app, ...defaultState }
       ),
     })),
-
   hideApp: (appName: string) =>
     set((prev) => ({
       ...prev,
