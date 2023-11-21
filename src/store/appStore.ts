@@ -31,7 +31,7 @@ const defaultState = {
 const initialAppState: appState = {
   curApp: "About Developer",
   allApps: [
-    { ...defaultState, name: "Finder" },
+    { ...defaultState, name: "Finder", open: true },
     { ...defaultState, name: "ITerm" },
     { ...defaultState, name: "Vscode" },
     { ...defaultState, name: "Memo" },

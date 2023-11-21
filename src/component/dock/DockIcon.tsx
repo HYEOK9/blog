@@ -32,11 +32,10 @@ function DockIcon(
         fill
         sizes="100%"
         onClick={() => {
-          if (onClick) onClick();
-          else {
-            openApp(title);
-            setCurApp(title);
-          }
+          if (title === "Finder") return;
+          onClick?.();
+          openApp(title);
+          setCurApp(title);
         }}
         priority
       />
