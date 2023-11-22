@@ -51,7 +51,7 @@ function ITerm() {
 
       case "code":
       case "code .":
-        openApp("Vscode");
+        openApp("Code");
 
       default:
         setCommandList((prev) => [...prev, { command, time: now }]);

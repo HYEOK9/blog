@@ -25,7 +25,7 @@ function Chrome({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
   return (
     <DockIcon
       src={ChromeIcon}
-      title="Google Chrome"
+      title="Chrome"
       onClick={() => window.open(GOOGLE_URL)}
       {...props}
       ref={ref}
@@ -35,8 +35,8 @@ function Chrome({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
 function ITerm({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
   return <DockIcon src={ITermIcon} title="ITerm" {...props} ref={ref} />;
 }
-function Vscode({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
-  return <DockIcon src={VscodeIcon} title="Vscode" {...props} ref={ref} />;
+function Code({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
+  return <DockIcon src={VscodeIcon} title="Code" {...props} ref={ref} />;
 }
 function Memo({ ...props }, ref: ForwardedRef<HTMLImageElement>) {
   return <DockIcon src={MemoIcon} title="Memo" {...props} ref={ref} />;
@@ -73,7 +73,7 @@ export const DockIcons = [
   { Component: Finder, key: "Finder" },
   { Component: Chrome, key: "Google Chrome" },
   { Component: ITerm, key: "ITerm" },
-  { Component: Vscode, key: "Vscode" },
+  { Component: Code, key: "Code" },
   { Component: Memo, key: "Memo" },
   { Component: AboutDeveloper, key: "About Developer" },
   { Component: Github, key: "Github" },

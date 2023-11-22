@@ -130,7 +130,7 @@ export default function SetDisplayModal({
             }
             onClick={() => {
               setShow(false);
-              openApp("DisplaySetting");
+              openApp("Display Setting");
             }}
           >
             디스플레이 설정...

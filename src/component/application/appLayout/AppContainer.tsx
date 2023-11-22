@@ -1,9 +1,8 @@
-import { useState, useEffect, ReactNode } from "react";
-import { ControlPosition } from "react-draggable";
+import { useEffect, ReactNode } from "react";
 // store
 import { cursorStore } from "@store/cursorStore";
 // types
-import { IApp } from "@store/appStore";
+import { IApp, appStore } from "@store/appStore";
 // lib
 import { getRandomNumber } from "@lib/getRandomNumber";
 // components
@@ -13,9 +12,9 @@ interface AppContainerProps {
   children: ReactNode;
   app: IApp;
   backgroundColor?: string;
-  width?: string | number;
-  height?: string | number;
-  initialPosition?: { x: number; y: number };
+  width?: number;
+  height?: number;
+  center?: boolean;
 }
 
 export default function AppContainer({
@@ -24,33 +23,30 @@ export default function AppContainer({
   backgroundColor,
   width = 800,
   height = 560,
-  initialPosition,
+  center = false,
 }: AppContainerProps) {
-  const [position, setPosition] = useState<ControlPosition | null>(
-    initialPosition ?? null
-  );
+  const { setPosition } = appStore();
   const { isDragging } = cursorStore();
 
   useEffect(() => {
-    if (initialPosition) return;
+    if (!center) {
+      setPosition(app.name, {
+        x: getRandomNumber(-600, -300),
+        y: getRandomNumber(32, 80),
+      });
+    } else {
+      setPosition(app.name, {
+        x: -width / 2,
+        y: window.innerHeight / 2 - 40 - height / 2,
+      });
+    }
+  }, [app.name, setPosition, center, width, height]);
 
-    setPosition({
-      x: getRandomNumber(-600, -300),
-      y: getRandomNumber(32, 80),
-    });
-  }, [initialPosition]);
-
-  if (!position) return null;
+  if (!app.position) return null;
 
   return (
     <>
-      <AppHeader
-        app={app}
-        headerColor={backgroundColor}
-        position={position}
-        setPosition={setPosition}
-        width={width}
-      />
+      <AppHeader app={app} headerColor={backgroundColor} width={width} />
       <div
         className={`absolute top-8 overflow-hidden rounded-b-xl bg-gray-300 dark:bg-navy-600 border border-slate-600 border-t-0 ${
           !isDragging ? "transition-all duration-200" : "transition-none"
@@ -61,15 +57,15 @@ export default function AppContainer({
                 width,
                 height,
                 // cursorY + TrafficButton
-                top: `calc(${position.y}px + 2.5rem)`,
+                top: `calc(${app.position.y}px + 2.5rem)`,
               }
             : {
                 width: "100vw",
                 // (100vh - Header - TrafficButton - Dock)
                 height: "calc(100vh - 2.5rem - 2rem - 4.75rem)",
-                top: `calc(${position.y}px + 2.5rem)`,
+                top: `calc(${app.position.y}px + 2.5rem)`,
               }),
-          left: position.x,
+          left: app.position.x,
           zIndex: app.zIndex,
           backgroundColor,
         }}

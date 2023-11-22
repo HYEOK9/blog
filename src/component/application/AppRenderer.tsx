@@ -29,7 +29,6 @@ function AppRenderer(
       onMouseDown={() => setCurApp(app.name)}
       role="presentation"
     >
-      {/* eslint-disable-next-line consistent-return */}
       {(() => {
         switch (app.name) {
           case "Finder":
@@ -52,7 +51,7 @@ function AppRenderer(
               </AppContainer>
             );
 
-          case "Vscode":
+          case "Code":
             return (
               <AppContainer app={app} backgroundColor="var(--color-navy-deep)">
                 <Iframe src={IFRAME_VSCODE_URL} />
@@ -68,21 +67,14 @@ function AppRenderer(
 
           case "About Developer":
             return (
-              <AppContainer app={app}>
+              <AppContainer app={app} center>
                 <Developer />
               </AppContainer>
             );
 
-          case "DisplaySetting":
+          case "Display Setting":
             return (
-              <AppContainer
-                app={app}
-                width={500}
-                initialPosition={{
-                  x: -window.innerWidth / 6,
-                  y: window.innerHeight / 12,
-                }}
-              >
+              <AppContainer app={app} width={500} center>
                 <DisplaySetting />
               </AppContainer>
             );

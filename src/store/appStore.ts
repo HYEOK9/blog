@@ -1,10 +1,12 @@
 import { create } from "zustand";
+import type { ControlPosition } from "react-draggable";
 
 export interface IApp {
   name: string;
   open: boolean;
   hide: boolean;
   zIndex: number;
+  position: ControlPosition | null;
   fullScreen: boolean;
 }
 
@@ -18,6 +20,7 @@ interface setAppState {
   openApp: (appName: string) => void;
   closeApp: (appName: string) => void;
   hideApp: (appName: string) => void;
+  setPosition: (appName: string, position: ControlPosition) => void;
   setFullScreen: (appName: string, value: boolean) => void;
 }
 
@@ -25,6 +28,7 @@ const defaultState = {
   open: false,
   hide: false,
   zIndex: 21,
+  position: null,
   fullScreen: false,
 };
 
@@ -33,16 +37,16 @@ const initialAppState: appState = {
   allApps: [
     { ...defaultState, name: "Finder", open: true },
     { ...defaultState, name: "ITerm" },
-    { ...defaultState, name: "Vscode" },
+    { ...defaultState, name: "Code" },
     { ...defaultState, name: "Memo" },
     { ...defaultState, name: "About Developer", open: true },
-    { ...defaultState, name: "DisplaySetting" },
+    { ...defaultState, name: "Display Setting" },
   ],
 };
 
 export const appStore = create<appState & setAppState>((set) => ({
   ...initialAppState,
-  setCurApp: (appName: string) =>
+  setCurApp: (appName) =>
     set((prev) => {
       if (prev.curApp === appName) return prev;
 
@@ -60,7 +64,7 @@ export const appStore = create<appState & setAppState>((set) => ({
         ),
       };
     }),
-  openApp: (appName: string) =>
+  openApp: (appName) =>
     set((prev) => {
       const zIndex =
         Math.max.apply(
@@ -80,7 +84,7 @@ export const appStore = create<appState & setAppState>((set) => ({
         ),
       };
     }),
-  closeApp: (appName: string) =>
+  closeApp: (appName) =>
     set((prev) => ({
       ...prev,
       curApp:
@@ -91,7 +95,7 @@ export const appStore = create<appState & setAppState>((set) => ({
         app.name !== appName ? app : { ...app, ...defaultState }
       ),
     })),
-  hideApp: (appName: string) =>
+  hideApp: (appName) =>
     set((prev) => ({
       ...prev,
       curApp: appName,
@@ -99,7 +103,14 @@ export const appStore = create<appState & setAppState>((set) => ({
         app.name !== appName ? app : { ...app, hide: true }
       ),
     })),
-  setFullScreen: (appName: string, value: boolean) =>
+  setPosition: (appName, position) =>
+    set((prev) => ({
+      ...prev,
+      allApps: prev.allApps.map((app) =>
+        app.name !== appName ? app : { ...app, position }
+      ),
+    })),
+  setFullScreen: (appName, value) =>
     set((prev) => ({
       ...prev,
       allApps: prev.allApps.map((app) =>
