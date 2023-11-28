@@ -1,8 +1,8 @@
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
 import { backgroundStore } from "@store/backgroundStore";
 
 interface BackgroundItemProps {
-  image: { name: string; src: StaticImageData };
+  image: { name: string; src: string };
 }
 
 export default function BackgroundItem({ image }: BackgroundItemProps) {
@@ -14,6 +14,8 @@ export default function BackgroundItem({ image }: BackgroundItemProps) {
         className="w-52 h-52 rounded-lg mb-1 hover:border-4 hover:border-blue-main dark:hover:border-gray-300"
         src={image.src}
         alt={image.name}
+        width={208}
+        height={208}
         onClick={() => setImage(image)}
         priority
       />

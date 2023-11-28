@@ -21,11 +21,12 @@ function Background({ setLoading }: BackgroundProps) {
   }, [setImage]);
 
   return (
-    <>
+    <div className="w-full h-screen fixed">
       <Image
-        className="fixed w-full h-screen bg-cover animate-homeFade z-background object-fill"
+        className="bg-cover animate-homeFade z-background object-fill"
         src={src}
         alt={name}
+        fill
         onLoad={() => setTimeout(() => setLoading(false), 2500)}
         onError={() => setLoading(false)}
         draggable={false}
@@ -33,7 +34,7 @@ function Background({ setLoading }: BackgroundProps) {
       />
       <DraggableBox />
       <ContextMenu />
-    </>
+    </div>
   );
 }
 

@@ -1,63 +1,53 @@
-import BigSur from "/public/background/BigSur.avif";
-import Ventura from "/public/background/Ventura.avif";
-import Jaguar from "/public/background/Jaguar.avif";
-import Leopard from "/public/background/Leopard.avif";
-import Lion from "/public/background/Lion.avif";
-import Yosemite from "/public/background/Yosemite.avif";
-import Lake from "/public/background/Lake.avif";
-import Aurora from "/public/background/Aurora.avif";
-import LeopardServer from "/public/background/Leopard-Server.avif";
-import Sierra from "/public/background/Sierra.avif";
-import Mojave from "/public/background/Mojave.avif";
-import Catalina from "/public/background/Catalina.avif";
+const getS3Src = (name: string) =>
+  `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}/${name}`;
 
 export const backgroundList = [
   {
     name: "Big Sur",
-    src: BigSur,
+    src: getS3Src("BigSur.avif"),
   },
   {
     name: "Ventura",
-    src: Ventura,
+    src: getS3Src("Ventura.avif"),
   },
   {
     name: "Catalina",
-    src: Catalina,
+    src: getS3Src("Catalina.avif"),
   },
   {
     name: "Yosemite",
-    src: Yosemite,
+    src: getS3Src("Yosemite.avif"),
   },
   {
     name: "Lake",
-    src: Lake,
+    src: getS3Src("Lake.avif"),
   },
   {
     name: "Jaguar",
-    src: Jaguar,
+    src: getS3Src("Jaguar.avif"),
   },
   {
     name: "Leopard",
-    src: Leopard,
+    src: getS3Src("Leopard.avif"),
   },
   {
     name: "Lion",
-    src: Lion,
+    src: getS3Src("Lion.avif"),
   },
   {
     name: "Leopard Server",
-    src: LeopardServer,
+    src: getS3Src("Leopard-Server.avif"),
   },
   {
     name: "Sierra",
-    src: Sierra,
+    src: getS3Src("Sierra.avif"),
   },
   {
     name: "Mojave",
-    src: Mojave,
+    src: getS3Src("Mojave.avif"),
   },
   {
     name: "Aurora",
-    src: Aurora,
+    src: getS3Src("Aurora.avif"),
   },
 ] as const;

@@ -1,10 +1,9 @@
 import { create } from "zustand";
-import { StaticImageData } from "next/image";
 import { backgroundList } from "@constant/background";
 
 export interface backgroundState {
   name: string;
-  src: StaticImageData;
+  src: string;
 }
 
 interface setBackgroundState {
