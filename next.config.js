@@ -15,7 +15,7 @@ const nextConfig = {
   },
   images: {
     domains: [`${process.env.NEXT_PUBLIC_AWS_S3_DOMAIN}`],
-    formats: ["image/avif", "image/webp"],
+    formats: ["image/webp", "image/avif"],
   },
 };
 
