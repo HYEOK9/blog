@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect, memo } from "react";
-import Image from "next/image";
 // store
 import { backgroundStore } from "@store/backgroundStore";
 // components
@@ -25,15 +25,14 @@ function Background() {
       {loading && <HomeLoading />}
 
       <div className="w-full h-screen fixed">
-        <Image
+        <img
           className="bg-cover animate-homeFade z-background object-fill"
           src={src}
           alt={name}
-          fill
           onLoad={() => setTimeout(() => setLoading(false), 2500)}
           onError={() => setLoading(false)}
           draggable={false}
-          priority
+          role="presentation"
         />
         <DraggableBox />
         <ContextMenu />
