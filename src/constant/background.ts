@@ -1,5 +1,5 @@
 const getS3Src = (name: string) =>
-  `${process.env.AWS_S3_BASE_URL}/${name}.webp`;
+  `${process.env.AWS_CLOUDFRONT_URL}/${name}.webp`;
 
 export const backgroundList = [
   {

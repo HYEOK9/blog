@@ -10,11 +10,11 @@ const nextConfig = {
     return config;
   },
   env: {
-    AWS_S3_BASE_URL: process.env.NEXT_PUBLIC_AWS_S3_BASE_URL,
-    AWS_S3_DOMAIN: process.env.NEXT_PUBLIC_AWS_S3_DOMAIN,
+    AWS_CLOUDFRONT_URL: process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_URL,
+    AWS_CLOUDFRONT_DOMAIN: process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_DOMAIN,
   },
   images: {
-    domains: [`${process.env.NEXT_PUBLIC_AWS_S3_DOMAIN}`],
+    domains: [`${process.env.NEXT_PUBLIC_AWS_CLOUDFRONT_DOMAIN}`],
     formats: ["image/webp", "image/avif"],
   },
 };
