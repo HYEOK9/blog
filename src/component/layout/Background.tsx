@@ -26,7 +26,7 @@ function Background() {
 
       <div className="w-full h-screen fixed">
         <img
-          className="bg-cover animate-homeFade z-background object-fill"
+          className="w-full h-full animate-homeFade z-background"
           src={src}
           alt={name}
           onLoad={() => setTimeout(() => setLoading(false), 2500)}
