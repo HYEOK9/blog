@@ -1,5 +1,5 @@
 import { forwardRef, ForwardedRef } from "react";
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 // store
 import { appStore } from "@store/appStore";
 import { cursorStore } from "@store/cursorStore";

@@ -59,6 +59,7 @@ function Developer() {
                 className="w-5 h-5 mr-0.5"
                 src={CashDocIcon}
                 alt="cashdoc"
+                priority
               />
               &nbsp;Chunneung IT (cashdoc)
             </span>
@@ -84,6 +85,7 @@ function Developer() {
                   className="w-40 cursor-pointer rounded-xl transition-all hover:scale-105 active:translate-y-1"
                   src={CashdocCommunity}
                   alt="cashdoc_community"
+                  priority
                 />
               </Link>
             </div>

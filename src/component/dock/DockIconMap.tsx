@@ -1,4 +1,4 @@
-import { forwardRef, ForwardedRef } from "react";
+import { forwardRef, memo, ForwardedRef } from "react";
 // image
 import FinderIcon from "/public/application/finder.png";
 import ChromeIcon from "/public/application/chrome.png";
@@ -78,4 +78,7 @@ export const DockIcons = [
   { Component: AboutDeveloper, key: "About Developer" },
   { Component: Github, key: "Github" },
   { Component: Velog, key: "Velog" },
-].map(({ Component, key }) => ({ Component: forwardRef(Component), key }));
+].map(({ Component, key }) => ({
+  Component: memo(forwardRef(Component)),
+  key,
+}));

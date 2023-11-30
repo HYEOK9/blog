@@ -1,15 +1,15 @@
-import { useEffect, memo, Dispatch, SetStateAction } from "react";
+import { useState, useEffect, memo } from "react";
 import Image from "next/image";
+// store
+import { backgroundStore } from "@store/backgroundStore";
 // components
 import DraggableBox from "@component/UI/DragBox";
 import ContextMenu from "@component/menu/ContextMenu";
-import { backgroundStore } from "@store/backgroundStore";
+import HomeLoading from "./HomeLoading";
 
-interface BackgroundProps {
-  setLoading: Dispatch<SetStateAction<boolean>>;
-}
+function Background() {
+  const [loading, setLoading] = useState(true);
 
-function Background({ setLoading }: BackgroundProps) {
   const { name, src, setImage } = backgroundStore();
 
   useEffect(() => {
@@ -21,20 +21,24 @@ function Background({ setLoading }: BackgroundProps) {
   }, [setImage]);
 
   return (
-    <div className="w-full h-screen fixed">
-      <Image
-        className="bg-cover animate-homeFade z-background object-fill"
-        src={src}
-        alt={name}
-        fill
-        onLoad={() => setTimeout(() => setLoading(false), 2500)}
-        onError={() => setLoading(false)}
-        draggable={false}
-        priority
-      />
-      <DraggableBox />
-      <ContextMenu />
-    </div>
+    <>
+      {loading && <HomeLoading />}
+
+      <div className="w-full h-screen fixed">
+        <Image
+          className="bg-cover animate-homeFade z-background object-fill"
+          src={src}
+          alt={name}
+          fill
+          onLoad={() => setTimeout(() => setLoading(false), 2500)}
+          onError={() => setLoading(false)}
+          draggable={false}
+          priority
+        />
+        <DraggableBox />
+        <ContextMenu />
+      </div>
+    </>
   );
 }
 

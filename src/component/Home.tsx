@@ -1,19 +1,16 @@
-import { useState, useEffect, useRef, useMemo } from "react";
+import { useEffect, useRef, useMemo } from "react";
 import debounce from "lodash/debounce";
 // store
 import { appStore } from "@store/appStore";
 import { menuStore } from "@store/menuStore";
 import { cursorStore } from "@store/cursorStore";
 // components
-import HomeLoading from "@component/layout/HomeLoading";
 import Header from "@component/layout/header/Header";
 import Dock from "@component/dock/Dock";
 import Background from "@component/layout/Background";
 import AppRenderer from "@component/application/AppRenderer";
 
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-
   const headerRef = useRef<HTMLDivElement>(null);
   const dockRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<HTMLDivElement[]>([]);
@@ -50,10 +47,6 @@ export default function Home() {
       id="content"
       className="flex relative w-screen h-screen justify-center overflow-hidden"
     >
-      {loading && <HomeLoading />}
-
-      <Background setLoading={setLoading} />
-
       <section className="fixed w-full z-header" ref={headerRef}>
         <Header />
       </section>
@@ -74,6 +67,8 @@ export default function Home() {
       <section className="absolute h-18 bottom-1" ref={dockRef}>
         <Dock />
       </section>
+
+      <Background />
     </div>
   );
 }
