@@ -21,9 +21,7 @@ import ArrowLeftDouble from "/public/icon/ArrowLeftDouble.svg";
 
 function Developer() {
   const handleDownload = async () => {
-    const res = await fetch(
-      `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}/detail.pdf`
-    );
+    const res = await fetch(`${process.env.AWS_S3_BASE_URL}/detail.pdf`);
 
     const blob = await res.blob();
     const downloadURL = URL.createObjectURL(blob);

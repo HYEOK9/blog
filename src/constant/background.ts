@@ -1,5 +1,4 @@
-const getS3Src = (name: string) =>
-  `${process.env.NEXT_PUBLIC_AWS_S3_BASE_URL}/${name}`;
+const getS3Src = (name: string) => `${process.env.AWS_S3_BASE_URL}/${name}`;
 
 export const backgroundList = [
   {
