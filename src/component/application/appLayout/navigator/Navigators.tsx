@@ -14,7 +14,7 @@ export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
 
   const [showIcon, setShowIcon] = useState(false);
 
-  const showHideButton = app.name !== "Display Setting";
+  const showOnlyClose = app.name === "Display Setting";
 
   return (
     <div
@@ -25,10 +25,13 @@ export default function Navigators({ app, toggleWindowSize }: NavigatorsProps) {
       role="presentation"
     >
       <Red showIcon={showIcon} onClick={() => closeApp(app.name)} />
-      {showHideButton && (
-        <Yellow showIcon={showIcon} onClick={() => hideApp(app.name)} />
+
+      {!showOnlyClose && (
+        <>
+          <Yellow showIcon={showIcon} onClick={() => hideApp(app.name)} />
+          <Green showIcon={showIcon} onClick={toggleWindowSize} />
+        </>
       )}
-      <Green showIcon={showIcon} onClick={toggleWindowSize} />
     </div>
   );
 }
