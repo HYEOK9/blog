@@ -32,7 +32,11 @@ function DockIcon(
         fill
         sizes="100%"
         onClick={() => {
-          if (title === "Finder") return;
+          if (title === "Finder") {
+            openApp("Display Setting");
+            setCurApp("Display Setting");
+            return;
+          }
           onClick?.();
           openApp(title);
           setCurApp(title);

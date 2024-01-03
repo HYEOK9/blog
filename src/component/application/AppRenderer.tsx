@@ -5,7 +5,6 @@ import { IApp, appStore } from "@store/appStore";
 import { IFRAME_VSCODE_URL } from "@constant/link";
 // components
 import AppContainer from "./appLayout/AppContainer";
-// import Finder from "./Finder";
 import ITerm from "./ITerm";
 import Iframe from "./Iframe";
 import Memo from "./Memo";
@@ -32,12 +31,11 @@ function AppRenderer(
       {(() => {
         switch (app.name) {
           case "Finder":
-            return;
-          // return (
-          //   <AppContainer app={app}>
-          //     <Finder />
-          //   </AppContainer>
-          // );
+            return (
+              <AppContainer app={app} width={500} center>
+                <DisplaySetting />
+              </AppContainer>
+            );
 
           case "ITerm":
             return (
