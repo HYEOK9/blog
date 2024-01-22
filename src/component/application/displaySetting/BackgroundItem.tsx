@@ -1,6 +1,5 @@
-import { useCallback } from "react";
-import Image, { type ImageLoaderProps } from "next/image";
-import qs from "query-string";
+import { useState } from "react";
+import Image from "next/image";
 import { backgroundStore } from "@store/backgroundStore";
 
 interface BackgroundItemProps {
@@ -8,26 +7,22 @@ interface BackgroundItemProps {
 }
 
 export default function BackgroundItem({ image }: BackgroundItemProps) {
+  const [load, setLoad] = useState(false);
   const { setImage } = backgroundStore();
 
-  const loader = useCallback(({ src }: ImageLoaderProps) => {
-    const queryData = qs.stringify({ w: 208, q: 50 });
-
-    return `${src}?${queryData}`;
-  }, []);
+  const skeleton = !load ? "" : "w-52 h-52 animate-pulse bg-gray-700";
 
   return (
     <div key={image.name} className="text-center mb-5">
       <Image
-        loader={loader}
         width={208}
         height={208}
-        className="h-52 rounded-lg mb-1 border-4 border-transparent hover:border-blue-main dark:hover:border-gray-300"
+        className={`${skeleton} h-52 rounded-lg mb-1 border-4 border-transparent hover:border-blue-main dark:hover:border-gray-300`}
         src={image.src}
         alt={image.name}
         onClick={() => setImage(image)}
+        onLoad={() => setLoad(true)}
         priority
-        loading="eager"
       />
       <span>{image.name}</span>
     </div>
