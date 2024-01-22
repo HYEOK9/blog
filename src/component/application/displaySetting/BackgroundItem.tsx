@@ -10,7 +10,7 @@ export default function BackgroundItem({ image }: BackgroundItemProps) {
   const [load, setLoad] = useState(false);
   const { setImage } = backgroundStore();
 
-  const skeleton = !load ? "" : "w-52 h-52 animate-pulse bg-gray-700";
+  const skeleton = load ? "" : "w-52 h-52 animate-pulse bg-gray-700";
 
   return (
     <div key={image.name} className="text-center mb-5">
