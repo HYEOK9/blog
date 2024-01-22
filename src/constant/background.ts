@@ -1,53 +1,53 @@
-const getS3Src = (name: string) =>
+const getImgSrcFromCf = (name: string) =>
   `${process.env.AWS_CLOUDFRONT_URL}/${name}.webp`;
 
 export const backgroundList = [
   {
     name: "Big Sur",
-    src: getS3Src("BigSur"),
+    src: getImgSrcFromCf("BigSur"),
   },
   {
     name: "Ventura",
-    src: getS3Src("Ventura"),
+    src: getImgSrcFromCf("Ventura"),
   },
   {
     name: "Catalina",
-    src: getS3Src("Catalina"),
+    src: getImgSrcFromCf("Catalina"),
   },
   {
     name: "Yosemite",
-    src: getS3Src("Yosemite"),
+    src: getImgSrcFromCf("Yosemite"),
   },
   {
     name: "Lake",
-    src: getS3Src("Lake"),
+    src: getImgSrcFromCf("Lake"),
   },
   {
     name: "Jaguar",
-    src: getS3Src("Jaguar"),
+    src: getImgSrcFromCf("Jaguar"),
   },
   {
     name: "Leopard",
-    src: getS3Src("Leopard"),
+    src: getImgSrcFromCf("Leopard"),
   },
   {
     name: "Lion",
-    src: getS3Src("Lion"),
+    src: getImgSrcFromCf("Lion"),
   },
   {
     name: "Leopard Server",
-    src: getS3Src("Leopard-Server"),
+    src: getImgSrcFromCf("Leopard-Server"),
   },
   {
     name: "Sierra",
-    src: getS3Src("Sierra"),
+    src: getImgSrcFromCf("Sierra"),
   },
   {
     name: "Mojave",
-    src: getS3Src("Mojave"),
+    src: getImgSrcFromCf("Mojave"),
   },
   {
     name: "Aurora",
-    src: getS3Src("Aurora"),
+    src: getImgSrcFromCf("Aurora"),
   },
 ] as const;

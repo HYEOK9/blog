@@ -1,5 +1,5 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Image from "next/image";
 // store
 import { backgroundStore } from "@store/backgroundStore";
 // constants
@@ -7,12 +7,18 @@ import { backgroundList } from "@constant/background";
 // components
 import BackgroundItem from "./BackgroundItem";
 
-function DisplaySetting() {
+export default function DisplaySetting() {
   const { name, src } = backgroundStore();
 
   return (
     <div className="w-full h-full flex flex-col items-center text-gray-900 dark:text-white overflow-scroll">
-      <img className="w-96 h-64 rounded-xl" src={src} alt={name} />
+      <Image
+        width={384}
+        height={256}
+        className="w-96 h-64 rounded-xl"
+        src={src}
+        alt={name}
+      />
       <span className="text-gray-600 dark:text-gray-400">
         current wallpaper
       </span>
@@ -26,5 +32,3 @@ function DisplaySetting() {
     </div>
   );
 }
-
-export default React.memo(DisplaySetting);
