@@ -20,17 +20,19 @@ function AppHeader({ app, headerColor, width }: AppHeaderProps) {
   const [bounds, setBounds] = useState<DraggableBounds>();
 
   const toggleWindowSize = () => {
+    const fullPosition = { x: -window.innerWidth / 2, y: 32 };
+
     if (app.fullScreen) {
       if (app.position.x === -window.innerWidth / 2 && app.position.y === 32) {
         setPosition(app.name, prevPosition);
         setFullScreen(app.name, false);
       } else {
-        setPosition(app.name, { x: -window.innerWidth / 2, y: 32 });
+        setPosition(app.name, fullPosition);
       }
     } else {
       setFullScreen(app.name, true);
       setPrevPosition(app.position);
-      setPosition(app.name, { x: -window.innerWidth / 2, y: 32 });
+      setPosition(app.name, fullPosition);
     }
   };
 
@@ -56,7 +58,7 @@ function AppHeader({ app, headerColor, width }: AppHeaderProps) {
           !isDragging ? "transition-all duration-200" : "transition-none"
         }`}
         style={{
-          ...(!app.fullScreen ? { width } : { width: "100vw" }),
+          width: !app.fullScreen ? width : "100vw",
           backgroundColor: headerColor,
           zIndex: app.zIndex,
         }}
