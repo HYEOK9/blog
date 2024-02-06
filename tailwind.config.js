@@ -46,6 +46,7 @@ module.exports = {
         "blue-main": "var(--color-blue)",
         "night-shift": "rgb(255, 163, 57)",
         "white-transparent": "var(--color-white-transparent)",
+        "white-transparent-deep": "var(--color-white-transparent-deep)",
       },
       borderColor: {
         "button-red": "#e0443e",

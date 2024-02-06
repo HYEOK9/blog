@@ -19,6 +19,10 @@ div {
   margin: 0;
 }
 
+button {
+  cursor: url("../public/cursor.png"), auto;
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -26,6 +30,10 @@ a {
 .range {
   --range-shdw: #fff;
   cursor: unset;
+  &::-webkit-slider-thumb {
+    background-color: #fff !important;
+    border: 1px solid rgb(229, 231, 235);
+  }
 }
 
 * {
