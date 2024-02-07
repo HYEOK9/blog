@@ -25,7 +25,12 @@ function Memo() {
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  const openModal = () => setOpen(true);
+  const openModal = () => {
+    setOpen(true);
+    setTimeout(() => {
+      inputRef.current?.focus();
+    }, 100);
+  };
   const closeModal = () => setOpen(false);
 
   const lastKey = useMemo(
@@ -60,10 +65,6 @@ function Memo() {
       textAreaRef.current?.focus();
     }, 100);
   }, [setMemos, lastKey]);
-
-  useEffect(() => {
-    if (open) inputRef.current?.focus();
-  }, [open]);
 
   useEffect(() => {
     if (memos.some(({ key }) => key === showingMemoKey)) return;

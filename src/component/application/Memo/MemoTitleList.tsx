@@ -9,7 +9,7 @@ import AddMemo from "/public/icon/add-memo-icon.svg";
 import ListViewIcon from "/public/icon/list-view-icon.svg";
 import AppsIcon from "/public/icon/apps-icon.svg";
 import Trash from "/public/icon/trash.svg";
-import { ListView, SquareView } from "./View";
+import MemoTitleView from "./MemoTitleView";
 
 interface MemoTitleListProps {
   openModal: () => void;
@@ -64,22 +64,12 @@ function MemoTitleList({
       <div className="w-full overflow-scroll">
         {memos.map((memo) => (
           <React.Fragment key={memo.key}>
-            {view === "list" ? (
-              <>
-                <ListView
-                  memo={memo}
-                  showingMemoKey={showingMemoKey}
-                  setShowingMemoKey={setShowingMemoKey}
-                />
-                <Divider className="!w-11/12" />
-              </>
-            ) : (
-              <SquareView
-                memo={memo}
-                showingMemoKey={showingMemoKey}
-                setShowingMemoKey={setShowingMemoKey}
-              />
-            )}
+            <MemoTitleView
+              type={view}
+              memo={memo}
+              showingMemoKey={showingMemoKey}
+              setShowingMemoKey={setShowingMemoKey}
+            />
           </React.Fragment>
         ))}
       </div>
