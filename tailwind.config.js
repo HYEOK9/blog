@@ -54,6 +54,9 @@ module.exports = {
         "button-green": "#1aab29",
         "blue-main": "var(--color-blue)",
       },
+      aspectRatio: {
+        "4/3": "4 / 3",
+      },
       keyframes: {
         fullWidth: {
           "0%": { width: 0 },

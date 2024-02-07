@@ -4,24 +4,24 @@ import type { TMemo } from "./type";
 
 interface ViewProps {
   memo: TMemo;
-  showingMemoDate: string;
-  setShowingMemoDate: Dispatch<SetStateAction<string>>;
+  showingMemoKey: number;
+  setShowingMemoKey: Dispatch<SetStateAction<number>>;
 }
 
 export function ListView({
   memo,
-  showingMemoDate,
-  setShowingMemoDate,
+  showingMemoKey,
+  setShowingMemoKey,
 }: ViewProps) {
-  const { date, title } = memo;
-  const active = date === showingMemoDate;
+  const { key, title, date } = memo;
+  const active = key === showingMemoKey;
 
   return (
     <div
-      className={`group flex flex-col justify-between w-full p-3 mt-1 rounded-md ${
-        active ? "bg-yellow-500 dark:bg-yellow-600" : ""
+      className={`group flex flex-col justify-between w-full p-3 rounded-md ${
+        active ? "bg-amber-200 dark:bg-yellow-600" : ""
       }`}
-      onClick={() => setShowingMemoDate(date)}
+      onClick={() => setShowingMemoKey(key)}
       role="presentation"
     >
       <span className="flex flex-col">{title} </span>
@@ -34,19 +34,19 @@ export function ListView({
 
 export function SquareView({
   memo,
-  showingMemoDate,
-  setShowingMemoDate,
+  showingMemoKey,
+  setShowingMemoKey,
 }: ViewProps) {
-  const { date, title } = memo;
-  const active = date === showingMemoDate;
+  const { key, title, date } = memo;
+  const active = key === showingMemoKey;
 
   return (
     <div className="flex flex-col w-full items-center mt-3">
       <div
-        className={`w-full aspect-square mb-1 rounded-md border-[3px] border-transparent bg-white dark:bg-[var(--color-navy)] overflow-hidden ${
+        className={`w-full aspect-4/3 mb-1 rounded-xl border-2 border-transparent bg-white dark:bg-[var(--color-navy)] overflow-hidden ${
           active ? "border-yellow-500" : ""
         }`}
-        onClick={() => setShowingMemoDate(date)}
+        onClick={() => setShowingMemoKey(key)}
         role="presentation"
       >
         <p className="w-full p-3 text-xs">{memo.content}</p>

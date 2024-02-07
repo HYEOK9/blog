@@ -16,7 +16,9 @@ export default function Divider({
   width = 0.5,
 }: DividerProps) {
   return (
-    <div className={`flex ${vertical ? "h" : "w"}-full justify-center`}>
+    <div
+      className={`flex ${vertical ? "w-fit h" : "h-fit w"}-full justify-center`}
+    >
       <div
         className={`bg-slate-500 ${className} self-center`}
         style={{

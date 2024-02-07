@@ -13,14 +13,14 @@ import { ListView, SquareView } from "./View";
 
 interface MemoTitleListProps {
   openModal: () => void;
-  showingMemoDate: string;
-  setShowingMemoDate: React.Dispatch<React.SetStateAction<string>>;
+  showingMemoKey: number;
+  setShowingMemoKey: React.Dispatch<React.SetStateAction<number>>;
 }
 
 function MemoTitleList({
   openModal,
-  showingMemoDate,
-  setShowingMemoDate,
+  showingMemoKey,
+  setShowingMemoKey,
 }: MemoTitleListProps) {
   const [memos, setMemos] = useLocalStorage<TMemo[]>("memo", []);
   const [view, setView] = useState<"list" | "square">("list");
@@ -34,17 +34,15 @@ function MemoTitleList({
         key: "remove",
         Component: Trash,
         onClick: () =>
-          setMemos((prev) =>
-            prev.filter(({ date }) => date !== showingMemoDate)
-          ),
+          setMemos((prev) => prev.filter(({ key }) => key !== showingMemoKey)),
       },
     ],
-    [openModal, setMemos, showingMemoDate]
+    [openModal, setMemos, showingMemoKey]
   );
 
   return (
-    <div className="flex flex-col items-center w-52 shrink-0 py-5 px-3 overflow-scroll">
-      <div className="flex w-4/5 justify-between mb-4">
+    <div className="flex flex-col items-center w-52 shrink-0 py-5 px-3">
+      <div className="flex w-4/5 justify-between pb-4">
         {memoTopIcons.map(({ key, Component, onClick }) => (
           <button
             key={key}
@@ -61,23 +59,25 @@ function MemoTitleList({
         ))}
       </div>
 
-      <div className="w-full">
+      <Divider className="p-[0.5px]" />
+
+      <div className="w-full overflow-scroll">
         {memos.map((memo) => (
-          <React.Fragment key={memo.date}>
+          <React.Fragment key={memo.key}>
             {view === "list" ? (
               <>
                 <ListView
                   memo={memo}
-                  showingMemoDate={showingMemoDate}
-                  setShowingMemoDate={setShowingMemoDate}
+                  showingMemoKey={showingMemoKey}
+                  setShowingMemoKey={setShowingMemoKey}
                 />
                 <Divider className="!w-11/12" />
               </>
             ) : (
               <SquareView
                 memo={memo}
-                showingMemoDate={showingMemoDate}
-                setShowingMemoDate={setShowingMemoDate}
+                showingMemoKey={showingMemoKey}
+                setShowingMemoKey={setShowingMemoKey}
               />
             )}
           </React.Fragment>

@@ -1,9 +1,15 @@
-import React, { useEffect, useCallback, useRef, useState } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import dayjs from "dayjs";
 // hooks
 import { useLocalStorage } from "usehooks-ts";
 // types
-import { TMemo } from "./type";
+import type { TMemo } from "./type";
 // components
 import SingleBtnModal from "@component/modal/SingleBtnModal";
 import Divider from "@component/UI/Divider";
@@ -13,9 +19,8 @@ import EmptyMemo from "./EmptyMemo";
 function Memo() {
   const [memos, setMemos] = useLocalStorage<TMemo[]>("memo", []);
 
-  const [showingMemoDate, setShowingMemoDate] = useState(memos[0]?.date);
+  const [showingMemoKey, setShowingMemoKey] = useState(memos[0]?.key);
   const [open, setOpen] = useState(false);
-  const [newMemoTitle, setNewMemoTitle] = useState("");
 
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
@@ -23,35 +28,48 @@ function Memo() {
   const openModal = () => setOpen(true);
   const closeModal = () => setOpen(false);
 
+  const lastKey = useMemo(
+    () =>
+      memos.length
+        ? Math.max.apply(
+            null,
+            memos.map((prev) => prev.key)
+          )
+        : 0,
+    [memos]
+  );
+
+  const showingMemo = memos.filter(({ key }) => key === showingMemoKey)[0];
+
   const addMemo = useCallback(() => {
     const date = dayjs().format();
+    const key = lastKey + 1;
+
     setMemos((prev) => [
       {
-        title: newMemoTitle || `새로운 메모 ${memos.length + 1}`,
+        key,
+        title: inputRef.current.value || `새로운 메모 ${key}`,
         content: "",
         date,
       },
       ...prev,
     ]);
-    setShowingMemoDate(date);
+    setShowingMemoKey(key);
     closeModal();
     setTimeout(() => {
       textAreaRef.current?.focus();
     }, 100);
-  }, [memos, setMemos, newMemoTitle]);
+  }, [setMemos, lastKey]);
 
   useEffect(() => {
     if (open) inputRef.current?.focus();
-    else setNewMemoTitle("");
   }, [open]);
 
   useEffect(() => {
-    if (memos.some(({ date }) => date === showingMemoDate)) return;
+    if (memos.some(({ key }) => key === showingMemoKey)) return;
 
-    setShowingMemoDate(memos[0]?.date);
-  }, [memos, showingMemoDate]);
-
-  const showingMemo = memos.filter(({ date }) => date === showingMemoDate)[0];
+    setShowingMemoKey(memos[0]?.key);
+  }, [memos, showingMemoKey]);
 
   return (
     <div className="w-full h-full flex text-gray-900 dark:text-white">
@@ -59,14 +77,11 @@ function Memo() {
         <>
           <MemoTitleList
             openModal={openModal}
-            showingMemoDate={showingMemoDate}
-            setShowingMemoDate={setShowingMemoDate}
+            showingMemoKey={showingMemoKey}
+            setShowingMemoKey={setShowingMemoKey}
           />
 
-          <Divider
-            className="p-[0.5px] bg-gray-400 dark:bg-gray-950"
-            vertical
-          />
+          <Divider className="p-[0.5px] mt-10" vertical />
 
           <div className="w-full p-5">
             <textarea
@@ -75,7 +90,7 @@ function Memo() {
               onChange={({ target: { value } }) => {
                 setMemos((prev) =>
                   prev.map((prevMemo) => {
-                    if (prevMemo.date !== showingMemoDate) return prevMemo;
+                    if (prevMemo.key !== showingMemoKey) return prevMemo;
                     return { ...prevMemo, content: value };
                   })
                 );
@@ -97,14 +112,14 @@ function Memo() {
         className="text-black dark:text-white"
       >
         <input
-          className="w-3/4 h-10 p-1 bg-transparent outline-none border-b-[1px] border-slate-600 dark:caret-white"
+          className="w-3/4 h-10 p-1 bg-transparent outline-none border-b-[1px] border-slate-600 dark:caret-white cursor-text"
           ref={inputRef}
-          onChange={({ target: { value } }) => setNewMemoTitle(value)}
           onKeyDown={(e) => {
-            if (e.key !== "Enter") return;
-            addMemo();
+            if (e.key === "Enter") {
+              addMemo();
+            }
           }}
-          placeholder={`새로운 메모 ${memos.length + 1}`}
+          placeholder={`새로운 메모 ${lastKey + 1}`}
         />
       </SingleBtnModal>
     </div>

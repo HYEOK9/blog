@@ -1,4 +1,4 @@
-import { memo, ReactNode } from "react";
+import { memo, type ReactNode } from "react";
 // constants
 import { HOST, MAC_NAME, TERMINAL_PATH } from "@constant/ITerm";
 
@@ -21,7 +21,7 @@ function CommandLine({ children, time }: CommandLineProps) {
         {time && <span className="text-sm text-gray-300">[ {time} ]</span>}
       </div>
 
-      <div className="flex text-gray-300">
+      <div className="text-gray-300">
         <span className="font-semibold">{`>`}&nbsp;&nbsp;</span>
         <span className="text-green-500">$&nbsp;&nbsp;</span>
         {children}
