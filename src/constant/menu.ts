@@ -193,5 +193,14 @@ export const MEMO_CONTEXT_MENU = [
   { title: "삭제", valid: true },
 ] as const;
 
+export const DISPLAYS = [
+  "Apple XDR Display (P3-1600 nits)",
+  "Apple Display (P3-500 nits)",
+  "HDR Video (P3-ST 2084)",
+  "HDTV Video (BT.709-BT.1886)",
+  "NTSC Video (BT.601 SMPTE-C)",
+  "PAL & SECAM Video (BT.601 EBU)",
+] as const;
+
 export const MENU_DATE_FORMAT = "M월 D일 (ddd) A h:mm" as const;
 export const DATE_LOCALE = "ko" as const;

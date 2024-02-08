@@ -35,6 +35,20 @@ a {
     border: 1px solid rgb(229, 231, 235);
   }
 }
+.collapse {
+  border-radius: 0;
+}
+
+.collapse > input[type="checkbox"],
+.collapse-title {
+  padding: 0;
+  min-height: 0px;
+}
+.collapse:not(.collapse-close)
+  > :where(input[type="checkbox"]:checked ~ .collapse-content) {
+  padding: 0.25rem 0;
+  margin-bottom: 0.75rem;
+}
 
 * {
   box-sizing: border-box;

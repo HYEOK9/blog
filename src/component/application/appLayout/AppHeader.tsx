@@ -55,7 +55,7 @@ function AppHeader({ app, headerColor, width }: AppHeaderProps) {
     >
       <div
         className={`flex absolute h-10 p-2 items-center bg-gray-300 dark:bg-navy-600 rounded-t-xl border border-slate-600 border-b-0 ${
-          !isDragging ? "transition-all duration-200" : "transition-none"
+          !isDragging ? "transition-all duration-300" : "transition-none"
         }`}
         style={{
           width: !app.fullScreen ? width : "100vw",

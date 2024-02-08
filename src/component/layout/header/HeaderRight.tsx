@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from "react";
 // components
 import DisplayIcon from "/public/icon/mac-display.svg";
 import Date from "@component/UI/Date";
-import SetDisplay from "@component/modal/SetDisplayModal";
+import SetDisplayModal from "@component/modal/SetDisplayModal";
 
 export default function MenuRight() {
   const [show, setShow] = useState(false);
@@ -30,7 +30,7 @@ export default function MenuRight() {
         <DisplayIcon className="w-5 h-5 dark:fill-white mr-3" />
         <Date />
       </div>
-      <SetDisplay show={show} setShow={setShow} />
+      <SetDisplayModal show={show} setShow={setShow} />
     </div>
   );
 }

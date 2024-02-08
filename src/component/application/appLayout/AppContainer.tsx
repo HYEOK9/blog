@@ -49,7 +49,7 @@ export default function AppContainer({
       <AppHeader app={app} headerColor={backgroundColor} width={width} />
       <div
         className={`absolute top-8 overflow-hidden rounded-b-xl bg-gray-300 dark:bg-navy-600 border border-slate-600 border-t-0 ${
-          !isDragging ? "transition-all duration-200" : "transition-none"
+          !isDragging ? "transition-all duration-300" : "transition-none"
         }`}
         style={{
           ...(!app.fullScreen

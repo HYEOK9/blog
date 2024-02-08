@@ -26,10 +26,10 @@ export default function MenuItem({
       className={`relative py-1.5 px-3 rounded ${
         valid
           ? "text-gray-900 dark:text-white"
-          : "text-gray-500 dark:text-gray-500"
+          : "text-gray-500 dark:text-gray-400"
       } text-start whitespace-nowrap`}
       style={{
-        ...(active && { backgroundColor }),
+        ...(active && { backgroundColor, color: "#fff" }),
         ...style,
       }}
       onMouseEnter={() => {

@@ -4,7 +4,7 @@ body {
   --color-blue: #0a85ff;
   --color-white-transparent: rgba(255, 255, 255, 0.1);
   --color-white-transparent-deep: rgba(255, 255, 255, 0.15);
-  --color-navy: rgba(52, 52, 66, 0.8);
+  --color-navy: rgba(52, 52, 66, 0.65);
   --color-navy-deep: rgb(40, 40, 51);
-  --color-navy-light: rgba(52, 52, 66, 0.4);
+  --color-navy-light: rgba(52, 52, 66, 0.3);
 }
