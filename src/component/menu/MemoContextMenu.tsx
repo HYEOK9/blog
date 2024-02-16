@@ -1,22 +1,30 @@
-import { useState, useEffect, useRef, useCallback, RefObject } from "react";
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  type RefObject,
+} from "react";
 // constants
 import { MEMO_CONTEXT_MENU } from "@constant/menu";
 // types
 import type { position } from "@store/cursorStore";
 // components
 import MemoSubMenuModal from "@component/modal/MemoSubMenuModal";
+import { memoStore } from "@store/memoStore";
 
 interface MemoContextMenuProps {
+  memoKey: number;
   parentRef: RefObject<HTMLDivElement>;
   openModal: () => void;
-  deleteMemo: () => void;
 }
 
 export default function MemoContextMenu({
+  memoKey,
   parentRef,
   openModal,
-  deleteMemo,
 }: MemoContextMenuProps) {
+  const { setCurMemo, removeMemo } = memoStore();
   const [rightClicked, setRightClicked] = useState(false);
   const [startPosition, setStartPosition] = useState<position>(null);
   const ref = useRef<HTMLDivElement>(null);
@@ -28,11 +36,11 @@ export default function MemoContextMenu({
         setRightClicked(false);
         return;
       }
-
+      setCurMemo(memoKey);
       setRightClicked(true);
       setStartPosition({ x: e.clientX, y: e.clientY });
     },
-    [setRightClicked, parentRef]
+    [setRightClicked, parentRef, memoKey, setCurMemo]
   );
 
   const leftClick = () => {
@@ -45,7 +53,7 @@ export default function MemoContextMenu({
     if (title === "이름 변경") {
       openModal();
     } else if (title === "삭제") {
-      deleteMemo();
+      removeMemo(memoKey);
     }
   };
 

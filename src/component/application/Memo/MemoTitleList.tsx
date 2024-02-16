@@ -1,8 +1,6 @@
-import React, { useMemo, useState } from "react";
-// hooks
-import { useLocalStorage } from "usehooks-ts";
-// types
-import type { TMemo } from "./type";
+import React, { useState, useMemo } from "react";
+// store
+import { memoStore } from "@store/memoStore";
 // components
 import Divider from "@component/UI/Divider";
 import AddMemo from "/public/icon/add-memo-icon.svg";
@@ -13,17 +11,12 @@ import MemoTitleView from "./MemoTitleView";
 
 interface MemoTitleListProps {
   openModal: () => void;
-  showingMemoKey: number;
-  setShowingMemoKey: React.Dispatch<React.SetStateAction<number>>;
 }
 
-function MemoTitleList({
-  openModal,
-  showingMemoKey,
-  setShowingMemoKey,
-}: MemoTitleListProps) {
-  const [memos, setMemos] = useLocalStorage<TMemo[]>("memo", []);
+function MemoTitleList({ openModal }: MemoTitleListProps) {
   const [view, setView] = useState<"list" | "square">("list");
+
+  const { memos, curMemoKey, removeMemo } = memoStore();
 
   const memoTopIcons = useMemo(
     () => [
@@ -33,11 +26,10 @@ function MemoTitleList({
       {
         key: "remove",
         Component: Trash,
-        onClick: () =>
-          setMemos((prev) => prev.filter(({ key }) => key !== showingMemoKey)),
+        onClick: () => removeMemo(curMemoKey),
       },
     ],
-    [openModal, setMemos, showingMemoKey]
+    [openModal, curMemoKey, removeMemo]
   );
 
   return (
@@ -64,12 +56,7 @@ function MemoTitleList({
       <div className="w-full overflow-scroll">
         {memos.map((memo) => (
           <React.Fragment key={memo.key}>
-            <MemoTitleView
-              type={view}
-              memo={memo}
-              showingMemoKey={showingMemoKey}
-              setShowingMemoKey={setShowingMemoKey}
-            />
+            <MemoTitleView type={view} memo={memo} />
           </React.Fragment>
         ))}
       </div>

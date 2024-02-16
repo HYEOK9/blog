@@ -1,15 +1,6 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  useCallback,
-} from "react";
-import dayjs from "dayjs";
-// hooks
-import { useLocalStorage } from "usehooks-ts";
-// types
-import type { TMemo } from "./type";
+import { useState, useEffect, useRef, useCallback, memo } from "react";
+// store
+import { memoStore } from "@store/memoStore";
 // components
 import SingleBtnModal from "@component/modal/SingleBtnModal";
 import Divider from "@component/UI/Divider";
@@ -17,13 +8,19 @@ import MemoTitleList from "./MemoTitleList";
 import EmptyMemo from "./EmptyMemo";
 
 function Memo() {
-  const [memos, setMemos] = useLocalStorage<TMemo[]>("memo", []);
-
-  const [showingMemoKey, setShowingMemoKey] = useState(memos[0]?.key);
   const [open, setOpen] = useState(false);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const { memos, setCurMemo, curMemoKey, addMemo, changeContent } = memoStore();
+
+  const lastKey = memos.length
+    ? Math.max.apply(
+        null,
+        memos.map(({ key }) => key)
+      )
+    : 0;
 
   const openModal = () => {
     setOpen(true);
@@ -33,54 +30,29 @@ function Memo() {
   };
   const closeModal = () => setOpen(false);
 
-  const lastKey = useMemo(
-    () =>
-      memos.length
-        ? Math.max.apply(
-            null,
-            memos.map((prev) => prev.key)
-          )
-        : 0,
-    [memos]
-  );
-
-  const showingMemo = memos.filter(({ key }) => key === showingMemoKey)[0];
-
-  const addMemo = useCallback(() => {
-    const date = dayjs().format();
-    const key = lastKey + 1;
-
-    setMemos((prev) => [
-      {
-        key,
-        title: inputRef.current.value || `새로운 메모 ${key}`,
-        content: "",
-        date,
-      },
-      ...prev,
-    ]);
-    setShowingMemoKey(key);
+  const add = useCallback(() => {
+    addMemo(inputRef.current?.value || `새로운 메모 ${lastKey + 1}`);
     closeModal();
     setTimeout(() => {
       textAreaRef.current?.focus();
     }, 100);
-  }, [setMemos, lastKey]);
+  }, [addMemo, lastKey]);
 
   useEffect(() => {
-    if (memos.some(({ key }) => key === showingMemoKey)) return;
+    if (memos.some(({ key }) => key === curMemoKey)) return;
 
-    setShowingMemoKey(memos[0]?.key);
-  }, [memos, showingMemoKey]);
+    setCurMemo(memos[0]?.key);
+  }, [memos, curMemoKey, setCurMemo]);
+
+  useEffect(() => () => setCurMemo(null), [setCurMemo]);
+
+  const showingMemo = memos.filter(({ key }) => key === curMemoKey)[0];
 
   return (
     <div className="w-full h-full flex text-gray-900 dark:text-white">
       {memos.length ? (
         <>
-          <MemoTitleList
-            openModal={openModal}
-            showingMemoKey={showingMemoKey}
-            setShowingMemoKey={setShowingMemoKey}
-          />
+          <MemoTitleList openModal={openModal} />
 
           <Divider className="p-[0.5px] mt-10" vertical />
 
@@ -88,14 +60,9 @@ function Memo() {
             <textarea
               className="w-full h-full outline-none bg-transparent cursor-text dark:caret-white inline resize-none"
               value={showingMemo?.content}
-              onChange={({ target: { value } }) => {
-                setMemos((prev) =>
-                  prev.map((prevMemo) => {
-                    if (prevMemo.key !== showingMemoKey) return prevMemo;
-                    return { ...prevMemo, content: value };
-                  })
-                );
-              }}
+              onChange={({ target: { value } }) =>
+                changeContent(showingMemo.key, value)
+              }
               ref={textAreaRef}
             />
           </div>
@@ -108,7 +75,7 @@ function Memo() {
         open={open}
         onClose={closeModal}
         btnText="확인"
-        btnHandler={addMemo}
+        btnHandler={add}
         closeOnClickOutside
         className="text-black dark:text-white"
       >
@@ -117,7 +84,9 @@ function Memo() {
           ref={inputRef}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              addMemo();
+              add();
+            } else if (e.key === "Escape") {
+              closeModal();
             }
           }}
           placeholder={`새로운 메모 ${lastKey + 1}`}
@@ -127,4 +96,4 @@ function Memo() {
   );
 }
 
-export default React.memo(Memo);
+export default memo(Memo);

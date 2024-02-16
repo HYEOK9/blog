@@ -1,9 +1,7 @@
-import { useState, useRef, type Dispatch, type SetStateAction } from "react";
+import { useState, useRef } from "react";
 import dayjs from "dayjs";
-// hooks
-import { useLocalStorage } from "usehooks-ts";
-// types
-import type { TMemo } from "./type";
+// store
+import { memoStore, type TMemo } from "@store/memoStore";
 // components
 import MemoContextMenu from "@component/menu/MemoContextMenu";
 import ModalPortal from "@component/modal/portal";
@@ -13,19 +11,14 @@ import Divider from "@component/UI/Divider";
 interface MemoTitleViewProps {
   type: "list" | "square";
   memo: TMemo;
-  showingMemoKey: number;
-  setShowingMemoKey: Dispatch<SetStateAction<number>>;
 }
 
-export default function MemoTitleView({
-  type,
-  memo,
-  showingMemoKey,
-  setShowingMemoKey,
-}: MemoTitleViewProps) {
+export default function MemoTitleView({ type, memo }: MemoTitleViewProps) {
+  const { curMemoKey, setCurMemo, renameMemo } = memoStore();
+
   const { key, title, date } = memo;
-  const active = key === showingMemoKey;
-  const [, setMemos] = useLocalStorage<TMemo[]>("memo", []);
+
+  const active = key === curMemoKey;
 
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -39,22 +32,14 @@ export default function MemoTitleView({
   };
   const closeModal = () => setOpen(false);
 
-  const renameMemo = () => {
-    setMemos((prev) =>
-      prev.map((prevMemo) => {
-        if (prevMemo.key !== key) return prevMemo;
-        return {
-          ...prevMemo,
-          title: inputRef.current?.value || prevMemo.title,
-        };
-      })
-    );
+  const changeCurMemo = () => setCurMemo(memo.key);
+
+  const rename = () => {
+    renameMemo(memo.key, inputRef.current?.value);
     closeModal();
   };
 
-  const deleteMemo = () => {
-    setMemos((prev) => prev.filter(({ key: memoKey }) => memoKey !== key));
-  };
+  const dateString = dayjs(date).format("YYYY년 M월 D일");
 
   return (
     <>
@@ -64,14 +49,12 @@ export default function MemoTitleView({
             className={`group flex flex-col justify-between w-full p-3 rounded-md ${
               active ? "bg-amber-200 dark:bg-yellow-600" : ""
             }`}
-            onClick={() => setShowingMemoKey(key)}
+            onClick={changeCurMemo}
             ref={ref}
             role="presentation"
           >
             <span className="flex flex-col">{title} </span>
-            <span className="text-xs pt-0.5">
-              {dayjs(date).format("YYYY년 M월 D일")}
-            </span>
+            <span className="text-xs pt-0.5">{dateString}</span>
           </div>
           <Divider className="!w-11/12" />
         </>
@@ -81,25 +64,23 @@ export default function MemoTitleView({
             className={`w-full aspect-4/3 mb-1 rounded-xl border-2 border-transparent bg-white dark:bg-[var(--color-navy)] overflow-hidden ${
               active ? "border-yellow-500" : ""
             }`}
-            onClick={() => setShowingMemoKey(key)}
+            onClick={changeCurMemo}
             role="presentation"
             ref={ref}
           >
             <p className="w-full p-3 text-xs">{memo.content}</p>
           </div>
           <span className="text-xs">{title}</span>
-          <span className="text-xs text-gray-500">
-            {dayjs(date).format("YYYY년 M월 D일")}
-          </span>
+          <span className="text-xs text-gray-500">{dateString}</span>
         </div>
       )}
 
       <ModalPortal>
         <MemoContextMenu
           key={key}
+          memoKey={key}
           parentRef={ref}
           openModal={openModal}
-          deleteMemo={deleteMemo}
         />
       </ModalPortal>
 
@@ -107,7 +88,7 @@ export default function MemoTitleView({
         open={open}
         onClose={closeModal}
         btnText="확인"
-        btnHandler={renameMemo}
+        btnHandler={rename}
         closeOnClickOutside
         className="text-black dark:text-white"
       >
@@ -116,7 +97,9 @@ export default function MemoTitleView({
           ref={inputRef}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
-              renameMemo();
+              rename();
+            } else if (e.key === "Escape") {
+              closeModal();
             }
           }}
           placeholder={title}
