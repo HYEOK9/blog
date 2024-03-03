@@ -34,6 +34,7 @@ module.exports = {
         loading: 9999,
       },
       textColor: { "blue-main": "var(--color-blue)" },
+      backgroundSize: { full: "100% 100%" },
       backgroundColor: {
         "light-bg": "rgba(255,255,255,0.7)",
         "header-dark": "rgba(27,27,29,0.3)",
