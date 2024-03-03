@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, memo, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useRef, memo } from "react";
 // store
 import { backgroundStore } from "@store/backgroundStore";
 // constants
@@ -16,12 +16,13 @@ function Background() {
 
   useLayoutEffect(() => {
     const storedValue = window.localStorage.getItem("background");
+
     if (storedValue) {
       setImage(JSON.parse(storedValue));
     }
   }, [setImage]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const img = new Image();
     img.src = src;
 
