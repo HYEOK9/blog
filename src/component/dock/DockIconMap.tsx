@@ -1,13 +1,13 @@
-import { forwardRef, memo, ForwardedRef } from "react";
+import { forwardRef, memo, type ForwardedRef } from "react";
 // image
 import FinderIcon from "/public/application/finder.png";
 import ChromeIcon from "/public/application/chrome.png";
 import ITermIcon from "/public/application/iTerm.png";
 import VscodeIcon from "/public/application/vscode.png";
 import MemoIcon from "/public/application/memo.png";
+import Cat from "/public/application/cute.png";
 import GithubIcon from "/public/application/github.png";
 import VelogIcon from "/public/application/velog.png";
-import Cat from "/public/application/cute.png";
 // constants
 import {
   DOCK_GITHUB_URL,

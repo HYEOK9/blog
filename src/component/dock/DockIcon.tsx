@@ -1,4 +1,4 @@
-import { forwardRef, ForwardedRef } from "react";
+import { forwardRef, type ForwardedRef } from "react";
 import Image, { type StaticImageData } from "next/image";
 // store
 import { appStore } from "@store/appStore";
@@ -18,15 +18,16 @@ function DockIcon(
   const { isDragging } = cursorStore();
 
   return (
-    <div className="relative w-16 h-16 group hover:!mx-3 transition-all origin-bottom">
+    <div
+      ref={ref}
+      className="relative w-auto h-16 origin-bottom aspect-square group"
+    >
       {title && !isDragging && (
-        <span className="absolute -top-20 left-1/2 -translate-x-1/2 py-1 px-2 bg-light-bg dark:bg-navy-500 text-sm text-center text-black dark:text-white rounded border border-gray-700 whitespace-nowrap invisible group-hover:visible">
+        <span className="absolute -top-10 left-1/2 -translate-x-1/2 py-1 px-2 bg-light-bg dark:bg-navy-500 text-sm text-center text-black dark:text-white rounded border border-gray-700 whitespace-nowrap invisible group-hover:visible">
           {title}
         </span>
       )}
       <Image
-        className="transition-all"
-        ref={ref}
         src={src}
         alt={src.src}
         fill

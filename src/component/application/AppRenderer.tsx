@@ -1,4 +1,4 @@
-import { memo, ForwardedRef, forwardRef } from "react";
+import { memo, forwardRef, type ForwardedRef } from "react";
 // store
 import { IApp, appStore } from "@store/appStore";
 // constants

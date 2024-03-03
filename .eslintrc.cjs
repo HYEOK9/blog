@@ -37,6 +37,8 @@ module.exports = {
     "consistent-return": "off",
     "no-unused-expressions": "off",
     "jsx-a11y/control-has-associated-label": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "prefer-const": "off",
     "no-param-reassign": [
       "error",
       {

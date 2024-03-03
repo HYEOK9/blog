@@ -5,8 +5,8 @@ import { appStore } from "@store/appStore";
 import { menuStore } from "@store/menuStore";
 import { cursorStore } from "@store/cursorStore";
 // components
-import Header from "@component/layout/header/Header";
-import Dock from "@component/dock/Dock";
+import Header from "@component/layout/header";
+import Dock from "@component/dock";
 import Background from "@component/layout/Background";
 import AppRenderer from "@component/application/AppRenderer";
 
