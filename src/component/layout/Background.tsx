@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, useLayoutEffect, memo } from "react";
 // store
 import { backgroundStore } from "@store/backgroundStore";
 // constants
@@ -22,7 +22,7 @@ function Background() {
     }
   }, [setImage]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     const img = new Image();
     img.src = src;
 
