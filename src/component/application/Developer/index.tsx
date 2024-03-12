@@ -12,7 +12,7 @@ import {
   GITHUB_URL,
   HOSPITAL_EVENT_URL,
 } from "@constant/link";
-import { EMAIL, PHONE_NO } from "@constant/info";
+import { EMAIL, PHONE_NO, EXPERIENCE } from "@constant/info";
 // components
 import IntroduceWithTitle from "./IntroduceWithTitle";
 import Stack from "./Stack";
@@ -21,13 +21,13 @@ import ArrowLeftDouble from "/public/icon/ArrowLeftDouble.svg";
 
 function Developer() {
   const handleDownload = async () => {
-    const res = await fetch(`${process.env.AWS_CLOUDFRONT_URL}/detail.pdf`);
+    const res = await fetch(`${process.env.AWS_CLOUDFRONT_URL}/projects.pdf`);
 
     const blob = await res.blob();
     const downloadURL = URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = downloadURL;
-    link.download = "detail.pdf";
+    link.download = "이재혁_projects.pdf";
     link.click();
     URL.revokeObjectURL(downloadURL);
   };
@@ -37,6 +37,16 @@ function Developer() {
       <h1 className="text-5xl mb-20">👋 Hi,&nbsp; there !</h1>
 
       <div className="flex flex-col items-center animate-bounce-twice">
+        <button
+          className="flex items-center mb-10 text-3xl cursor-pointer text-gray-600 dark:text-gray-400"
+          onClick={handleDownload}
+          type="button"
+        >
+          <ArrowRightDouble className="w-4 h-4 transition-all animate-right-left" />
+          Download Detail
+          <ArrowLeftDouble className="w-4 h-4 transition-all animate-left-right" />
+        </button>
+
         <IntroduceWithTitle title="PROFILE">
           <div className="flex flex-col">
             <h1 className="text-center">이재혁</h1>
@@ -48,18 +58,19 @@ function Developer() {
         <IntroduceWithTitle title="EXPERIENCE">
           <div className="flex flex-col">
             <span className="mb-2">
-              2018.03 ~&nbsp;&nbsp;&nbsp;&nbsp;now&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              :&nbsp;&nbsp;&nbsp;🏫 &nbsp;Kyung Hee University
+              {EXPERIENCE[0].period}&nbsp;&nbsp;:&nbsp;&nbsp;
+              {EXPERIENCE[0].name}
             </span>
+
             <span className="inline-flex items-center">
-              2022.12 ~ 2023.06&nbsp;&nbsp;:&nbsp;&nbsp;
+              {EXPERIENCE[1].period}&nbsp;&nbsp;:&nbsp;&nbsp;
               <Image
                 className="w-5 h-5 mr-0.5"
                 src={CashDocIcon}
                 alt="cashdoc"
                 priority
               />
-              &nbsp;Chunneung IT (cashdoc)
+              {EXPERIENCE[1].name}
             </span>
           </div>
         </IntroduceWithTitle>
@@ -87,15 +98,6 @@ function Developer() {
                 />
               </Link>
             </div>
-            <button
-              className="flex items-center mt-10 text-xs"
-              onClick={handleDownload}
-              type="button"
-            >
-              <ArrowRightDouble className="transition-all animate-right-left" />
-              CHECK DETAIL
-              <ArrowLeftDouble className="transition-all animate-left-right" />
-            </button>
           </div>
         </IntroduceWithTitle>
 
