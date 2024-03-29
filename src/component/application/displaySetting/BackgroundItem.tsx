@@ -23,6 +23,7 @@ export default function BackgroundItem({ image }: BackgroundItemProps) {
         onClick={() => setImage(image)}
         onLoad={() => setLoad(true)}
         priority
+        draggable={false}
       />
       <span>{image.name}</span>
     </div>

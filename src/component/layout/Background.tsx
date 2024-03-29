@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef, useLayoutEffect, memo } from "react";
+import { useState, useRef, useLayoutEffect, memo } from "react";
 // store
-import { backgroundStore } from "@store/backgroundStore";
+import { backgroundState, backgroundStore } from "@store/backgroundStore";
 // constants
 import { backgroundList } from "@constant/background";
 // components
@@ -15,16 +15,16 @@ function Background() {
   const { src, setImage } = backgroundStore();
 
   useLayoutEffect(() => {
-    const storedValue = window.localStorage.getItem("background");
-
-    if (storedValue) {
-      setImage(JSON.parse(storedValue));
-    }
-  }, [setImage]);
-
-  useEffect(() => {
     const img = new Image();
-    img.src = src;
+    const localImage = JSON.parse(localStorage.getItem("background"))
+      .state as backgroundState;
+
+    if (localImage.src !== src) {
+      setImage(localImage);
+      img.src = localImage.src;
+    } else {
+      img.src = src;
+    }
 
     img.onload = () => {
       bgRef.current.style.backgroundImage = `url(${img.src})`;
