@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 // store
 import { menuStore } from "@store/menuStore";
-import { cursorStore, position } from "@store/cursorStore";
+import { cursorStore, type position } from "@store/cursorStore";
 // constants
 import { CONTEXT_MENU } from "@constant/menu";
 // components

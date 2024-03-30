@@ -5,13 +5,14 @@ import {
   useCallback,
   type RefObject,
 } from "react";
-// constants
-import { MEMO_CONTEXT_MENU } from "@constant/menu";
+// store
+import { memoStore } from "@store/memoStore";
 // types
 import type { position } from "@store/cursorStore";
+// constants
+import { MEMO_CONTEXT_MENU } from "@constant/menu";
 // components
 import MemoSubMenuModal from "@component/modal/MemoSubMenuModal";
-import { memoStore } from "@store/memoStore";
 
 interface MemoContextMenuProps {
   memoKey: number;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 // types
-import { IStyleObject } from "@@types/style";
+import type { IStyleObject } from "@@types/style";
 // store
 import { menuStore } from "@store/menuStore";
 // components

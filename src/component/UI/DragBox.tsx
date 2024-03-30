@@ -2,11 +2,11 @@ import { useState, useEffect, useCallback, memo } from "react";
 // store
 import { cursorStore, position } from "@store/cursorStore";
 // types
-import { IStyleObject } from "@@types/style";
+import type { IStyleObject } from "@@types/style";
 // lib
 import { setVertex } from "@lib/setDragBoxVertex";
 
-type Tquadrant = {
+type TQuadrant = {
   top?: number;
   bottom?: number;
   left?: number;
@@ -35,7 +35,7 @@ function DragBox() {
     height: 0,
   });
   const [startPosition, setStartPosition] = useState<position>(null);
-  const [quadrant, setQuadrant] = useState<Tquadrant>(null);
+  const [quadrant, setQuadrant] = useState<TQuadrant>(null);
 
   const startDragging = useCallback(
     (e: MouseEvent) => {

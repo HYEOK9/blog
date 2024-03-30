@@ -1,6 +1,6 @@
 import { useState, useRef, useLayoutEffect, memo } from "react";
 // store
-import { backgroundState, backgroundStore } from "@store/backgroundStore";
+import { backgroundStore, type backgroundState } from "@store/backgroundStore";
 // constants
 import { backgroundList } from "@constant/background";
 // components
