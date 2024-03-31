@@ -14,7 +14,7 @@ function DockIcon(
   { src, title, onClick }: IconProps,
   ref: ForwardedRef<HTMLImageElement>
 ) {
-  const { openApp, setCurApp, allApps } = appStore();
+  const { openApp, allApps } = appStore();
   const { isDragging } = cursorStore();
 
   return (
@@ -35,12 +35,10 @@ function DockIcon(
         onClick={() => {
           if (title === "Finder") {
             openApp("Display Setting");
-            setCurApp("Display Setting");
             return;
           }
           onClick?.();
           openApp(title);
-          setCurApp(title);
         }}
         priority
       />

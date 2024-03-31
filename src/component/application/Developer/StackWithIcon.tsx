@@ -1,4 +1,4 @@
-import { StaticImageData } from "next/image";
+import type { StaticImageData } from "next/image";
 import StackIcon from "@component/UI/StackIcon";
 
 interface StackWithIconProps {

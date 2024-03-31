@@ -1,4 +1,4 @@
-import Image, { StaticImageData } from "next/image";
+import Image, { type StaticImageData } from "next/image";
 // constants
 import { OPEN_WINDOW_CONFIG } from "@constant/link";
 

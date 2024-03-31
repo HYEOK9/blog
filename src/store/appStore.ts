@@ -58,7 +58,7 @@ export const appStore = create<appState & setAppState>((set) => ({
 
       return {
         ...prev,
-        curApp: prev.allApps.find(({ name }) => name === appName)?.name,
+        curApp: appName,
         allApps: prev.allApps.map((app) =>
           app.name === appName ? { ...app, zIndex } : app
         ),
