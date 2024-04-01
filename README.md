@@ -1,5 +1,8 @@
 # [Blog](https://blog-hyeok9.vercel.app)
 
+[![image](https://github.com/HYEOK9/blog/assets/87190744/60687b9c-f94f-43ad-a1b4-fdeaf262530d)](https://blog-hyeok9.vercel.app)
+
+
 ## development
 
 1. 개발 기기의 dns에 ```local.hyeok9.com```를 추가한다.
