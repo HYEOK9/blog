@@ -31,9 +31,9 @@ function DragBox() {
     rightClicked,
     setRightClicked,
   } = cursorStore();
-  const [size, setSize] = useState<TSize>({ width: 0, height: 0 });
+  const [size, setSize] = useState<TSize | null>({ width: 0, height: 0 });
   const [startPosition, setStartPosition] = useState<TPosition>(null);
-  const [quadrant, setQuadrant] = useState<TQuadrant>(null);
+  const [quadrant, setQuadrant] = useState<TQuadrant | null>(null);
 
   const startDragging = useCallback(
     (e: MouseEvent) => {

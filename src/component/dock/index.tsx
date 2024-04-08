@@ -11,7 +11,7 @@ function Dock() {
   const aniIdRef = useRef<number | null>(null);
 
   const updateHeight = useCallback((nextHeights: number[]) => {
-    window.cancelAnimationFrame(aniIdRef.current);
+    if (aniIdRef.current) window.cancelAnimationFrame(aniIdRef.current);
 
     aniIdRef.current = null;
     let isAllDone = true;
@@ -44,9 +44,11 @@ function Dock() {
 
   useEffect(() => {
     const mouseMove = (e: MouseEvent) => {
+      if (!dockRef.current) return;
+
       const dockLeft = dockRef.current.getBoundingClientRect().left;
       const x = e.clientX - dockLeft;
-      const nextHeights = [];
+      const nextHeights: number[] = [];
 
       iconRef.current.forEach((item) => {
         const rect = item.getBoundingClientRect();
@@ -60,18 +62,18 @@ function Dock() {
     };
 
     const mouseLeave = () => {
-      const nextHeights = [];
+      const nextHeights: number[] = [];
       iconRef.current.forEach(() => {
         nextHeights.push(MIN_HEIGHT);
       });
       updateHeight(nextHeights);
     };
 
-    dockRef.current.addEventListener("mousemove", mouseMove);
-    dockRef.current.addEventListener("mouseleave", mouseLeave);
+    dockRef.current?.addEventListener("mousemove", mouseMove);
+    dockRef.current?.addEventListener("mouseleave", mouseLeave);
     return () => {
-      dockRef.current.removeEventListener("mousemove", mouseMove);
-      dockRef.current.removeEventListener("mouseleave", mouseLeave);
+      dockRef.current?.removeEventListener("mousemove", mouseMove);
+      dockRef.current?.removeEventListener("mouseleave", mouseLeave);
     };
   }, [updateHeight]);
 

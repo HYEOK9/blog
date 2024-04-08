@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import type { ControlPosition } from "react-draggable";
 
-export type TPosition = ControlPosition;
+export type TPosition = ControlPosition | null;
 
 interface cursorState {
   cursorPosition: TPosition;

@@ -6,12 +6,12 @@ export interface IApp {
   open: boolean;
   hide: boolean;
   zIndex: number;
-  position: ControlPosition;
+  position: ControlPosition | undefined;
   fullScreen: boolean;
 }
 
 interface appState {
-  curApp: string | null;
+  curApp: string;
   allApps: IApp[];
 }
 
@@ -20,7 +20,7 @@ interface setAppState {
   openApp: (appName: string) => void;
   closeApp: (appName: string) => void;
   hideApp: (appName: string) => void;
-  setPosition: (appName: string, position: ControlPosition) => void;
+  setPosition: (appName: string, position: IApp["position"]) => void;
   setFullScreen: (appName: string, value: boolean) => void;
 }
 
@@ -28,7 +28,7 @@ const defaultState = {
   open: false,
   hide: false,
   zIndex: 21,
-  position: null,
+  position: undefined,
   fullScreen: false,
 };
 

@@ -23,7 +23,7 @@ function AppHeader({ app, headerColor, width }: AppHeaderProps) {
     const fullPosition = { x: -window.innerWidth / 2, y: 32 };
 
     if (app.fullScreen) {
-      if (app.position.x === -window.innerWidth / 2 && app.position.y === 32) {
+      if (app.position?.x === -window.innerWidth / 2 && app.position.y === 32) {
         setPosition(app.name, prevPosition);
         setFullScreen(app.name, false);
       } else {

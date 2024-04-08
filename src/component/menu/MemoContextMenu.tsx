@@ -33,7 +33,7 @@ export default function MemoContextMenu({
   const handleContextMenu = useCallback(
     (e: MouseEvent) => {
       e.preventDefault();
-      if (!parentRef.current.contains(e.target as Element)) {
+      if (!parentRef.current?.contains(e.target as Element)) {
         setRightClicked(false);
         return;
       }

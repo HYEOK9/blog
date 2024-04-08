@@ -26,7 +26,10 @@ function MemoTitleList({ openModal }: MemoTitleListProps) {
       {
         key: "remove",
         Component: Trash,
-        onClick: () => removeMemo(curMemoKey),
+        onClick: () => {
+          if (!curMemoKey) return;
+          removeMemo(curMemoKey);
+        },
       },
     ],
     [openModal, curMemoKey, removeMemo]
