@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 // constants
 import {
   META_DESCRIPTION,
@@ -20,7 +20,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       className="dark"
       style={{ backgroundColor: "rgb(40, 40, 51)" }}
     >
-      <meta name="viewport" content="viewport-fit=cover" />
       <body>
         <div id="portal" />
         <main>{children}</main>
@@ -47,3 +46,9 @@ export async function generateMetadata() {
     },
   };
 }
+
+export const viewport: Viewport = {
+  width: -1,
+  initialScale: -1,
+  viewportFit: "cover",
+};
