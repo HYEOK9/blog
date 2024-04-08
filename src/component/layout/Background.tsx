@@ -16,7 +16,7 @@ function Background() {
 
   useLayoutEffect(() => {
     const img = new Image();
-    const localImage = JSON.parse(localStorage.getItem("background"))
+    const localImage = JSON.parse(localStorage.getItem("background") || "{}")
       .state as backgroundState;
 
     if (localImage.src !== src) {
@@ -27,7 +27,9 @@ function Background() {
     }
 
     img.onload = () => {
-      bgRef.current.style.backgroundImage = `url(${img.src})`;
+      if (bgRef.current) {
+        bgRef.current.style.backgroundImage = `url(${img.src})`;
+      }
       setTimeout(() => setLoading(false), 2500);
     };
     img.onerror = () => {

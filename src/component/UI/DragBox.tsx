@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, memo } from "react";
 // store
-import { cursorStore, position } from "@store/cursorStore";
+import { cursorStore, type TPosition } from "@store/cursorStore";
 // types
 import type { IStyleObject } from "@@types/style";
 // lib
@@ -11,7 +11,8 @@ type TQuadrant = {
   bottom?: number;
   left?: number;
   right?: number;
-} | null;
+};
+type TSize = { width: number; height: number };
 
 const styles: IStyleObject = {
   dragBox: {
@@ -30,11 +31,8 @@ function DragBox() {
     rightClicked,
     setRightClicked,
   } = cursorStore();
-  const [size, setSize] = useState<{ width: number; height: number } | null>({
-    width: 0,
-    height: 0,
-  });
-  const [startPosition, setStartPosition] = useState<position>(null);
+  const [size, setSize] = useState<TSize>({ width: 0, height: 0 });
+  const [startPosition, setStartPosition] = useState<TPosition>(null);
   const [quadrant, setQuadrant] = useState<TQuadrant>(null);
 
   const startDragging = useCallback(

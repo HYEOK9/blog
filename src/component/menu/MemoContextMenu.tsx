@@ -8,7 +8,7 @@ import {
 // store
 import { memoStore } from "@store/memoStore";
 // types
-import type { position } from "@store/cursorStore";
+import type { TPosition } from "@store/cursorStore";
 // constants
 import { MEMO_CONTEXT_MENU } from "@constant/menu";
 // components
@@ -27,7 +27,7 @@ export default function MemoContextMenu({
 }: MemoContextMenuProps) {
   const { setCurMemo, removeMemo } = memoStore();
   const [rightClicked, setRightClicked] = useState(false);
-  const [startPosition, setStartPosition] = useState<position>(null);
+  const [startPosition, setStartPosition] = useState<TPosition>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleContextMenu = useCallback(

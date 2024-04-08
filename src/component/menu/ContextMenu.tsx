@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 // store
 import { menuStore } from "@store/menuStore";
-import { cursorStore, type position } from "@store/cursorStore";
+import { cursorStore, type TPosition } from "@store/cursorStore";
 // constants
 import { CONTEXT_MENU } from "@constant/menu";
 // components
@@ -11,7 +11,7 @@ export default function ContextMenu() {
   const { curMenu, setCurMenu } = menuStore();
   const { rightClicked, setRightClicked, draggable } = cursorStore();
 
-  const [startPosition, setStartPosition] = useState<position>(null);
+  const [startPosition, setStartPosition] = useState<TPosition>(null);
   const ref = useRef<HTMLDivElement>(null);
 
   const handleContextMenu = useCallback(

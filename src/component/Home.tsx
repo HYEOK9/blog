@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useRef, useMemo } from "react";
 import debounce from "lodash/debounce";
 // store

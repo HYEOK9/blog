@@ -1,19 +1,17 @@
 import { create } from "zustand";
+import type { ControlPosition } from "react-draggable";
 
-export type position = {
-  x: number;
-  y: number;
-} | null;
+export type TPosition = ControlPosition;
 
 interface cursorState {
-  cursorPosition: position;
+  cursorPosition: TPosition;
   draggable: boolean;
   isDragging: boolean;
   rightClicked: boolean;
 }
 
 interface setCursorState {
-  setCursorPosition: (cursorPosition: position) => void;
+  setCursorPosition: (cursorPosition: TPosition) => void;
   setDraggable: (draggable: boolean) => void;
   setIsDragging: (isDragging: boolean) => void;
   setRightClicked: (rightClicked: boolean) => void;
@@ -28,11 +26,9 @@ const initialHomeState: cursorState = {
 
 export const cursorStore = create<cursorState & setCursorState>((set) => ({
   ...initialHomeState,
-  setCursorPosition: (cursorPosition: position) =>
+  setCursorPosition: (cursorPosition) =>
     set((prev) => ({ ...prev, cursorPosition })),
-  setDraggable: (draggable: boolean) => set((prev) => ({ ...prev, draggable })),
-  setIsDragging: (isDragging: boolean) =>
-    set((prev) => ({ ...prev, isDragging })),
-  setRightClicked: (rightClicked: boolean) =>
-    set((prev) => ({ ...prev, rightClicked })),
+  setDraggable: (draggable) => set((prev) => ({ ...prev, draggable })),
+  setIsDragging: (isDragging) => set((prev) => ({ ...prev, isDragging })),
+  setRightClicked: (rightClicked) => set((prev) => ({ ...prev, rightClicked })),
 }));

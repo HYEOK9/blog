@@ -6,7 +6,7 @@ export interface IApp {
   open: boolean;
   hide: boolean;
   zIndex: number;
-  position: ControlPosition | null;
+  position: ControlPosition;
   fullScreen: boolean;
 }
 
