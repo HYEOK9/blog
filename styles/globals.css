@@ -30,9 +30,12 @@ a {
 .range {
   --range-shdw: #fff;
   cursor: unset;
+  &::-webkit-slider-runnable-track {
+    height: 100%;
+  }
   &::-webkit-slider-thumb {
     background-color: #fff !important;
-    border: 1px solid rgb(229, 231, 235);
+    border: 1px solid rgb(209 213 219);
   }
 }
 .collapse {

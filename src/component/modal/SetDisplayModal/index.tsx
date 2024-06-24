@@ -88,7 +88,7 @@ export default function SetDisplayModal({
               <input
                 type="range"
                 value={opacity}
-                className="range w-full border border-gray-300 dark:border-0"
+                className="range w-full border border-gray-400 dark:border-0"
                 onChange={({ target: { value } }) => setOpacity(Number(value))}
               />
             </div>
