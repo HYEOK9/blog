@@ -1,5 +1,6 @@
 import type React from "react";
 import type { Metadata, Viewport } from "next";
+import Head from "next/head";
 // constants
 import {
   META_DESCRIPTION,
@@ -20,6 +21,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
       className="dark"
       style={{ backgroundColor: "rgb(40, 40, 51)" }}
     >
+      <Head>
+        <meta
+          name="google-site-verification"
+          content="tHD5deKM9cKDonPC64anPK5zK98typnX2y_Hx23Ow9I"
+        />
+      </Head>
       <body>
         <div id="portal" />
         <main>{children}</main>
