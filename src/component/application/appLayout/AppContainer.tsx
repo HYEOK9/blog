@@ -23,7 +23,7 @@ export default function AppContainer({
   app,
   backgroundColor,
   width = 800,
-  height = 560,
+  height = 600,
   center = false,
 }: AppContainerProps) {
   const { setPosition } = appStore();

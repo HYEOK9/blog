@@ -1,6 +1,7 @@
 import { memo, forwardRef, type ForwardedRef } from "react";
 // store
-import { IApp, appStore } from "@store/appStore";
+import { appStore, type IApp } from "@store/appStore";
+import { themeStore } from "@store/themeStore";
 // constants
 import { IFRAME_VSCODE_URL } from "@constant/link";
 // components
@@ -20,6 +21,7 @@ function AppRenderer(
   ref: ForwardedRef<HTMLDivElement>
 ) {
   const { setCurApp } = appStore();
+  const { theme } = themeStore();
 
   return (
     <div
@@ -42,7 +44,7 @@ function AppRenderer(
               <AppContainer
                 app={app}
                 width={670}
-                height={480}
+                height={520}
                 backgroundColor="black"
               >
                 <ITerm />
@@ -51,8 +53,8 @@ function AppRenderer(
 
           case "Code":
             return (
-              <AppContainer app={app} backgroundColor="var(--color-navy-deep)">
-                <Iframe src={IFRAME_VSCODE_URL} />
+              <AppContainer app={app}>
+                <Iframe src={IFRAME_VSCODE_URL(theme)} />
               </AppContainer>
             );
 

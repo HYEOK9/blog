@@ -9,6 +9,7 @@ import {
 } from "@lib/styleLib";
 // store
 import { appStore } from "@store/appStore";
+import { themeStore } from "@store/themeStore";
 // components
 import DisplayModalOptions from "./DisplayModalOptions";
 import SunIcon from "/public/icon/sun.svg";
@@ -30,10 +31,10 @@ export default function SetDisplayModal({
   setShow,
 }: SetDisplayModalProps) {
   const { openApp } = appStore();
+  const { theme, toggleTheme } = themeStore();
 
   const [opacity, setOpacity] = useState(100);
   const [displayState, setDisplayState] = useState({
-    darkMode: true,
     nightShift: false,
     trueTone: false,
   });
@@ -44,21 +45,12 @@ export default function SetDisplayModal({
   }, [opacity]);
 
   useEffect(() => {
-    setDisplayState((prev) => ({
-      ...prev,
-      darkMode: document.getElementsByTagName("html")[0].className === "dark",
-    }));
     const darkModeToggle = document.getElementById("darkModeToggle");
 
-    const darkModeListener = () => {
-      document.documentElement.classList.toggle("dark");
-      setDisplayState((prev) => ({ ...prev, darkMode: !prev.darkMode }));
-    };
+    darkModeToggle?.addEventListener("click", toggleTheme);
 
-    darkModeToggle?.addEventListener("click", darkModeListener);
-
-    return () => darkModeToggle?.removeEventListener("click", darkModeListener);
-  }, []);
+    return () => darkModeToggle?.removeEventListener("click", toggleTheme);
+  }, [toggleTheme]);
 
   const toggleNightShift = useCallback(() => {
     setDisplayState((prev) => {
@@ -75,6 +67,8 @@ export default function SetDisplayModal({
       }),
     []
   );
+
+  const darkMode = theme === "dark";
 
   return (
     <div className={`absolute top-7 right-0.5 w-80 ${show ? "" : "hidden"}`}>
@@ -96,10 +90,10 @@ export default function SetDisplayModal({
             <div className="flex justify-around self-center w-11/12 py-3">
               <IconInCircle
                 Icon={DarkModeToggleIcon}
-                className={displayState.darkMode ? "!bg-white" : ""}
+                className={darkMode ? "!bg-white" : ""}
                 id="darkModeToggle"
                 text="다크 모드"
-                isOn={displayState.darkMode}
+                isOn={darkMode}
               />
 
               <IconInCircle
@@ -127,7 +121,7 @@ export default function SetDisplayModal({
               onMouseEnter={() => setHover(true)}
               onMouseLeave={() => setHover(false)}
               backgroundColor={
-                displayState.darkMode
+                darkMode
                   ? "var(--color-white-transparent)"
                   : "var(--color-blue)"
               }
