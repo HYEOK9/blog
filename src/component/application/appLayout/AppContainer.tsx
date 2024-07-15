@@ -1,4 +1,5 @@
-import { useEffect, ReactNode } from "react";
+import { useState, useEffect, ReactNode } from "react";
+import Draggable, { type DraggableBounds } from "react-draggable";
 // store
 import { cursorStore } from "@store/cursorStore";
 // types
@@ -26,7 +27,9 @@ export default function AppContainer({
   center = false,
 }: AppContainerProps) {
   const { setPosition } = appStore();
-  const { isDragging } = cursorStore();
+  const { isDragging, setIsDragging } = cursorStore();
+
+  const [bounds, setBounds] = useState<DraggableBounds>();
 
   useEffect(() => {
     if (!center) {
@@ -42,36 +45,41 @@ export default function AppContainer({
     }
   }, [app.name, setPosition, center, width, height]);
 
+  useEffect(() => {
+    setBounds({
+      top: 32,
+      right: window.innerWidth / 2 - 200,
+      bottom: window.innerHeight - 200,
+      left: -window.innerWidth + 250,
+    });
+  }, []);
+
   if (!app.position) return null;
 
   return (
-    <>
-      <AppHeader app={app} headerColor={backgroundColor} width={width} />
+    <Draggable
+      onDrag={(_, { x, y }) => setPosition(app.name, { x, y })}
+      onStart={() => setIsDragging(true)}
+      onStop={() => setIsDragging(false)}
+      bounds={bounds}
+      position={app.position}
+      handle=".header"
+    >
       <div
-        className={`absolute top-8 overflow-hidden rounded-b-xl bg-gray-300 dark:bg-navy-600 border border-slate-600 border-t-0 ${
+        className={`flex flex-col absolute bg-gray-300 dark:bg-navy-600 rounded-xl border border-slate-600 ${
           !isDragging ? "transition-all duration-300" : "transition-none"
         }`}
         style={{
-          ...(!app.fullScreen
-            ? {
-                width,
-                height,
-                // cursorY + TrafficButton
-                top: `calc(${app.position.y}px + 2.5rem)`,
-              }
-            : {
-                width: "100vw",
-                // (100vh - Header - TrafficButton - Dock)
-                height: "calc(100vh - 2.5rem - 2rem - 4.75rem)",
-                top: `calc(${app.position.y}px + 2.5rem)`,
-              }),
-          left: app.position.x,
+          width: !app.fullScreen ? width : "100vw",
+          // (100vh - Header - Dock)
+          height: !app.fullScreen ? height : "calc(100vh - 2rem - 4.75rem)",
           zIndex: app.zIndex,
           backgroundColor,
         }}
       >
-        {children}
+        <AppHeader app={app} />
+        <div className="h-full overflow-hidden rounded-b-xl">{children}</div>
       </div>
-    </>
+    </Draggable>
   );
 }
