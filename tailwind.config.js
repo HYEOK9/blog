@@ -36,6 +36,7 @@ module.exports = {
       textColor: { "blue-main": "var(--color-blue)" },
       backgroundSize: { full: "100% 100%" },
       backgroundColor: {
+        "light-app": "hsl(0 0% 95%)",
         "light-bg": "rgba(255,255,255,0.7)",
         "header-dark": "rgba(27,27,29,0.3)",
         "navy-400": "var(--color-navy-light)",

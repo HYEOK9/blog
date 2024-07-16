@@ -66,7 +66,7 @@ export default function AppContainer({
       handle=".header"
     >
       <div
-        className={`flex flex-col absolute bg-gray-300 dark:bg-navy-600 rounded-xl border border-slate-600 ${
+        className={`flex flex-col absolute bg-light-app dark:bg-navy-600 rounded-xl border border-slate-600 ${
           !isDragging ? "transition-all duration-300" : "transition-none"
         }`}
         style={{
