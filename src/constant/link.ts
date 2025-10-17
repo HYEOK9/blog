@@ -36,4 +36,6 @@ export const STACK_LINK = {
   PYTHON_URL: "https://www.python.org",
   REACT_QUERY_URL: "https://tanstack.com/query/v3/docs/react/overview",
   SWR_URL: "https://swr.vercel.app/ko",
+  SPRING_BOOT_URL: "https://spring.io/projects/spring-boot",
+  JAVA_URL: "https://www.java.com",
 } as const;

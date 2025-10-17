@@ -7,6 +7,8 @@ import {
   META_TITLE,
   GOOGLE_VERIFICATION,
 } from "@constant/metaData";
+// components
+import ImagePrefetch from "@component/ImagePrefetch";
 // style
 import "../../styles/globals.css";
 
@@ -22,6 +24,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
       style={{ backgroundColor: "rgb(40, 40, 51)" }}
     >
       <body>
+        <ImagePrefetch />
         <div id="portal" />
         <main>{children}</main>
       </body>

@@ -16,10 +16,10 @@ function Background() {
 
   useLayoutEffect(() => {
     const img = new Image();
-    const localImage = JSON.parse(localStorage.getItem("background") || "{}")
-      .state as backgroundState;
+    const localImage =
+      JSON.parse(localStorage.getItem("background") || "{}").state || {};
 
-    if (localImage.src !== src) {
+    if (Object.keys(localImage).length !== 0 && localImage?.src !== src) {
       setImage(localImage);
       img.src = localImage.src;
     } else {

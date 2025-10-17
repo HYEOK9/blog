@@ -23,7 +23,7 @@ export default function StackIcon({
   return (
     <div className="relative">
       <Image
-        className={`w-16 mx-2 transition-all hover:scale-105 active:translate-y-1 rounded-lg peer
+        className={`w-16 h-auto mx-2 transition-all hover:scale-105 active:translate-y-1 rounded-lg peer
       ${link ? "cursor-pointer" : ""} 
       ${className}
       `}

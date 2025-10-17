@@ -19,12 +19,16 @@ import TSIcon from "/public/logo/stack/ts.png";
 import GQLIcon from "/public/logo/stack/gql.png";
 import CPPIcon from "/public/logo/stack/C++.png";
 import PythonIcon from "/public/logo/stack/python.png";
+import SpringBootIcon from "/public/logo/stack/springBoot.png";
+import JavaIcon from "/public/logo/stack/java.png";
+
 // constants
 import { STACK_LINK } from "@constant/link";
 
 const lang = [
   { name: "Javascript", src: JSIcon },
   { name: "TypeScript", src: TSIcon, link: STACK_LINK.TS_URL },
+  { name: "Java", src: JavaIcon, link: STACK_LINK.JAVA_URL },
   {
     name: "C++",
     src: CPPIcon,
@@ -51,6 +55,7 @@ const frameWork = [
     src: ReactIcon,
     link: STACK_LINK.REACT_URL,
   },
+  { name: "SpringBoot", src: SpringBootIcon, link: STACK_LINK.SPRING_BOOT_URL },
 ] as const;
 
 const stateManagement = [

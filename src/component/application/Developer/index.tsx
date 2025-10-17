@@ -51,7 +51,7 @@ function Developer() {
           <div className="flex flex-col">
             <h1 className="text-center">이재혁</h1>
             <h1 className="text-center py-1">1999 . 04 . 09</h1>
-            <h1 className="text-center">Frontend Developer</h1>
+            <h1 className="text-center">Developer</h1>
           </div>
         </IntroduceWithTitle>
 
