@@ -58,7 +58,7 @@ function Developer() {
           <div className="flex flex-col">
             {EXPERIENCE.map(({ icon, name, period }, index) => (
               <span
-                key={index}
+                key={name}
                 className={`${index < EXPERIENCE.length - 1 ? "mb-2" : ""} ${
                   icon ? "inline-flex items-center" : ""
                 }`}
