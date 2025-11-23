@@ -2,7 +2,6 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 // image
-import CashDocIcon from "/public/logo/cashdoc.png";
 import HospitalEventIcon from "/public/logo/hospitalEvent.png";
 import CashdocCommunity from "/public/logo/cashdocCommunity.png";
 import GitHub from "/public/logo/github.png";
@@ -57,21 +56,29 @@ function Developer() {
 
         <IntroduceWithTitle title="EXPERIENCE">
           <div className="flex flex-col">
-            <span className="mb-2">
-              {EXPERIENCE[0].period}&nbsp;&nbsp;:&nbsp;&nbsp;
-              {EXPERIENCE[0].name}
-            </span>
-
-            <span className="inline-flex items-center">
-              {EXPERIENCE[1].period}&nbsp;&nbsp;:&nbsp;&nbsp;
-              <Image
-                className="w-5 h-5 mr-0.5"
-                src={CashDocIcon}
-                alt="cashdoc"
-                priority
-              />
-              {EXPERIENCE[1].name}
-            </span>
+            {EXPERIENCE.map(({ icon, name, period }, index) => (
+              <span
+                key={index}
+                className={`${index < EXPERIENCE.length - 1 ? "mb-2" : ""} ${
+                  icon ? "inline-flex items-center" : ""
+                }`}
+              >
+                {period}&nbsp;&nbsp;{" "}
+                {index === 2 && <>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</>}
+                :&nbsp;&nbsp;
+                {icon && (
+                  <Image
+                    className="mr-0.5"
+                    src={icon}
+                    alt={name.toLowerCase().replace(/\s+/g, "_")}
+                    priority
+                    width={20}
+                    height={20}
+                  />
+                )}
+                {name}
+              </span>
+            ))}
           </div>
         </IntroduceWithTitle>
 

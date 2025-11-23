@@ -5,9 +5,16 @@ export const EXPERIENCE = [
   {
     period: "2018.03 ~ 2024.02",
     name: "🏫 Kyung Hee University",
+    icon: null,
   },
   {
     period: "2022.12 ~ 2023.06",
     name: "Chunneung IT (cashdoc)",
+    icon: "/logo/cashdoc.png",
+  },
+  {
+    period: "2025.10 ~ 현재",
+    name: "하나금융TI",
+    icon: "/logo/hana.png",
   },
 ] as const;
